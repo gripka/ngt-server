@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forging Steel - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="strike-forgingsteel">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="strike-forgingsteel">Forging Steel</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" style="display: none;" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" style="display: none;" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="forgingsteel-escort">Fase de Escolta</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="forgingsteel-escort-desc">Escolte o comboio da Legião Frost por território inimigo. Proteja veículos de atacantes. Limpe obstáculos bloqueando o caminho. Não deixe veículos levarem muito dano ou missão falha.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="forgingsteel-defense">Ondas de Defesa</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="forgingsteel-defense-desc">Defenda posições chave de múltiplas ondas inimigas. Divida time para cobrir diferentes portões. Priorize inimigos elite. Use controle de grupo efetivamente. Repare defesas quando danificadas.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="forgingsteel-ryland">Luta contra Ryland</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="forgingsteel-ryland-desc">Encontro de boss final contra Ryland Steelcatcher. Quebre barra de desafio durante seus ataques fortalecidos. Esquive o combo de espadão e salto. Agrupe-se para compartilhar cura. Mate adds que aparecem durante fases da luta.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

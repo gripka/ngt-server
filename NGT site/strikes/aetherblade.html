@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aetherblade Hideout - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="strike-aetherblade">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="strike-aetherblade">Aetherblade Hideout</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-dodge">Dodge Mai Trin</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-dodge-desc">Esquive dos vários ataques de Mai Trin, quebre sua barra de desafio imediatamente para ganhar um boost de dano</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-split50">50% split</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-split50-desc">Adds pequenos aparecem, mate-os</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-split33">33% split</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-split33-desc">Dois adds elite aparecem - despeje todo CC no add sudoeste primeiro já que tem uma breakbar enorme, depois mate o nordeste, depois volte pro sudoeste pra mais CC
+
+Fique no círculo verde quando ele aparecer</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-scarlet">Mai Trin 10% - Scarlet</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-scarlet-desc">Scarlet Briar aparece, esquive das orbs dela, pule/esquive da shockwave. Os mesmos splits de adds elite acontecem em 80% e 40%</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-blueline">Blue line wipe</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-blueline-desc">Se você pegar uma linha azul sobre sua cabeça / borda azul na tela - corra pra fora ou wipa o grupo</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-deathray">60% e 20% Deathray</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-deathray-desc">3 áreas "seguras" rotativas aparecem e Scarlet aparece na borda - fique onde ela não te acertaria num ataque em linha reta para aguardar o spot seguro correto - os outros dois são destruídos</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-saturation">Photon Saturation</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-saturation-desc">Spreads/aoes mal executados dão uma redução de HP máximo stackável - espalhe corretamente para evitar dano desnecessário</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-cm-cleave">CM - Cleave debuff</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-cm-cleave-desc">O cleave de Mai Trin e o slam de Scarlet Briar agora adicionam um debuff stackável, priorize esquivar</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-cm-green">CM - Green circle</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-cm-green-desc">Círculo verde requer EXATAMENTE 3 jogadores, nem mais nem menos - fazer essa mecânica te dá um debuff então você morre instantaneamente se fizer de novo</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-cm-blueline">CM - Blue line</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-cm-blueline-desc">Mecânica de linha azul agora mira em dois jogadores, corra pra fora do grupo e solte elas juntas para evitar muitas AoEs persistentes, certifique-se de não soltar onde os dois adds grandes aparecem</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="aetherblade-cm-deathray">CM - Deathray crosses</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="aetherblade-cm-deathray-desc">Mecânica Deathray agora tem dois jogadores com marcadores de AoE de cruz gigante sobre eles, eles precisam usar a special action key para anexar seus marcadores a "objetos ferrosos" próximos de forma que as cruzes não atinjam a zona segura do time</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

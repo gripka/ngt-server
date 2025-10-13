@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorseval - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="raid-gorseval">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="raid-gorseval">Gorseval the Multifarious</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" style="display: none;" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" style="display: none;" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="gorseval-position">Posicionamento e Pancada</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="gorseval-position-desc">Fique atrás do boss. Faça dodge do knockback da pancada (Spectral Impact).</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="gorseval-defiance">Barra de Desafio e Poças</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="gorseval-defiance-desc">Quebre a barra de desafio quando aparecer (Ghastly Rampage) e evite poças pretas no chão.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="gorseval-worldeater">World Eater</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="gorseval-worldeater-desc">Se o DPS for lento, ele usa World Eater. Quebre as paredes e plane para fora da arena para evitar.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="gorseval-souls">Fase de Split - Almas Carregadas</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="gorseval-souls-desc">Mate, desacelere ou imobilize Charged Souls antes que elas alcancem o boss.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="gorseval-eggs">33% e Abaixo - Ovos e Gaiolas</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="gorseval-eggs-desc">Desvie dos AoEs laranjas (Eggs) sob seus pés. Liberte aliados presos matando as gaiolas.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+    </div>
+    <a href="../raids.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

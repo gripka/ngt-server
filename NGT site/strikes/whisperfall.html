@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper of Jormag - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="strike-whisperfall">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="strike-whisperfall">Whisper of Jormag</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" style="display: none;" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" style="display: none;" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="whisperfall-circles">Orange e green circles</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="whisperfall-circles-desc">Espalhe-se para círculos laranja; agrupe-se bem dentro de AoEs de círculo verde</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="whisperfall-clones">75% e 25% health - clones</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="whisperfall-clones-desc">Em 75% e 25% de vida, você será isolado - mate seu próprio clone rapidamente</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="whisperfall-chains">Chains</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="whisperfall-chains-desc">Se preso ao boss com tether, fique parado perto do boss; outros evitem cruzar as correntes</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="whisperfall-orbs">Final 25% - frozen orbs</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="whisperfall-orbs-desc">Evite ou detone propositalmente os muitos orbes congelados (Necro Flesh Wurm pode absorver o centro)</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

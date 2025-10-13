@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statues of Grenth - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="raid-statues">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="raid-statues">Statues of Grenth</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" style="display: none;" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" style="display: none;" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="statues-autoattack">Apenas Auto-Ataques</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="statues-autoattack-desc">Use apenas auto-ataques - cada 2% de HP gera orbs verdes (Frozen Wind). Grupo deve mirar ~75k DPS total para vencer enrage sem sobrecarregar com orbs. DPS muito alto cria muitas orbs. DPS muito baixo causa enrage. Balance saída de dano cuidadosamente. Comunique taxa de spawn de orbs.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="statues-orbs">Colete Orbs Verdes</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="statues-orbs-desc">Pegue orbs, mas não ultrapasse 3 stacks ou você congela. Cada stack cai após 45 segundos. Rotacione coleta de orbs entre jogadores. Observe contagem de stacks cuidadosamente. Jogadores congelados ficam fora de combate. Comunique contagem de stacks ao grupo. Planeje coleta de orbs com expiração de debuffs.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="statues-fissures">Evite Fissuras Geladas</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="statues-fissures-desc">Evite fissuras geladas e AoEs de triângulo laranja no chão. Fissuras causam dano pesado e aplicam chill. Triângulos laranjas são zonas de dano. Mantenha consciência posicional. Mova-se para áreas seguras entre ataques. Não fique preso entre múltiplas mecânicas de chão. Observe padrões de spawn de perigos.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="statues-dps">DPS Balanceado (~75k Total)</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="statues-dps-desc">Grupo deve mirar ~75k DPS total coletivo. Muito baixo falha timer de enrage. Muito alto sobrecarrega grupo com orbs. Coordene composição de grupo para DPS consistente. Monitore taxa de spawn de orbs para ajustar dano. Use apenas auto-ataques para controle preciso. Comunique se DPS precisa aumentar ou diminuir.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+    </div>
+    <a href="../raids.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

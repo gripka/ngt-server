@@ -1,0 +1,708 @@
+// Meta Events Data - GW2 Wiki Event Timer Style
+// All times are in UTC
+
+const metaEventCategories = [
+    {
+        id: 'core-tyria',
+        name: {
+            pt: 'Core Tyria',
+            en: 'Core Tyria',
+            es: 'Core Tyria'
+        },
+        events: [
+            {
+                name: 'Admiral Taidha Covington',
+                location: {
+                    pt: 'Bloodtide Coast',
+                    en: 'Bloodtide Coast',
+                    es: 'Costa de Marea Sangrienta'
+                },
+                waypoint: '[&BPABAAA=]',
+                times: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
+            },
+            {
+                name: {
+                    pt: 'Chefe Xamã Svanir',
+                    en: 'Svanir Shaman Chief',
+                    es: 'Jefe chamán Svanir'
+                },
+                location: {
+                    pt: 'Wayfarer Foothills',
+                    en: 'Wayfarer Foothills',
+                    es: 'Estribaciones del Caminante'
+                },
+                times: ['00:15', '02:15', '04:15', '06:15', '08:15', '10:15', '12:15', '14:15', '16:15', '18:15', '20:15', '22:15']
+            },
+            {
+                name: {
+                    pt: 'Megadestroyer',
+                    en: 'Megadestroyer',
+                    es: 'Megadestructor'
+                },
+                location: {
+                    pt: 'Mount Maelstrom',
+                    en: 'Mount Maelstrom',
+                    es: 'Monte Vorágine'
+                },
+                times: ['00:30', '03:30', '06:30', '09:30', '12:30', '15:30', '18:30', '21:30']
+            },
+            {
+                name: {
+                    pt: 'Grande Verme da Selva',
+                    en: 'Great Jungle Wurm',
+                    es: 'Gran Vermis de la Jungla'
+                },
+                location: {
+                    pt: 'Caledon Forest',
+                    en: 'Caledon Forest',
+                    es: 'Bosque de Caledon'
+                },
+                times: ['00:15', '02:15', '04:15', '06:15', '08:15', '10:15', '12:15', '14:15', '16:15', '18:15', '20:15', '22:15']
+            },
+            {
+                name: {
+                    pt: 'Modniir Ulgoth',
+                    en: 'Modniir Ulgoth',
+                    es: 'Modniir Ulgoth'
+                },
+                location: {
+                    pt: 'Harathi Hinterlands',
+                    en: 'Harathi Hinterlands',
+                    es: 'Tierras Agrestes de Harathi'
+                },
+                times: ['00:30', '02:30', '04:30', '06:30', '08:30', '10:30', '12:30', '14:30', '16:30', '18:30', '20:30', '22:30']
+            },
+            {
+                name: {
+                    pt: 'Behemoth Sombrio',
+                    en: 'Shadow Behemoth',
+                    es: 'Behemot Sombrío'
+                },
+                location: {
+                    pt: 'Queensdale',
+                    en: 'Queensdale',
+                    es: 'Queensdale'
+                },
+                times: ['00:15', '02:15', '04:15', '06:15', '08:15', '10:15', '12:15', '14:15', '16:15', '18:15', '20:15', '22:15']
+            },
+            {
+                name: {
+                    pt: 'Elemental de Fogo',
+                    en: 'Fire Elemental',
+                    es: 'Elemental de Fuego'
+                },
+                location: {
+                    pt: 'Metrica Province',
+                    en: 'Metrica Province',
+                    es: 'Provincia de Metrica'
+                },
+                times: ['00:45', '02:45', '04:45', '06:45', '08:45', '10:45', '12:45', '14:45', '16:45', '18:45', '20:45', '22:45']
+            },
+            {
+                name: {
+                    pt: 'O Shatterer',
+                    en: 'The Shatterer',
+                    es: 'El Destrozador'
+                },
+                location: {
+                    pt: 'Blazeridge Steppes',
+                    en: 'Blazeridge Steppes',
+                    es: 'Estepas de Filocandente'
+                },
+                times: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
+            },
+            {
+                name: {
+                    pt: 'Tequatl o Sem Sol',
+                    en: 'Tequatl the Sunless',
+                    es: 'Tequatl el Sin Sol'
+                },
+                location: {
+                    pt: 'Sparkfly Fen',
+                    en: 'Sparkfly Fen',
+                    es: 'Pantano de Moscabrillante'
+                },
+                times: ['00:00', '03:00', '07:00', '11:30', '16:00', '19:00']
+            },
+            {
+                name: {
+                    pt: 'Rainha Karka',
+                    en: 'Karka Queen',
+                    es: 'Reina Karka'
+                },
+                location: {
+                    pt: 'Southsun Cove',
+                    en: 'Southsun Cove',
+                    es: 'Cala de Southsun'
+                },
+                times: ['02:00', '06:00', '10:30', '14:30', '18:30', '23:00']
+            },
+            {
+                name: {
+                    pt: 'Triplo Problema',
+                    en: 'Triple Trouble',
+                    es: 'Triple Problema'
+                },
+                location: {
+                    pt: 'Bloodtide Coast',
+                    en: 'Bloodtide Coast',
+                    es: 'Costa de Marea Sangrienta'
+                },
+                times: ['01:00', '04:00', '08:00', '13:00', '17:00', '20:00']
+            },
+            {
+                name: {
+                    pt: 'Garra de Jormag',
+                    en: 'Claw of Jormag',
+                    es: 'Garra de Jormag'
+                },
+                location: {
+                    pt: 'Frostgorge Sound',
+                    en: 'Frostgorge Sound',
+                    es: 'Ensenada Escarchada'
+                },
+                times: ['00:30', '03:30', '06:30', '09:30', '12:30', '15:30', '18:30', '21:30']
+            }
+        ]
+    },
+    {
+        id: 'heart-of-thorns',
+        name: {
+            pt: 'Heart of Thorns',
+            en: 'Heart of Thorns',
+            es: 'Heart of Thorns'
+        },
+        events: [
+            {
+                name: {
+                    pt: 'Chefes Noturnos - Verdant Brink',
+                    en: 'Night Bosses - Verdant Brink',
+                    es: 'Jefes Nocturnos - Verdant Brink'
+                },
+                location: {
+                    pt: 'Verdant Brink',
+                    en: 'Verdant Brink',
+                    es: 'Linde Verdant'
+                },
+                times: ['01:30', '03:30', '05:30', '07:30', '09:30', '11:30', '13:30', '15:30', '17:30', '19:30', '21:30', '23:30']
+            },
+            {
+                name: {
+                    pt: 'Batalha por Auric Basin',
+                    en: 'Battle in Auric Basin',
+                    es: 'Batalla en Cuenca Áurea'
+                },
+                location: {
+                    pt: 'Auric Basin',
+                    en: 'Auric Basin',
+                    es: 'Cuenca Áurea'
+                },
+                times: ['00:45', '02:45', '04:45', '06:45', '08:45', '10:45', '12:45', '14:45', '16:45', '18:45', '20:45', '22:45']
+            },
+            {
+                name: {
+                    pt: 'Preparação de Tangled Depths',
+                    en: 'Preparing Tangled Depths',
+                    es: 'Preparación de Profundidades Enredadas'
+                },
+                location: {
+                    pt: 'Tangled Depths',
+                    en: 'Tangled Depths',
+                    es: 'Profundidades Enredadas'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: "Dragon's Stand",
+                    en: "Dragon's Stand",
+                    es: 'Bastión del Dragón'
+                },
+                location: {
+                    pt: "Dragon's Stand",
+                    en: "Dragon's Stand",
+                    es: 'Bastión del Dragón'
+                },
+                times: ['01:30', '03:30', '05:30', '07:30', '09:30', '11:30', '13:30', '15:30', '17:30', '19:30', '21:30', '23:30']
+            }
+        ]
+    },
+    {
+        id: 'path-of-fire',
+        name: {
+            pt: 'Path of Fire',
+            en: 'Path of Fire',
+            es: 'Path of Fire'
+        },
+        events: [
+            {
+                name: {
+                    pt: 'Ataque Relâmpago ao Cassino',
+                    en: 'Casino Blitz',
+                    es: 'Asalto al Casino'
+                },
+                location: {
+                    pt: 'The Crystal Oasis',
+                    en: 'The Crystal Oasis',
+                    es: 'El Oasis de Cristal'
+                },
+                times: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00']
+            },
+            {
+                name: {
+                    pt: 'Ira da Serpente',
+                    en: 'Serpent\'s Ire',
+                    es: 'Ira de la Serpiente'
+                },
+                location: {
+                    pt: 'Domain of Vabbi',
+                    en: 'Domain of Vabbi',
+                    es: 'Dominio de Vabbi'
+                },
+                times: ['00:30', '02:30', '04:30', '06:30', '08:30', '10:30', '12:30', '14:30', '16:30', '18:30', '20:30', '22:30']
+            },
+            {
+                name: {
+                    pt: 'Maw of Torment',
+                    en: 'Maw of Torment',
+                    es: 'Fauces del Tormento'
+                },
+                location: {
+                    pt: 'Domain of Istan',
+                    en: 'Domain of Istan',
+                    es: 'Dominio de Istan'
+                },
+                times: ['01:05', '03:05', '05:05', '07:05', '09:05', '11:05', '13:05', '15:05', '17:05', '19:05', '21:05', '23:05']
+            }
+        ]
+    },
+    {
+        id: 'living-world-s4',
+        name: {
+            pt: 'Living World Season 4',
+            en: 'Living World Season 4',
+            es: 'Living World Season 4'
+        },
+        events: [
+            {
+                name: {
+                    pt: 'Palawadan, Joia de Istan',
+                    en: 'Palawadan, Jewel of Istan',
+                    es: 'Palawadan, Joya de Istan'
+                },
+                location: {
+                    pt: 'Domain of Istan',
+                    en: 'Domain of Istan',
+                    es: 'Dominio de Istan'
+                },
+                times: ['00:45', '02:45', '04:45', '06:45', '08:45', '10:45', '12:45', '14:45', '16:45', '18:45', '20:45', '22:45']
+            },
+            {
+                name: {
+                    pt: 'Shatterer Marcado pela Morte',
+                    en: 'Death-Branded Shatterer',
+                    es: 'Destrozador Marcado por la Muerte'
+                },
+                location: {
+                    pt: 'Jahai Bluffs',
+                    en: 'Jahai Bluffs',
+                    es: 'Acantilados de Jahai'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: 'Fortaleza Thunderhead',
+                    en: 'Thunderhead Keep',
+                    es: 'Fortaleza Cabeza de Trueno'
+                },
+                location: {
+                    pt: 'Thunderhead Peaks',
+                    en: 'Thunderhead Peaks',
+                    es: 'Picos Cabeza de Trueno'
+                },
+                times: ['00:45', '02:00', '03:45', '05:00', '06:45', '08:00', '09:45', '11:00', '12:45', '14:00', '15:45', '17:00', '18:45', '20:00', '21:45', '23:00']
+            },
+            {
+                name: {
+                    pt: 'Os Bancos de Petróleo',
+                    en: 'The Oil Floes',
+                    es: 'Los Témpanos de Petróleo'
+                },
+                location: {
+                    pt: 'Sandswept Isles',
+                    en: 'Sandswept Isles',
+                    es: 'Islas Barridas por la Arena'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: 'Dragonfall',
+                    en: 'Dragonfall',
+                    es: 'Caída del Dragón'
+                },
+                location: {
+                    pt: 'Dragonfall',
+                    en: 'Dragonfall',
+                    es: 'Caída del Dragón'
+                },
+                times: ['01:30', '03:30', '05:30', '07:30', '09:30', '11:30', '13:30', '15:30', '17:30', '19:30', '21:30', '23:30']
+            }
+        ]
+    },
+    {
+        id: 'icebrood-saga',
+        name: {
+            pt: 'The Icebrood Saga',
+            en: 'The Icebrood Saga',
+            es: 'The Icebrood Saga'
+        },
+        events: [
+            {
+                name: {
+                    pt: 'Drakkar',
+                    en: 'Drakkar',
+                    es: 'Drakkar'
+                },
+                location: {
+                    pt: 'Bjora Marches',
+                    en: 'Bjora Marches',
+                    es: 'Marchas de Bjora'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: 'Tempestades de Inverno',
+                    en: 'Storms of Winter',
+                    es: 'Tormentas de Invierno'
+                },
+                location: {
+                    pt: 'Bjora Marches',
+                    en: 'Bjora Marches',
+                    es: 'Marchas de Bjora'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: 'Anomalia da Linha Ley',
+                    en: 'Leyline Anomaly',
+                    es: 'Anomalía de Línea Ley'
+                },
+                location: {
+                    pt: 'Grothmar Valley',
+                    en: 'Grothmar Valley',
+                    es: 'Valle de Grothmar'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            }
+        ]
+    },
+    {
+        id: 'end-of-dragons',
+        name: {
+            pt: 'End of Dragons',
+            en: 'End of Dragons',
+            es: 'End of Dragons'
+        },
+        events: [
+            {
+                name: {
+                    pt: 'Batalha pelo Mar de Jade',
+                    en: 'Battle for the Jade Sea',
+                    es: 'Batalla por el Mar de Jade'
+                },
+                location: {
+                    pt: 'New Kaineng City',
+                    en: 'New Kaineng City',
+                    es: 'Nueva Ciudad de Kaineng'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: 'Gang War',
+                    en: 'Gang War',
+                    es: 'Guerra de Pandillas'
+                },
+                location: {
+                    pt: 'New Kaineng City',
+                    en: 'New Kaineng City',
+                    es: 'Nueva Ciudad de Kaineng'
+                },
+                times: ['00:30', '02:30', '04:30', '06:30', '08:30', '10:30', '12:30', '14:30', '16:30', '18:30', '20:30', '22:30']
+            },
+            {
+                name: {
+                    pt: 'Avanço do Vazio',
+                    en: 'Void Surge',
+                    es: 'Oleada del Vacío'
+                },
+                location: {
+                    pt: 'Multiple Maps',
+                    en: 'Multiple Maps',
+                    es: 'Múltiples Mapas'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: "Batalha pelo Fim do Dragão",
+                    en: "Battle for Dragon's End",
+                    es: 'Batalla por el Fin del Dragón'
+                },
+                location: {
+                    pt: "Dragon's End",
+                    en: "Dragon's End",
+                    es: 'Fin del Dragón'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: 'Akanon, Derivado do Vazio',
+                    en: 'Akanon, Voidbringer',
+                    es: 'Akanon, Portador del Vacío'
+                },
+                location: {
+                    pt: 'The Echovald Wilds',
+                    en: 'The Echovald Wilds',
+                    es: 'Las Tierras Salvajes de Echovald'
+                },
+                times: ['00:30', '02:30', '04:30', '06:30', '08:30', '10:30', '12:30', '14:30', '16:30', '18:30', '20:30', '22:30']
+            },
+            {
+                name: {
+                    pt: 'Excavação de Gyala',
+                    en: 'Gyala Delve',
+                    es: 'Excavación de Gyala'
+                },
+                location: {
+                    pt: 'Gyala Delve',
+                    en: 'Gyala Delve',
+                    es: 'Excavación de Gyala'
+                },
+                times: ['00:30', '01:30', '02:30', '03:30', '04:30', '05:30', '06:30', '07:30', '08:30', '09:30', '10:30', '11:30', '12:30', '13:30', '14:30', '15:30', '16:30', '17:30', '18:30', '19:30', '20:30', '21:30', '22:30', '23:30']
+            }
+        ]
+    },
+    {
+        id: 'secrets-of-the-obscure',
+        name: {
+            pt: 'Secrets of the Obscure',
+            en: 'Secrets of the Obscure',
+            es: 'Secrets of the Obscure'
+        },
+        events: [
+            {
+                name: {
+                    pt: 'Convergência',
+                    en: 'Convergence',
+                    es: 'Convergencia'
+                },
+                location: {
+                    pt: 'Skywatch Archipelago',
+                    en: 'Skywatch Archipelago',
+                    es: 'Archipiélago Vigía del Cielo'
+                },
+                times: ['00:00', '02:00', '04:00', '06:00', '08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00', '22:00']
+            },
+            {
+                name: {
+                    pt: 'Caçadas de Fenda',
+                    en: 'Rift Hunts',
+                    es: 'Cazas de Grietas'
+                },
+                location: {
+                    pt: 'Multiple Maps',
+                    en: 'Multiple Maps',
+                    es: 'Múltiples Mapas'
+                },
+                times: ['Every 5 minutes']
+            }
+        ]
+    }
+];
+
+// Função para parsear tempo no formato HH:MM
+function parseTime(timeStr) {
+    if (timeStr === 'Every 5 minutes') return null;
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    return { hours, minutes };
+}
+
+// Função para calcular o próximo horário
+function getNextTime(times) {
+    if (!times || times.length === 0 || times[0] === 'Every 5 minutes') {
+        return { nextTime: 'Ongoing', countdown: 'Always active' };
+    }
+    
+    const now = new Date();
+    const currentUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 
+                                now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+    
+    let nextEventTime = null;
+    let nextTimeStr = '';
+    
+    for (const timeStr of times) {
+        const time = parseTime(timeStr);
+        if (!time) continue;
+        
+        let eventTime = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 
+                                 time.hours, time.minutes, 0);
+        
+        // Se o evento já passou hoje, verificar amanhã
+        if (eventTime <= currentUTC) {
+            eventTime = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 
+                                time.hours, time.minutes, 0);
+        }
+        
+        if (nextEventTime === null || eventTime < nextEventTime) {
+            nextEventTime = eventTime;
+            nextTimeStr = timeStr;
+        }
+    }
+    
+    const timeUntil = nextEventTime - currentUTC;
+    const countdown = formatCountdown(timeUntil);
+    
+    return { nextTime: nextTimeStr, countdown, millisUntil: timeUntil };
+}
+
+// Função para formatar countdown
+function formatCountdown(milliseconds) {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    
+    if (hours > 0) {
+        return `${hours}h ${minutes}m ${seconds}s`;
+    } else if (minutes > 0) {
+        return `${minutes}m ${seconds}s`;
+    } else {
+        return `${seconds}s`;
+    }
+}
+
+// Função para criar a tabela de uma categoria
+function createCategoryTable(category, lang) {
+    const section = document.createElement('div');
+    section.className = 'event-category-section';
+    
+    const title = document.createElement('h2');
+    title.className = 'event-category-title';
+    title.textContent = category.name[lang];
+    section.appendChild(title);
+    
+    const table = document.createElement('table');
+    table.className = 'event-timer-table';
+    
+    // Cabeçalho da tabela
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+        <tr>
+            <th class="event-name-col">${lang === 'pt' ? 'Evento' : lang === 'en' ? 'Event' : 'Evento'}</th>
+            <th class="event-location-col">${lang === 'pt' ? 'Localização' : lang === 'en' ? 'Location' : 'Ubicación'}</th>
+            <th class="event-next-col">${lang === 'pt' ? 'Próximo' : lang === 'en' ? 'Next' : 'Próximo'}</th>
+            <th class="event-countdown-col">${lang === 'pt' ? 'Em' : lang === 'en' ? 'In' : 'En'}</th>
+        </tr>
+    `;
+    table.appendChild(thead);
+    
+    // Corpo da tabela
+    const tbody = document.createElement('tbody');
+    
+    category.events.forEach(event => {
+        const { nextTime, countdown, millisUntil } = getNextTime(event.times);
+        
+        const row = document.createElement('tr');
+        row.className = 'event-timer-row';
+        row.dataset.eventTimes = JSON.stringify(event.times);
+        
+        // Adicionar classe de urgência baseado no tempo
+        if (millisUntil) {
+            const minutes = millisUntil / (1000 * 60);
+            if (minutes <= 15) {
+                row.classList.add('event-imminent');
+            } else if (minutes <= 30) {
+                row.classList.add('event-soon');
+            }
+        }
+        
+        row.innerHTML = `
+            <td class="event-name">${event.name[lang]}</td>
+            <td class="event-location">${event.location[lang]}</td>
+            <td class="event-next-time">${nextTime}</td>
+            <td class="event-countdown">${countdown}</td>
+        `;
+        
+        tbody.appendChild(row);
+    });
+    
+    table.appendChild(tbody);
+    section.appendChild(table);
+    
+    return section;
+}
+
+// Função para atualizar todos os countdowns
+function updateAllCountdowns() {
+    const rows = document.querySelectorAll('.event-timer-row');
+    
+    rows.forEach(row => {
+        const times = JSON.parse(row.dataset.eventTimes);
+        const { nextTime, countdown, millisUntil } = getNextTime(times);
+        
+        const nextTimeCell = row.querySelector('.event-next-time');
+        const countdownCell = row.querySelector('.event-countdown');
+        
+        if (nextTimeCell && countdownCell) {
+            nextTimeCell.textContent = nextTime;
+            countdownCell.textContent = countdown;
+        }
+        
+        // Atualizar classes de urgência
+        row.classList.remove('event-imminent', 'event-soon');
+        if (millisUntil) {
+            const minutes = millisUntil / (1000 * 60);
+            if (minutes <= 15) {
+                row.classList.add('event-imminent');
+            } else if (minutes <= 30) {
+                row.classList.add('event-soon');
+            }
+        }
+    });
+}
+
+// Função para renderizar todas as categorias
+function renderEventTimers() {
+    const container = document.getElementById('eventTimersContainer');
+    if (!container) return;
+    
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    // Limpar container
+    container.innerHTML = '';
+    
+    // Criar tabelas para cada categoria
+    metaEventCategories.forEach(category => {
+        const categoryTable = createCategoryTable(category, lang);
+        container.appendChild(categoryTable);
+    });
+    
+    // Iniciar atualização dos countdowns a cada segundo
+    setInterval(updateAllCountdowns, 1000);
+}
+
+// Inicializar quando a página carregar
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderEventTimers);
+} else {
+    renderEventTimers();
+}
+
+// Atualizar quando o idioma mudar
+document.addEventListener('languageChanged', renderEventTimers);

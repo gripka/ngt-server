@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Old Lion's Court - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="strike-oldlionscourt">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="strike-oldlionscourt">Old Lion's Court</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-red">Red (Vermilion)</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-red-desc">Observe as setas do anel Dentro/Fora; fique dentro ou fora e deixe poças de Boiling Aether ao longo da parede</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-green">Green (Arsenite)</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-green-desc">Um kiter mantém aggro à distância; jogadores com tether deixam poças nas bordas e se afastam para quebrar o tether</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-blue">Blue (Indigo)</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-blue-desc">Agrupe-se perto para mitigar o empurrão; caminhe em direção ao boss durante Wind Gust e espalhe-se para círculos laranja e tethers de teleporte</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-puddles">Boiling Aether puddles</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-puddles-desc">Poças persistem até serem removidas - sempre deixe-as nas bordas da arena e evite ficar nelas</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-defiance">Break defiance bars</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-defiance-desc">Quebre barras de desafio em 80% (Green), 40% (Red) e 10% (Blue) para criar zonas seguras; falhar resulta em AoE letal</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-tanks">Tanks</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-tanks-desc">Devem manter os bosses Red e Green separados; misturar seus ataques causa dano pesado</p>
+            </div>
+            
+            <!-- CM Flashcards -->
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-cm-timer">Timer de 13 minutos</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-cm-timer-desc">Quebra-cabeças de breakbar em 100/60/20% - quebre a barra para inverter AoEs letais e criar uma zona segura</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-cm-puddles">Boiling Aether puddles (CM)</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-cm-puddles-desc">Poças persistem até o próximo CC; deixe-as ao longo das paredes e use habilidades defensivas para colocar tethers dentro de poças existentes</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-cm-fixates">Fixates</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-cm-fixates-desc">Duram até serem derrubados - tanks devem manter Red e Green separados o tempo todo</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-cm-failing">Falhar um breakbar puzzle</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-cm-failing-desc">Dá aos jogadores Exposed e empodera os bosses; tethers adicionais e AoEs maiores exigem resposta rápida</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="oldlionscourt-cm-wipe">Breakbar puzzle em 100/60/20%</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="oldlionscourt-cm-wipe-desc">FALHAR uma barra desencadeia um AoE de wipe - você DEVE fazer CC para criar a zona segura</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

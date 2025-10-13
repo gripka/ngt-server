@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uncategorized - Detalhes</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="fractal-uncategorized">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="fractal-uncategorized">Uncategorized</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="uncategorized-ascent">Ascent</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="uncategorized-ascent-desc">Pule plataformas enquanto harpias tentam te derrubar, use estabilidade e rapidez ou mate-as</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="uncategorized-labs">Labs</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="uncategorized-labs-desc">Destrua o gerador e liberte prisioneiros, mate o coelho campeão primeiro</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="uncategorized-stairs">Laser stairs</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="uncategorized-stairs-desc">Esquive ou reflita feixes e ative interruptores no final se outros tiverem dificuldade</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="uncategorized-tom">Old Tom</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="uncategorized-tom-desc">Apenas faça burst nele ou ligue ventiladores para limpar nuvens de veneno se estiver demorando</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="uncategorized-final">Final room</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="uncategorized-final-desc">Mate quatro golems, observe seu debuff de carga positiva/negativa e fique perto de jogadores com a mesma carga</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+        <a href="../fractals.html" class="back-button-fixed" data-translate="back-button"> Voltar</a>
+
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

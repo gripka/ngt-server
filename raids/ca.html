@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conjured Amalgamate - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="raid-ca">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="raid-ca">Conjured Amalgamate</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Normal Mechanics -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-orbs">Orbes de Espada e Escudo</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-orbs-desc">Atribua jogadores para coletar orbes de Espada e Escudo de cada braço durante fases de smash e retornar à plataforma.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-sword">Ação Especial de Espada</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-sword-desc">Portadores de espada usam a ação especial para remover as pilhas de Proteção Conjurada do boss e expô-lo ao dano.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-shield">Ação Especial de Escudo</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-shield-desc">Portadores de escudo usam a ação especial para bloquear ataques de Slam, Junk Wall e Thunderhead Clap para o grupo.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-purple">Orbes Roxos de Dano</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-purple-desc">Evite orbes roxos de dano espalhados na plataforma durante fases de coleta.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-junk">Parede de Lixo</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-junk-desc">Esconda-se atrás do escudo ou fuja da onda de Junk Wall que viaja pela arena.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-clap">Thunderhead Clap</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-clap-desc">Pule ou bloqueie a onda de choque Thunderhead Clap usando escudo ou estabilidade.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-arms">Padrão de Destruição de Braço</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-arms-desc">Após destruir um braço, repita o padrão no lado oposto aos 50%.</p>
+            </div>
+            
+            <!-- CM Mechanics -->
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-cm-time">[CM] Timer Rápido de Braço</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-cm-time-desc">[CM] Braços ficam ativos ~8s apenas - colete orbes e burst membros RÁPIDO antes que desapareçam.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-cm-beam">[CM] Raio de Luz</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-cm-beam-desc">[CM] Raio de Luz fixa um jogador - use line-of-sight ou bloqueie com braço ou portador de Escudo; é letal se você encarar tanque.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="ca-cm-extra">[CM] Armas Conjuradas Extra</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="ca-cm-extra-desc">[CM] Armas conjuradas extras aparecem - atribua mais coletores; Espada remove pilhas, Escudo bloqueia janelas de Junk Wall/Clap.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../raids.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

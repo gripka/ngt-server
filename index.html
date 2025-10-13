@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGT Server</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="logo.png" alt="NGT Logo" class="site-logo">
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        <!---<h1 data-translate="welcome">Bem-vindo ao NGT Site</h1>-->
+        
+        <div class="cards-grid">
+            <a href="fractals.html" class="card">
+                <h2 data-translate="menu1-title">Menu 1</h2>
+                <p data-translate="menu1-desc">Clique para ver os itens do Menu 1</p>
+                <div class="card-footer">
+                    <div class="card-icon-group">
+                        <img src="players-icon.png" alt="Players" class="card-icon">
+                        <span class="icon-label">x5</span>
+                    </div>
+                    <div class="card-icon-group">
+                        <span class="icon-label cm-label">CM</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="strikes.html" class="card">
+                <h2 data-translate="menu2-title">Menu 2</h2>
+                <p data-translate="menu2-desc">Clique para ver os itens do Menu 2</p>
+                <div class="card-footer">
+                    <div class="card-icon-group">
+                        <img src="players-icon.png" alt="Players" class="card-icon">
+                        <span class="icon-label">x10</span>
+                    </div>
+                    <div class="card-icon-group">
+                        <span class="icon-label cm-label">CM</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="raids.html" class="card">
+                <h2 data-translate="menu3-title">Menu 3</h2>
+                <p data-translate="menu3-desc">Clique para ver os itens do Menu 3</p>
+                <div class="card-footer">
+                    <div class="card-icon-group">
+                        <img src="players-icon.png" alt="Players" class="card-icon">
+                        <span class="icon-label">x10</span>
+                    </div>
+                    <div class="card-icon-group">
+                        <span class="icon-label cm-label">CM</span>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="menu4.html" class="card">
+                <h2 data-translate="menu4-title">Menu 4</h2>
+                <p data-translate="menu4-desc">Clique para ver os itens do Menu 4</p>
+                <div class="card-footer">
+                    <div class="card-icon-group">
+                        <img src="players-icon.png" alt="Players" class="card-icon">
+                        <span class="icon-label">x50</span>
+                    </div>
+                    <div class="card-icon-group">
+                        <span class="icon-label cm-label">Solo</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    
+    <script src="language.js"></script>
+</body>
+</html>

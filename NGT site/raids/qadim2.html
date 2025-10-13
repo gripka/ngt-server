@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qadim the Peerless - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="raid-qadim2">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="raid-qadim2">Qadim the Peerless</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Normal Mode Flashcards -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-pylons">Configuração de Amarração de Pylon</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-pylons-desc">Antes da luta, quebre a barra de cada pylon e atribua kiters para amarrá-los usando disruptores de fluxo enquanto o tank se amarra ao Qadim.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-currents">Correntes de Caos</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-currents-desc">Correntes de Caos (linhas elétricas móveis) viajam pela arena - evite tocá-las.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-retaliation">Knockback Força de Retaliação</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-retaliation-desc">Após um pylon ser quebrado, Qadim libera uma onda de knockback (Força de Retaliação); esquive ou use estabilidade para sobreviver.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-anomalies">Mecânica de Orbe de Anomalia</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-anomalies-desc">Quando Qadim pula para um pylon, anomalias aparecem - pegue orbes vermelhos e leve-os ao seu pylon controlado para destruir anomalias.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-havoc">Ataque de Tank Força de Destruição</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-havoc-desc">Força de Destruição é um ataque retangular longo mirado no tank; mire para longe do grupo e pylons.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-ruin">Mísseis Força de Ruína</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-ruin-desc">Força de Ruína dispara mísseis triplos em jogadores aleatórios após 60% - esquive ou bloqueie-os.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-fire">Fases de Fogo</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-fire-desc">Fases de fogo a 80/60/40/30/20%: empilhe chamas entre pylons, quebre barras de anomalia dentro do fogo e esquive da onda de choque do fim de fase.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-final">Fase Final 20%</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-final-desc">20% final: não há pylons - sobreviva mecânicas sobrepostas e continue carregando orbes para parar meteoros.</p>
+            </div>
+            
+            <!-- Challenge Mode Flashcards -->
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-cm-twisters">[CM] Redemoinhos Titânicos</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-cm-twisters-desc">[CM] Evite Redemoinhos Titânicos girando na borda da arena - são morte instantânea.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-cm-lava">[CM] Chuva de Caos</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-cm-lava-desc">[CM] Chuva de Caos deixa AoEs de lava persistentes - reposicione rapidamente e evite ficar no fogo.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-cm-stability">[CM] Compartilhamento de Estabilidade Fase Pylon</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-cm-stability-desc">[CM] A 40/30/20% fases de pylon, todos devem ficar no círculo branco sul e compartilhar estabilidade para sobreviver à mecânica de wipe.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="qadim2-cm-golden">[CM] Coleta de Orbe Dourado</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="qadim2-cm-golden-desc">[CM] Após cada fase de pylon, orbes dourados aparecem - colete-os e use sua ação especial para parar ataques de meteoro.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../raids.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

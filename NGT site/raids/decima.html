@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decima, the Stormsinger - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="raid-decima">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="raid-decima">Decima, the Stormsinger</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Normal Mode Flashcards -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-arrows">Kiting de Flechas de Raio</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-arrows-desc">O jogador mais distante kiteia flechas de raio; esconda-se atrás de um bastão de raio para line-of-sight da flecha vermelha ou morra instantaneamente.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-orbs">Dissipação de Orbe Verde</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-orbs-desc">Quando orbes verdes aparecem perto de bastões, fique neles - um/dois/três jogadores dependendo do tamanho do orbe - para dissipar carga.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-smashes">Esmagamentos em Cascata na Arena</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-smashes-desc">Uma série de esmagamentos varre pela arena: atravesse os primeiros dois ataques de meia arena e esquive do esmagamento em cascata final no último momento.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-stomp">Pisão de Onda de Choque</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-stomp-desc">Pisão cria ondas de choque em anéis externos e internos; fique em alcance melee e compartilhe estabilidade para evitar ser derrubado.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-spread">Dispersão Laranja e Barra de Quebra</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-spread-desc">Círculos laranjas aparecem em jogadores melee - espalhe-se e quebre a barra de desafio a 75% enquanto absorve orbes verdes para resetar bastões.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-recharge">Fase de Recarga de Bastão</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-recharge-desc">Após a barra de quebra, absorva orbes verdes novamente para recarregar bastões; prepare-se para a próxima fase.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-phase2">Fase 2: Kiting de Flecha Ranged</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-phase2-desc">Fase 2: grupo ranged (mais distante) kiteia flechas longe de bastões enquanto evita Ventos Violentos; eles não podem absorver orbes durante esta fase.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-phase3">Fase 3: Coordenação Multi-Flecha</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-phase3-desc">Fase 3: múltiplos tipos de flecha ocorrem - três jogadores melee bloqueiam a flecha verde em um bastão enquanto outros manejam flechas vermelhas/laranjas e reposicionam.</p>
+            </div>
+            
+            <!-- Challenge Mode Flashcards -->
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-cm-godsquall">[CM] Godsquall Decima</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-cm-godsquall-desc">[CM] Decima se torna Godsquall Decima; ela tem mais vida e ganha cargas de Peal of Discord.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-cm-conduits">[CM] Rotação de Conduto</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-cm-conduits-desc">[CM] Condutos mudam de posição e orbes verdes persistem enquanto bastões estão carregados; coordene absorção e rotação de bastão.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-cm-attacks">[CM] Novos Padrões de Ataque</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-cm-attacks-desc">[CM] Novos ataques: Trovão Discordante, Reposicionamento Sísmico, Salto Sismolétrico e Reverberação Cintilante com barra de quebra - esquive ou quebre barras rapidamente.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-cm-exposed">[CM] Coordenação de Salto Carregado</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-cm-exposed-desc">[CM] Flechas laranjas/dispersão aplicam Exposto; jogadores com salto carregado devem coordenar seu timing de esquiva para evitar sobreposição.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="decima-cm-boulders">[CM] Pedregulhos Transcendentes</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="decima-cm-boulders-desc">[CM] Pedregulhos Transcendentes ligam dois jogadores - destrua ambos pedregulhos simultaneamente ou os jogadores ligados morrem.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../raids.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

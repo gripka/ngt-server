@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractals - NGT Site</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        <div class="fractal-header">
+            <h1 data-translate="menu1-page-title">Menu 1</h1>
+            <div class="fractal-filters">
+                <button class="filter-btn" onclick="filterFractals('t1')">T1</button>
+                <button class="filter-btn" onclick="filterFractals('t2')">T2</button>
+                <button class="filter-btn" onclick="filterFractals('t3')">T3</button>
+                <button class="filter-btn" onclick="filterFractals('t4')">T4</button>
+                <button class="filter-btn" onclick="filterFractals('cm')">CM</button>
+                <button class="filter-btn" onclick="filterFractals('az')">A-Z</button>
+            </div>
+        </div>
+        
+        <div class="cards-list" id="fractalsList">
+            <!-- Aquatic Ruins -->
+            <a href="fractals/aquatic-ruins.html" class="list-card fractal-card" data-fractal-name="Aquatic Ruins" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-aquatic-ruins">Aquatic Ruins</h3>
+                <p data-translate="fractal-aquatic-ruins-desc">Fractal subaquática com puzzles e bosses marinhos.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 7</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 26</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 61</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 76</span>
+                </div>
+            </a>
+            
+            <!-- Aetherblade -->
+            <a href="fractals/aetherblade.html" class="list-card fractal-card" data-fractal-name="Aetherblade" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-aetherblade">Aetherblade</h3>
+                <p data-translate="fractal-aetherblade-desc">Infiltração em fortaleza pirata Aetherblade com boss final Mai Trin.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 14</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 45</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 65</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 93</span>
+                </div>
+            </a>
+            
+            <!-- Captain Mai Trin Boss -->
+            <a href="fractals/maitrin.html" class="list-card fractal-card" data-fractal-name="Captain Mai Trin Boss" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-maitrin">Captain Mai Trin Boss</h3>
+                <p data-translate="fractal-maitrin-desc">Boss fractal exclusivo contra Mai Trin em seu navio.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 18</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 42</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 71</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 91</span>
+                </div>
+            </a>
+            
+            <!-- Chaos Isles -->
+            <a href="fractals/chaos.html" class="list-card fractal-card" data-fractal-name="Chaos Isles" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-chaos">Chaos Isles</h3>
+                <p data-translate="fractal-chaos-desc">Fractal com plataformas caóticas e instabilidades extremas.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 13</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 30</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 63</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 88</span>
+                </div>
+            </a>
+            
+            <!-- Cliffside -->
+            <a href="fractals/cliffside.html" class="list-card fractal-card" data-fractal-name="Cliffside" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-cliffside">Cliffside</h3>
+                <p data-translate="fractal-cliffside-desc">Escalada vertical com hammer seals e boss Archdiviner.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 6</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 46</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 68</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 94</span>
+                </div>
+            </a>
+            
+            <!-- Deepstone -->
+            <a href="fractals/deepstone.html" class="list-card fractal-card" data-fractal-name="Deepstone" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-deepstone">Deepstone</h3>
+                <p data-translate="fractal-deepstone-desc">Fractal em cavernas profundas com mecânicas de voz e cristais.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 11</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 33</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 67</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 84</span>
+                </div>
+            </a>
+            
+            <!-- Molten Boss -->
+            <a href="fractals/molten.html" class="list-card fractal-card" data-fractal-name="Molten Boss" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-molten">Molten Boss</h3>
+                <p data-translate="fractal-molten-desc">Boss fractal contra duo Molten Berserker e Molten Firestorm.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 10</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 40</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 69</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 90</span>
+                </div>
+            </a>
+            
+            <!-- Molten Furnace -->
+            <a href="fractals/furnace.html" class="list-card fractal-card" data-fractal-name="Molten Furnace" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-furnace">Molten Furnace</h3>
+                <p data-translate="fractal-furnace-desc">Dungeon em fornalha com waves de inimigos e bosses.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 9</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 39</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 58</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 83</span>
+                </div>
+            </a>
+            
+            <!-- Nightmare -->
+            <a href="fractals/nightmare.html" class="list-card fractal-card" data-fractal-name="Nightmare" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-nightmare">Nightmare</h3>
+                <p data-translate="fractal-nightmare-desc">Fractal onírico na Torre dos Pesadelos com boss MAMA.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 22</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 47</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 72</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 96</span>
+                    <span class="tier-badge cm" data-tier="cm">CM</span>
+                </div>
+            </a>
+            
+            <!-- Shattered Observatory -->
+            <a href="fractals/observatory.html" class="list-card fractal-card" data-tiers='["t1","t2","t3","t4"]' data-fractal-name="Shattered Observatory">
+                <h3 data-translate="fractal-observatory">Shattered Observatory</h3>
+                <p data-translate="fractal-observatory-desc">Fractal Challenge Mote com 3 bosses: Skorvald, Artsariiv, Arkk.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 23</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 48</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 73</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 97</span>
+                    <span class="tier-badge cm" data-tier="cm">CM</span>
+                </div>
+            </a>
+            
+            <!-- Silent Surf -->
+            <a href="fractals/silentsurf.html" class="list-card fractal-card" data-fractal-name="Silent Surf" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-silentsurf">Silent Surf</h3>
+                <p data-translate="fractal-silentsurf-desc">Fractal de praia com krait e boss Krait Obelisk.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 21</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 43</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 66</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 99</span>
+                    <span class="tier-badge cm" data-tier="cm">CM</span>
+                </div>
+            </a>
+            
+            <!-- Siren's Reef -->
+            <a href="fractals/sirens.html" class="list-card fractal-card" data-fractal-name="Siren's Reef" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-sirens">Siren's Reef</h3>
+                <p data-translate="fractal-sirens-desc">Ilha pirata com cannon defense e boss Captain Rotbeard.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 12</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 37</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 54</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 78</span>
+                </div>
+            </a>
+            
+            <!-- Snowblind -->
+            <a href="fractals/snowblind.html" class="list-card fractal-card" data-fractal-name="Snowblind" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-snowblind">Snowblind</h3>
+                <p data-translate="fractal-snowblind-desc">Aldeia norn congelada com boss Elemental Source.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 3</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 27</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 51</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 86</span>
+                </div>
+            </a>
+            
+            <!-- Solid Ocean -->
+            <a href="fractals/solidocean.html" class="list-card fractal-card" data-fractal-name="Solid Ocean" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-solidocean">Solid Ocean</h3>
+                <p data-translate="fractal-solidocean-desc">Jade Sea congelado com mecânicas de cristal e boss Jade Maw.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 8</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 34, 44</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 60</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 80</span>
+                </div>
+            </a>
+            
+            <!-- Sunqua Peak -->
+            <a href="fractals/sunqua.html" class="list-card fractal-card" data-fractal-name="Sunqua Peak" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-sunqua">Sunqua Peak</h3>
+                <p data-translate="fractal-sunqua-desc">Templo Canthan com boss Voice and Claw of the Dark. CM disponível.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 24</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 49</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 74</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 98</span>
+                    <span class="tier-badge cm" data-tier="cm">CM</span>
+                </div>
+            </a>
+            
+            <!-- Swampland -->
+            <a href="fractals/swamp.html" class="list-card fractal-card" data-fractal-name="Swampland" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-swamp">Swampland</h3>
+                <p data-translate="fractal-swamp-desc">Pântano wisp-litting com Bloomhunger e Mossman bosses.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 5</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 32</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 56</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 77, 89</span>
+                </div>
+            </a>
+            
+            <!-- Thaumanova Reactor -->
+            <a href="fractals/thaumanova.html" class="list-card fractal-card" data-fractal-name="Thaumanova Reactor" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-thaumanova">Thaumanova Reactor</h3>
+                <p data-translate="fractal-thaumanova-desc">Reator em colapso com anomalias elementais.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 15</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 34</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 55, 64</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 82</span>
+                </div>
+            </a>
+            
+            <!-- Twilight Oasis -->
+            <a href="fractals/twilight.html" class="list-card fractal-card" data-fractal-name="Twilight Oasis" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-twilight">Twilight Oasis</h3>
+                <p data-translate="fractal-twilight-desc">Oásis desértico com boss Amala the Goddess.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 16</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 41</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 59</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 87</span>
+                </div>
+            </a>
+            
+            <!-- Uncategorized -->
+            <a href="fractals/uncategorized.html" class="list-card fractal-card" data-fractal-name="Uncategorized" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-uncategorized">Uncategorized</h3>
+                <p data-translate="fractal-uncategorized-desc">Fractal com 3 bosses aleatórios: Raving Asura, Old Tom, ou Rabsovich.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 2</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 36</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 62</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 79</span>
+                </div>
+            </a>
+            
+            <!-- Underground Facility -->
+            <a href="fractals/underground.html" class="list-card fractal-card" data-fractal-name="Underground Facility" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-underground">Underground Facility</h3>
+                <p data-translate="fractal-underground-desc">Laboratório dredge com escavadoras e boss final Dredge Powersuit.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 8</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 29</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 53</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 81</span>
+                </div>
+            </a>
+            
+            <!-- Urban Battleground -->
+            <a href="fractals/urban.html" class="list-card fractal-card" data-fractal-name="Urban Battleground" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-urban">Urban Battleground</h3>
+                <p data-translate="fractal-urban-desc">Conflito entre Charr e Humans em um ambiente urbano.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 4</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 31</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 57</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 85</span>
+                </div>
+            </a>
+
+            <!-- Volcanic -->
+            <a href="fractals/volcanic.html" class="list-card fractal-card" data-fractal-name="Volcanic" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-volcanic">Volcanic</h3>
+                <p data-translate="fractal-volcanic-desc">Vulcão ativo com Grawl cult e boss Imbued Shaman.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 1, 19</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 28</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 52</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 92</span>
+                </div>
+            </a>
+
+            <!-- Kinfall -->
+            <a href="fractals/kinfall.html" class="list-card fractal-card" data-fractal-name="Kinfall" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-kinfall">Kinfall</h3>
+                <p data-translate="fractal-kinfall-desc">Evento no covil de Drakkar, como kodans para resgatar Silken Weir.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 17</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 38</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 70</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 95</span>
+                    <span class="tier-badge cm" data-tier="cm">CM</span>
+                </div>
+            </a>
+
+            <!-- Lonely Tower -->
+            <a href="fractals/lonely.html" class="list-card fractal-card" data-fractal-name="Lonely Tower" data-tiers='["t1","t2","t3","t4"]'>
+                <h3 data-translate="fractal-lonely">Lonely Tower</h3>
+                <p data-translate="fractal-lonely-desc">Recria um evento durante a primeira invasão dos Kryptis por Eparch na Lonely Tower.</p>
+                <div class="fractal-tiers">
+                    <span class="tier-badge t1" data-tier="t1">T1 - 25</span>
+                    <span class="tier-badge t2" data-tier="t2">T2 - 50</span>
+                    <span class="tier-badge t3" data-tier="t3">T3 - 106</span>
+                    <span class="tier-badge t4" data-tier="t4">T4 - 100</span>
+                    <span class="tier-badge cm" data-tier="cm">CM</span>
+                </div>
+            </a>
+        </div>
+    </div>
+        <a href="index.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="language.js"></script>
+</body>
+</html>

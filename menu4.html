@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Eventos - NGT Site</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        <h1 data-translate="menu4-page-title">Menu 4</h1>
+        
+        <!-- Filter buttons -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all" data-translate="filter-all">Todos</button>
+            <button class="filter-btn" data-filter="Core Tyria">Core Tyria</button>
+            <button class="filter-btn" data-filter="Living World Season 1">LW1</button>
+            <button class="filter-btn" data-filter="Living World Season 2">LW2</button>
+            <button class="filter-btn" data-filter="Heart of Thorns">HoT</button>
+            <button class="filter-btn" data-filter="Living World Season 3">LW3</button>
+            <button class="filter-btn" data-filter="Path of Fire">PoF</button>
+            <button class="filter-btn" data-filter="Living World Season 4">LW4</button>
+            <button class="filter-btn" data-filter="The Icebrood Saga">IbS</button>
+            <button class="filter-btn" data-filter="End of Dragons">EoD</button>
+            <button class="filter-btn" data-filter="Secrets of the Obscure">SotO</button>
+            <button class="filter-btn" data-filter="Janthir Wilds">JW</button>
+        </div>
+        
+        <div class="event-timers-container" id="eventTimersContainer">
+            <!-- As tabelas de timers serão carregadas aqui dinamicamente -->
+        </div>
+        
+        
+        <!-- Legacy Content (Comentado para referência futura) -->
+        <!--
+        <div class="raid-section">
+            <h2 class="raid-title">Core Tyria Meta Events</h2>
+            <div class="cards-list">
+                <a href="menu4-meta-shatterer.html" class="list-card">
+                    <h3>The Shatterer</h3>
+                    <p>World boss clássico em Blazeridge Steppes. Grande dragão de cristal.</p>
+                </a>
+                
+                <a href="menu4-meta-tequatl.html" class="list-card">
+                    <h3>Tequatl the Sunless</h3>
+                    <p>World boss organizado em Sparkfly Fen. Requer coordenação.</p>
+                </a>
+                
+                <a href="menu4-meta-karka.html" class="list-card">
+                    <h3>Karka Queen</h3>
+                    <p>Boss gigante em Southsun Cove. Spawns e veneno.</p>
+                </a>
+                
+                <a href="menu4-meta-triwurm.html" class="list-card">
+                    <h3>Triple Trouble</h3>
+                    <p>Evento de 3 Great Jungle Wurms. Altamente coordenado.</p>
+                </a>
+            </div>
+        </div> -->
+        
+        <!-- Heart of Thorns Meta Events (LEGACY CONTENT - COMMENTED)
+        <!--
+        <div class="raid-section">
+            <h2 class="raid-title">Heart of Thorns Meta Events</h2>
+            <div class="cards-list">
+                <a href="menu4-meta-vb.html" class="list-card">
+                    <h3>Verdant Brink Night Boss</h3>
+                    <p>Meta de defesa noturna contra 5 bosses diferentes.</p>
+                </a>
+                
+                <a href="menu4-meta-ab.html" class="list-card">
+                    <h3>Auric Basin - Octovine</h3>
+                    <p>Meta de 4 lanes contra Octovine. Requer coordenação de time.</p>
+                </a>
+                
+                <a href="menu4-meta-td.html" class="list-card">
+                    <h3>Tangled Depths - Gerent</h3>
+                    <p>Meta de 4 lanes contra Gerent. Um dos mais difíceis.</p>
+                </a>
+                
+                <a href="menu4-meta-ds.html" class="list-card">
+                    <h3>Dragon's Stand</h3>
+                    <p>Meta final de HoT contra Mordremoth. 2 horas de duração.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    <a href="index.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+
+    <script src="language.js"></script>
+    <script src="meta-events-advanced.js"></script>
+</body>
+</html>

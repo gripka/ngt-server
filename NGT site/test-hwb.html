@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Test HWB</title>
+</head>
+<body>
+    <h1>Testing Hard World Bosses</h1>
+    <div id="output"></div>
+    
+    <script>
+        async function testHWB() {
+            try {
+                const response = await fetch('gw2-timer-raw.json');
+                const data = await response.json();
+                
+                const output = document.getElementById('output');
+                
+                // Check if hwb exists
+                if (data.events.hwb) {
+                    output.innerHTML += '<h2>✅ HWB Found!</h2>';
+                    output.innerHTML += `<p><strong>Name:</strong> ${data.events.hwb.name}</p>`;
+                    output.innerHTML += `<strong>Category:</strong> ${data.events.hwb.category}</p>`;
+                    output.innerHTML += `<p><strong>Has pattern:</strong> ${!!data.events.hwb.sequences.pattern}</p>`;
+                    output.innerHTML += `<p><strong>Has partial:</strong> ${!!data.events.hwb.sequences.partial}</p>`;
+                    output.innerHTML += `<p><strong>Partial length:</strong> ${data.events.hwb.sequences.partial?.length || 0}</p>`;
+                    
+                    // Test pattern fallback
+                    const pattern = data.events.hwb.sequences.pattern || data.events.hwb.sequences.partial || [];
+                    output.innerHTML += `<p><strong>Pattern to use:</strong> ${pattern.length} steps</p>`;
+                    
+                    // Show segments
+                    output.innerHTML += '<h3>Segments:</h3><ul>';
+                    for (const [key, segment] of Object.entries(data.events.hwb.segments)) {
+                        if (segment.name) {
+                            output.innerHTML += `<li>${key}: ${segment.name} - ${segment.chatlink || 'no waypoint'}</li>`;
+                        }
+                    }
+                    output.innerHTML += '</ul>';
+                    
+                } else {
+                    output.innerHTML += '<h2>❌ HWB NOT FOUND</h2>';
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('output').innerHTML = `<h2>Error: ${error.message}</h2>`;
+            }
+        }
+        
+        testHWB();
+    </script>
+</body>
+</html>

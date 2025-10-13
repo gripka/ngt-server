@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabetha - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="raid-sabetha">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="raid-sabetha">Sabetha the Saboteur</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" style="display: none;" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" style="display: none;" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="sabetha-flak">Flak Shot - Poças de Lava</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="sabetha-flak-desc">Alguém precisa ficar longe do grupo para atrair poças de lava (Flak Shot).</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="sabetha-cannons">Canhões - Sapper Bomb</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="sabetha-cannons-desc">Use a special action key (Sapper Bomb) nos amigos da launch pad para que eles possam matar os canhões.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="sabetha-timebomb">Time Bomb</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="sabetha-timebomb-desc">Círculo vermelho ao redor do jogador (Time Bomb): afaste-se antes da explosão.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="sabetha-flamewall">Flame Wall</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="sabetha-flamewall-desc">Seta grande de Sabetha (Flame wall): fique atrás da seta e siga-a.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="sabetha-heavybombs">Heavy Bombs</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="sabetha-heavybombs-desc">Chute Heavy Bombs para fora da plataforma usando a interact key.</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="sabetha-minibosses">Mini-bosses 75/50/25%</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="sabetha-minibosses-desc">Mini-bosses em 75/50/25% - mate rapidamente e quebre CC.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+    </div>
+    <a href="../raids.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

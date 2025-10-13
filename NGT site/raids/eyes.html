@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statues of Grenth: Eyes - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="raid-eyes">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="raid-eyes">Statues of Grenth: Eyes</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" style="display: none;" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" style="display: none;" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="eyes-throwers">Dois Arremessadores de Light Orbs</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="eyes-throwers-desc">Atribua dois jogadores para arremessar Light Orbs aos jogadores abaixo, um arremessador por grupo. Use Weapon Skill 1 para arremessar. Arremessadores ficam em posição elevada. Coordene timing de arremesso com stunners. Comunique quando orbs são arremessadas. Priorize arremessar para stunner designado.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="eyes-groups">Divida em Grupos Norte e Sul</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="eyes-groups-desc">Divida outros jogadores em dois grupos - Norte e Sul. Atribua stunner no grupo para pegar light orbs e usar Weapon Skill 2 para stunar Eye. Cada grupo foca um Eye. Stunner pega orb e stuna Eye. Grupo DPS mata Eye enquanto stunado. Coordene timing entre grupos Norte e Sul.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="eyes-cc">Não Use Hard CC Após Stun</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="eyes-cc-desc">Certifique-se de não usar hard CC uma vez que Light Orb stunou eye, pois vai sobrescrever o stun. Stun de Light Orb é prioritário. Hard CC sobrescreve e pode fazer Eye se tornar imune. Apenas use soft CC ou dano. Comunique ao grupo para segurar CC. Espere stun terminar antes de usar CC.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="eyes-timing">Mate Ambos Eyes em 15 Segundos</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="eyes-timing-desc">Mate ambos Eyes dentro de 15 segundos um do outro ou eles revivem. Coordene DPS entre grupos Norte e Sul. Comunique percentual de vida de cada Eye. Segure DPS se um Eye está muito baixo. Burst ambos simultaneamente quando próximo de morte. Falhar timing reseta encontro.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="eyes-thieves">Cleave Light Thieves</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="eyes-thieves-desc">Cleave down Light Thieves que aparecem. Thieves spawnam durante luta. Use dano AoE para matar rapidamente. Não deixe thieves acumularem. Priorize thieves sobre dano no Eye temporariamente. Retorne para Eye após limpar thieves.</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="eyes-beam">Esconda Atrás de Estátuas</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="eyes-beam-desc">Esconda atrás de estátuas quando Eye beam mira você. Evite ou destrua minotauro se stun falhar. Beam do Eye causa dano massivo. Estátuas bloqueiam beam. Minotauro spawna se stun falhar. Mate ou kite minotauro longe do grupo. Priorize sobrevivência sobre DPS durante beam.</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+    </div>
+    <a href="../raids.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>

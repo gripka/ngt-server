@@ -1,0 +1,87 @@
+<!-- Rodapé -->
+<footer class="site-footer">
+    <div class="footer-content">
+        <a href="#" class="back-button" id="footerBackButton" data-translate="back-button" style="display: none;">← Voltar</a>
+        
+        <a href="https://discord.gg/PwvzkGx" target="_blank" class="discord-banner">
+            <img src="discord.png" alt="Discord" class="discord-logo">
+            <div class="discord-text">
+                <span data-translate="join-our">Junte-se ao nosso</span>
+                <span>Discord</span>
+            </div>
+        </a>
+        
+        <div class="footer-divider"></div>
+        
+        <div class="footer-info">
+            <p><strong>NGT Server</strong></p>
+            <p data-translate="footer-text">© 2025 - Sistema de Gerenciamento de Mecânicas</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Configurar botão Voltar no footer baseado na página atual
+(function() {
+    // Executar imediatamente quando o footer for inserido
+    function setupBackButton() {
+        const backButton = document.getElementById('footerBackButton');
+        if (!backButton) return;
+        
+        const path = window.location.pathname;
+        const filename = path.split('/').pop();
+        
+        console.log('Setup back button - path:', path, 'filename:', filename);
+        
+        // Mapear páginas que precisam do botão Voltar
+        const backButtonConfig = {
+            // Páginas principais voltam para index
+            'fractals.html': 'index.html',
+            'strikes.html': 'index.html',
+            'raids.html': 'index.html',
+            'menu4.html': 'index.html',
+            // Páginas legacy menu1-item
+            'menu1-item1.html': 'fractals.html',
+            'menu1-item2.html': 'fractals.html',
+            'menu1-item3.html': 'fractals.html',
+            'menu1-item4.html': 'fractals.html',
+            'menu1-item5.html': 'fractals.html',
+            // Páginas legacy menu2-item
+            'menu2-item1.html': 'strikes.html',
+            // Páginas legacy menu3-item
+            'menu3-item1.html': 'raids.html'
+        };
+        
+        // Verificar se está em uma subpasta (fractals/, strikes/, raids/)
+        if (path.includes('/fractals/')) {
+            backButton.href = '../fractals.html';
+            backButton.style.display = 'inline-block';
+            console.log('Detected fractals subfolder, href set to:', backButton.href);
+        }
+        else if (path.includes('/strikes/')) {
+            backButton.href = '../strikes.html';
+            backButton.style.display = 'inline-block';
+            console.log('Detected strikes subfolder, href set to:', backButton.href);
+        }
+        else if (path.includes('/raids/')) {
+            backButton.href = '../raids.html';
+            backButton.style.display = 'inline-block';
+            console.log('Detected raids subfolder, href set to:', backButton.href);
+        }
+        // Verificar páginas específicas (principais e legacy)
+        else if (backButtonConfig[filename]) {
+            backButton.href = backButtonConfig[filename];
+            backButton.style.display = 'inline-block';
+            console.log('Detected specific page, href set to:', backButton.href);
+        }
+    }
+    
+    // Tentar executar imediatamente
+    setupBackButton();
+    
+    // E também no DOMContentLoaded como backup
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupBackButton);
+    }
+})();
+</script>

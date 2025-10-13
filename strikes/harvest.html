@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvest Temple - NGT Site</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body data-page-id="strike-harvest">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-header">
+            <h1 data-translate="strike-harvest">Harvest Temple</h1>
+            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        </div>
+
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-escort">Escort white orb</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-escort-desc">Escorte o orbe branco através de cada lane e mate ou use CC em qualquer inimigo que toque nele</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-mechanics">Shockwaves & circles</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-mechanics-desc">Pule ou esquive shockwaves (apenas fases Mordremoth & Soo-Won); sempre stacke em círculos verdes seguros; espalhe marcadores de círculo laranja</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-dragons">Elder Dragon attacks</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-dragons-desc">Lide com os ataques únicos de cada Elder Dragon conforme aparecem (projéteis, feixes, CCs); fique na tag do comandante</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-summons">Giant summons</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-summons-desc">Destrua summons gigantes rapidamente; use estabilidade ou quebra de atordoamento para medo e ataques de stomp; evite ficar na AoE de vômito deles</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-primordus">Primordus chomp</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-primordus-desc">Quando Primordus aparecer, esquive do ataque de mordida massivo dele (down instantâneo se acertar)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="normal">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-final">Final phase</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-final-desc">Fase final: continue lidando com greens e outros avoids; foque em derrubar os adds restantes ASAP</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-power">CM - Power DPS king</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-power-desc">Boss tem baixa armadura, então power DPS é rei; condition DPS performa mal (use Sigils of Night/Bloodlust para dano máximo)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-spreads">CM - Spreads (7 players)</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-spreads-desc">Spreads: 7 jogadores mais próximos pegam círculos laranjas; nunca sobreponha eles (atribua baiters antes)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-puddles">CM - Red Puddles</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-puddles-desc">Red Puddles: 2 jogadores mais próximos do centro soltam poças vermelhas letais após ~5-6s; esses jogadores as levam para as bordas</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-fall">CM - Falling = death</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-fall-desc">Cair ou ser derrubado da plataforma resulta em morte instantânea; tenha muito cuidado perto das bordas</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-stealth">CM - Stealth phases</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-stealth-desc">Várias fases de stealth ocorrem; use Mass Invisibility e NÃO quebre o stealth cedo</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-portals">CM - Portal usage</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-portals-desc">Uso de portais: apenas pegue portais após fases de Purification e após Champions como DPS (para retornar ao boss rapidamente)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-loops">CM - Dragon loops</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-loops-desc">O padrão de ataque de cada dragão se repete se eles viverem o suficiente; dependendo do DPS você pode ver 2-3 repetições da rotação de um dragão</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-p1-crawlers">CM - Purif 1: Voidcrawlers</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-p1-crawlers-desc">Mate Voidcrawlers para ganhar stacks de push; priorize aqueles bloqueando o caminho do orbe</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-p1-push">CM - Purif 1: Push orb</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-p1-push-desc">Como grupo, empurre o orbe através de três círculos brancos; quebre a barra no terceiro círculo, então pegue portal para o boss</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-jormag-start">CM - Jormag: Start</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-jormag-start-desc">No início, leve poças vermelhas para as bordas; fique perto das bordas para facilmente esquivar dos lasers de gelo lineares</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-jormag-spreads">CM - Jormag: After greens</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-jormag-spreads-desc">Após cada círculo verde, sete jogadores pegam spreads; avance da borda antes que caiam para baitear com segurança</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-prim-stealth">CM - Primordus: Stealth</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-prim-stealth-desc">Mantenha-se em stealth (não revele) durante a aproximação; limpe todos os adds imediatamente ao aparecer</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-prim-pattern">CM - Primordus: Pattern</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-prim-pattern-desc">Padrão: spreads → poças vermelhas → mordida massiva; use portal para alcançar a traseira da hitbox com segurança; Primordus fará três chin slams seguidos</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-kral-stealth">CM - Kralkatorrik: Stealth</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-kral-stealth-desc">Mantenha-se em stealth (não revele); mate os adds do Void, então agrupe-se firmemente na seção média do boss</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-kral-rotate">CM - Kralkatorrik: Rotate</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-kral-rotate-desc">Após ataque de feixe lateral, rotacione no sentido horário (direita); baite poças vermelhas e evite o feixe central quando o boss gira</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-p2-timecaster">CM - Purif 2: Timecaster</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-p2-timecaster-desc">Corra para a ilha NW; hard-CC e burst o miniboss Timecaster (reflita seus projéteis dilacerantes)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-p2-push">CM - Purif 2: Push & kill</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-p2-push-desc">Empurre o orbe através de dois círculos; mate o Timecaster antes do orbe chegar ao segundo círculo</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-p2-skull">CM - Purif 2: Skullpiercer</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-p2-skull-desc">Mate, cegue ou CC os adds Skullpiercer rapidamente; respeite seus knockbacks (fique no centro da plataforma)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-mord-puddles">CM - Mordremoth: Safe side</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-mord-puddles-desc">Baite poças vermelhas como usual; o lado direito da hitbox de Mordremoth é seguro dos ataques de cuspe iniciais - agrupe-se firmemente lá</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-mord-jumps">CM - Mordremoth: Shockwaves</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-mord-jumps-desc">Padrão: spreads → três saltos de onda de choque; perder qualquer salto causa um wipe do squad (apenas use stability se absolutamente necessário para um salto)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-zhai-stealth">CM - Zhaitan: Giants</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-zhai-stealth-desc">Mantenha-se em stealth (não revele cedo); quando Gigantes aparecerem, imediatamente hard-CC e burst no grupo</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-zhai-green">CM - Zhaitan: Close green</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-zhai-green-desc">Imediatamente agrupe-se no círculo verde próximo (pelo menos 5 dentro); Zhaitan se torna targetável quando o green termina</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-zhai-scream">CM - Zhaitan: Scream</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-zhai-scream-desc">Baite poças vermelhas, então o boss fará Scream (fear + dano) - limpe, cure e stun break; logo após, espalhe-se para círculos laranjas</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-p3-saltspray">CM - Purif 3: Saltspray</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-p3-saltspray-desc">Mantenha-se em stealth (não revele); DPS race no miniboss Saltspray Dragon e quebre sua barra ASAP</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-p3-push">CM - Purif 3: Push & portal</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-p3-push-desc">Empurre o orbe do círculo 1 ao círculo 2, quebre a barra, então corra de volta pelo portal para a plataforma do boss</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-soo-greens">CM - Soo-Won: First green</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-soo-greens-desc">Baite poças vermelhas; greens começam imediatamente quando Soo-Won pousa - TODOS os DPS devem entrar no green próximo (objetivo: 4+ pessoas dentro)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-soo-shock">CM - Soo-Won: Shockwave</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-soo-shock-desc">Uma onda de choque atinge durante aquele primeiro green: esquive ou pule enquanto está dentro; então spreads ocorrem seguidos de um golpe de cauda massivo - corra para a borda da plataforma</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-soo-tail">CM - Soo-Won: Tail Swipe</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-soo-tail-desc">Tail Swipe é um instant kill e maior que o visual; se você não está na borda, fique entre os marcadores de seta para sobreviver</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-soo-loop">CM - Soo-Won: Loop</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-soo-loop-desc">Limpe os adds restantes, remova boons e burst DPS; após essa rotação, mecânicas repetem de vermelhos → greens novamente se o boss ainda está vivo</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-champ-goliath">CM - Champions: Goliath</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-champ-goliath-desc">Mantenha-se em stealth (não revele cedo); ordem de matar: CC e burst Goliath primeiro (inflige heavy chill, knockbacks e fire fields)</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-champ-portal">CM - Champions: Portal</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-champ-portal-desc">Quando a barra de CC de Goliath termina, um portal aparece sob ele - pegue este portal para evitar sua explosão AoE massiva</p>
+            </div>
+            
+            <div class="flashcard" data-mode="cm">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="harvest-cm-champ-resume">CM - Champions: Resume</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="harvest-cm-champ-resume-desc">Após matar todos champions, retome a rotação de Soo-Won até a luta terminar (se algum champion viveu e caminha para o boss, termine-o)</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <script src="../language.js"></script>
+</body>
+</html>
