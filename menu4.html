@@ -26,20 +26,37 @@
     <div class="container menu-container">
         <h1 data-translate="menu4-page-title">Menu 4</h1>
         
-        <!-- Filter buttons -->
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all" data-translate="filter-all">Todos</button>
-            <button class="filter-btn" data-filter="Core Tyria">Core Tyria</button>
-            <button class="filter-btn" data-filter="Living World Season 1">LW1</button>
-            <button class="filter-btn" data-filter="Living World Season 2">LW2</button>
-            <button class="filter-btn" data-filter="Heart of Thorns">HoT</button>
-            <button class="filter-btn" data-filter="Living World Season 3">LW3</button>
-            <button class="filter-btn" data-filter="Path of Fire">PoF</button>
-            <button class="filter-btn" data-filter="Living World Season 4">LW4</button>
-            <button class="filter-btn" data-filter="The Icebrood Saga">IbS</button>
-            <button class="filter-btn" data-filter="End of Dragons">EoD</button>
-            <button class="filter-btn" data-filter="Secrets of the Obscure">SotO</button>
-            <button class="filter-btn" data-filter="Janthir Wilds">JW</button>
+        <!-- Filter buttons and Search Bar -->
+        <div class="filters-and-search-wrapper">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all" data-translate="filter-all">Todos</button>
+                <button class="filter-btn" data-filter="Core Tyria">Core Tyria</button>
+                <button class="filter-btn" data-filter="Living World Season 1">LW1</button>
+                <button class="filter-btn" data-filter="Living World Season 2">LW2</button>
+                <button class="filter-btn" data-filter="Heart of Thorns">HoT</button>
+                <button class="filter-btn" data-filter="Living World Season 3">LW3</button>
+                <button class="filter-btn" data-filter="Path of Fire">PoF</button>
+                <button class="filter-btn" data-filter="Living World Season 4">LW4</button>
+                <button class="filter-btn" data-filter="The Icebrood Saga">IbS</button>
+                <button class="filter-btn" data-filter="End of Dragons">EoD</button>
+                <button class="filter-btn" data-filter="Secrets of the Obscure">SotO</button>
+                <button class="filter-btn" data-filter="Janthir Wilds">JW</button>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="event-search-container">
+                <input 
+                    type="text" 
+                    id="eventSearchInput" 
+                    class="event-search-input" 
+                    placeholder="Buscar evento..." 
+                    data-translate-placeholder="search-event-placeholder"
+                >
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
         </div>
         
         <div class="event-timers-container" id="eventTimersContainer">

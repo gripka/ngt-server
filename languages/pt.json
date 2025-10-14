@@ -1223,7 +1223,7 @@
   "footer-text": "© 2025 - Sistema de Gerenciamento de Mecânicas - v 0.3",
   "filter-all": "Todos",
   
-  "professions-table-title": "Profissões & Especializações de Elite",
+  "professions-table-title": "Profissões & Especializações de Elite por Tipo de Função",
   "prof-guardian": "Guardian",
   "prof-warrior": "Warrior",
   "prof-revenant": "Revenant",
@@ -1244,5 +1244,7 @@
   "legend-quickness-title": "Quickness",
   "legend-quickness-desc": "Aumenta velocidade de ataque",
   "legend-healing-title": "Healing Power",
-  "legend-healing-desc": "Suporte e cura para o grupo"
+  "legend-healing-desc": "Suporte e cura para o grupo",
+  
+  "search-event-placeholder": "Buscar evento..."
 }

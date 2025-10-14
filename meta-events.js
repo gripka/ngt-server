@@ -696,12 +696,105 @@ function renderEventTimers() {
     setInterval(updateAllCountdowns, 1000);
 }
 
+// Função de busca de eventos
+function filterEventsBySearch(searchTerm) {
+    const normalizedSearch = searchTerm.toLowerCase().trim();
+    
+    const allRows = document.querySelectorAll('.event-timer-row');
+    
+    // Se a busca estiver vazia, mostrar todos
+    if (normalizedSearch === '') {
+        allRows.forEach(row => {
+            row.style.display = '';
+        });
+        
+        // Mostrar/ocultar categorias vazias
+        document.querySelectorAll('.event-category-section').forEach(section => {
+            const visibleRows = section.querySelectorAll('.event-timer-row:not([style*="display: none"])');
+            section.style.display = visibleRows.length > 0 ? '' : 'none';
+        });
+        return;
+    }
+    
+    // Filtrar linhas de eventos
+    allRows.forEach(row => {
+        const nameElement = row.querySelector('.event-name');
+        const locationElement = row.querySelector('.event-location');
+        
+        if (!nameElement || !locationElement) {
+            return;
+        }
+        
+        const eventName = nameElement.textContent.toLowerCase();
+        const eventLocation = locationElement.textContent.toLowerCase();
+        
+        // Mostrar se o nome ou localização contém o termo de busca
+        if (eventName.includes(normalizedSearch) || eventLocation.includes(normalizedSearch)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+    
+    // Ocultar categorias que não têm eventos visíveis
+    document.querySelectorAll('.event-category-section').forEach(section => {
+        const visibleRows = section.querySelectorAll('.event-timer-row:not([style*="display: none"])');
+        section.style.display = visibleRows.length > 0 ? '' : 'none';
+    });
+}
+
+// Inicializar busca de eventos
+function initEventSearch() {
+    const searchInput = document.getElementById('eventSearchInput');
+    const searchIcon = document.querySelector('.search-icon');
+    
+    if (searchInput) {
+        // Busca ao digitar
+        searchInput.addEventListener('input', (e) => {
+            filterEventsBySearch(e.target.value);
+        });
+        
+        // Busca ao pressionar Enter
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                filterEventsBySearch(searchInput.value);
+            }
+        });
+        
+        // Limpar busca quando mudar o idioma
+        document.addEventListener('languageChanged', () => {
+            searchInput.value = '';
+            filterEventsBySearch('');
+        });
+    }
+    
+    // Adicionar click no ícone de busca
+    if (searchIcon && searchInput) {
+        searchIcon.addEventListener('click', () => {
+            filterEventsBySearch(searchInput.value);
+        });
+    }
+}
+
 // Inicializar quando a página carregar
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderEventTimers);
+    document.addEventListener('DOMContentLoaded', () => {
+        renderEventTimers();
+        initEventSearch();
+    });
 } else {
     renderEventTimers();
+    initEventSearch();
 }
 
 // Atualizar quando o idioma mudar
-document.addEventListener('languageChanged', renderEventTimers);
+document.addEventListener('languageChanged', () => {
+    renderEventTimers();
+    // Re-aplicar filtro se houver busca ativa
+    const searchInput = document.getElementById('eventSearchInput');
+    if (searchInput && searchInput.value) {
+        setTimeout(() => {
+            filterEventsBySearch(searchInput.value);
+        }, 200);
+    }
+});

@@ -693,3 +693,101 @@ function setupFilters() {
 
 // Setup filters after a short delay to ensure DOM is ready
 setTimeout(setupFilters, 100);
+
+// ============================================
+// SEARCH FUNCTIONALITY
+// ============================================
+
+// Função de busca de eventos
+function filterEventsBySearch(searchTerm) {
+    const normalizedSearch = searchTerm.toLowerCase().trim();
+    
+    // Buscar todos os cards de eventos E todas as seções de barras
+    const allCards = document.querySelectorAll('.event-card');
+    const allBarSections = document.querySelectorAll('.event-bar-section');
+    
+    // Se a busca estiver vazia, mostrar todos
+    if (normalizedSearch === '') {
+        allCards.forEach(card => {
+            card.style.display = '';
+        });
+        allBarSections.forEach(section => {
+            section.style.display = '';
+        });
+        
+        // Mostrar/ocultar categorias vazias
+        document.querySelectorAll('.event-category-group').forEach(section => {
+            const visibleBars = section.querySelectorAll('.event-bar-section:not([style*="display: none"])');
+            section.style.display = visibleBars.length > 0 ? 'block' : 'none';
+        });
+        return;
+    }
+    
+    // Filtrar cards de eventos
+    allCards.forEach(card => {
+        const nameElement = card.querySelector('.event-card-name');
+        
+        if (!nameElement) {
+            return;
+        }
+        
+        const eventName = nameElement.textContent.toLowerCase();
+        
+        // Mostrar se o nome contém o termo de busca
+        if (eventName.includes(normalizedSearch)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Ocultar barras de eventos que não têm cards visíveis
+    allBarSections.forEach(section => {
+        const visibleCards = section.querySelectorAll('.event-card:not([style*="display: none"])');
+        section.style.display = visibleCards.length > 0 ? '' : 'none';
+    });
+    
+    // Ocultar categorias que não têm barras visíveis
+    document.querySelectorAll('.event-category-group').forEach(section => {
+        const visibleBars = section.querySelectorAll('.event-bar-section:not([style*="display: none"])');
+        section.style.display = visibleBars.length > 0 ? 'block' : 'none';
+    });
+}
+
+// Inicializar busca de eventos
+function initEventSearch() {
+    const searchInput = document.getElementById('eventSearchInput');
+    const searchIcon = document.querySelector('.search-icon');
+    
+    if (searchInput) {
+        // Busca ao digitar
+        searchInput.addEventListener('input', (e) => {
+            filterEventsBySearch(e.target.value);
+        });
+        
+        // Busca ao pressionar Enter
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                filterEventsBySearch(searchInput.value);
+            }
+        });
+        
+        // Limpar busca quando mudar o idioma
+        document.addEventListener('languageChanged', () => {
+            searchInput.value = '';
+            filterEventsBySearch('');
+        });
+    }
+    
+    // Adicionar click no ícone de busca
+    if (searchIcon && searchInput) {
+        searchIcon.addEventListener('click', () => {
+            filterEventsBySearch(searchInput.value);
+        });
+    }
+}
+
+// Inicializar busca após carregar eventos
+setTimeout(() => {
+    initEventSearch();
+}, 500);

@@ -1292,7 +1292,7 @@
   "footer-text": "© 2025 - Gestión de Mecánicas - v 0.3",
   "filter-all": "Todos",
   
-  "professions-table-title": "Profesiones y Especializaciones de Élite",
+  "professions-table-title": "Profesiones y Especializaciones de Élite por tipo de rol",
   "prof-guardian": "Guardián",
   "prof-warrior": "Guerrero",
   "prof-revenant": "Renegado",
@@ -1313,5 +1313,7 @@
   "legend-quickness-title": "Quickness",
   "legend-quickness-desc": "Aumenta velocidad de ataque",
   "legend-healing-title": "Healing Power",
-  "legend-healing-desc": "Soporte y curación para el grupo"
+  "legend-healing-desc": "Soporte y curación para el grupo",
+  
+  "search-event-placeholder": "Buscar evento..."
 }

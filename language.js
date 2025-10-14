@@ -63,6 +63,14 @@ function changeLanguage(lang) {
         }
     });
     
+    // Atualiza placeholders de inputs
+    document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-translate-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            element.placeholder = translations[lang][key];
+        }
+    });
+    
     // Atualiza o valor do select
     const languageSelect = document.getElementById('languageSelect');
     if (languageSelect) {

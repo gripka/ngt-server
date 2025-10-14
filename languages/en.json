@@ -1292,7 +1292,7 @@
   "footer-text": "© 2025 - Mechanics Management System - v 0.3",
   "filter-all": "All",
   
-  "professions-table-title": "Professions & Elite Specializations",
+  "professions-table-title": "Professions & Elite Specializations by Role Type",
   "prof-guardian": "Guardian",
   "prof-warrior": "Warrior",
   "prof-revenant": "Revenant",
@@ -1313,5 +1313,7 @@
   "legend-quickness-title": "Quickness",
   "legend-quickness-desc": "Increases attack speed",
   "legend-healing-title": "Healing Power",
-  "legend-healing-desc": "Support and healing for the group"
+  "legend-healing-desc": "Support and healing for the group",
+  
+  "search-event-placeholder": "Search event..."
 }
