@@ -1221,5 +1221,28 @@
   "ura-cm-heal-desc": " A 1% de vida Ura cura 15% e o timer estende; Resistência Titânica aumenta sua barra após cada quebra, tornando quebras subsequentes mais difíceis. Cura 15% a 1%. Timer estende. Resistência Titânica acumula. Barra aumenta após quebras. Quebras posteriores mais difíceis. Prepare para luta longa. Gerencie recursos de CC.",
   "join-our": "Junte-se ao nosso",
   "footer-text": "© 2025 - Sistema de Gerenciamento de Mecânicas - v 0.3",
-  "filter-all": "Todos"
+  "filter-all": "Todos",
+  
+  "professions-table-title": "Profissões & Especializações de Elite",
+  "prof-guardian": "Guardian",
+  "prof-warrior": "Warrior",
+  "prof-revenant": "Revenant",
+  "prof-engineer": "Engineer",
+  "prof-ranger": "Ranger",
+  "prof-thief": "Thief",
+  "prof-elementalist": "Elementalist",
+  "prof-mesmer": "Mesmer",
+  "prof-necromancer": "Necromancer",
+  
+  "icon-legend-title": "Tipos de Funções",
+  "legend-power-title": "Power",
+  "legend-power-desc": "Dano direto baseado em Power",
+  "legend-condi-title": "Condition Damage",
+  "legend-condi-desc": "Dano ao longo do tempo (DoT)",
+  "legend-alacrity-title": "Alacrity",
+  "legend-alacrity-desc": "Reduz cooldowns das habilidades",
+  "legend-quickness-title": "Quickness",
+  "legend-quickness-desc": "Aumenta velocidade de ataque",
+  "legend-healing-title": "Healing Power",
+  "legend-healing-desc": "Suporte e cura para o grupo"
 }

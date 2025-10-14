@@ -1290,5 +1290,28 @@
   
   "join-our": "Únete a nuestro",
   "footer-text": "© 2025 - Gestión de Mecánicas - v 0.3",
-  "filter-all": "Todos"
+  "filter-all": "Todos",
+  
+  "professions-table-title": "Profesiones y Especializaciones de Élite",
+  "prof-guardian": "Guardián",
+  "prof-warrior": "Guerrero",
+  "prof-revenant": "Renegado",
+  "prof-engineer": "Ingeniero",
+  "prof-ranger": "Guardabosques",
+  "prof-thief": "Ladrón",
+  "prof-elementalist": "Elementalista",
+  "prof-mesmer": "Mesmer",
+  "prof-necromancer": "Nigromante",
+  
+  "icon-legend-title": "Tipos de Funciones",
+  "legend-power-title": "Power",
+  "legend-power-desc": "Daño directo basado en Power",
+  "legend-condi-title": "Condition Damage",
+  "legend-condi-desc": "Daño a lo largo del tiempo (DoT)",
+  "legend-alacrity-title": "Alacrity",
+  "legend-alacrity-desc": "Reduce tiempos de recarga de habilidades",
+  "legend-quickness-title": "Quickness",
+  "legend-quickness-desc": "Aumenta velocidad de ataque",
+  "legend-healing-title": "Healing Power",
+  "legend-healing-desc": "Soporte y curación para el grupo"
 }
