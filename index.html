@@ -514,7 +514,7 @@
 
             <!-- Accordion para explicar ícones -->
             <div class="icon-legend-accordion">
-                <button type="button" class="accordion-trigger" id="iconLegendTrigger" onclick="toggleAccordion()">
+<button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
                     <span class="accordion-title" data-i18n="icon-legend-title">Legenda dos Ícones</span>
                     <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m6 9 6 6 6-6"></path>
@@ -560,8 +560,62 @@
                     </div>
                 </div>
             </div>
+<div class="icon-legend-accordion">
+    <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span class="accordion-title" data-i18n="feedback-title">Sugestões e Melhorias</span>
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+        </svg>
+    </button>
+
+    <div class="accordion-content">
+        <div class="legend-grid" style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
+            
+            <div class="legend-text">
+                <strong data-i18n="feedback-intro-title">Ajude a melhorar o projeto</strong>
+                <p data-i18n="feedback-intro-desc">Aqui você pode enviar ideias, relatar problemas ou dar sugestões sobre o site.</p>
+            </div>
+
+            <div class="legend-text">
+                <strong data-i18n="feedback-idea-title">💡 Tem uma ideia?</strong>
+                <p data-i18n="feedback-idea-desc">Envie sugestões de melhorias, ajustes de layout ou novas funcionalidades que gostaria de ver.</p>
+            </div>
+
+            <div class="legend-text">
+                <strong data-i18n="feedback-bug-title">🐞 Achou um bug?</strong>
+                <p data-i18n="feedback-bug-desc">Se algo não estiver funcionando corretamente, conte para que possamos corrigir.</p>
+            </div>
+
+            <div class="legend-text">
+                <strong data-i18n="feedback-discord-title">💬 Entre no Discord</strong>
+                <p data-i18n="feedback-discord-desc">
+                    Participe da comunidade, tire dúvidas e envie sugestões diretamente: <br>
+                    <a href="https://discord.gg/seulink" target="_blank" class="text-blue-500 hover:underline" data-i18n="feedback-discord-link">Entrar no servidor</a>
+                </p>
+            </div>
+
+<div class="legend-text">
+    <strong data-i18n="feedback-form-title">Enviar pelo formulário</strong>
+    <p>
+        <span data-i18n="feedback-form-desc">Prefere algo mais direto? Envie sua sugestão através do formulário:</span>
+        <br>
+<a href="https://forms.gle/pazp98ouoj8HJRNPA" target="_blank" class="text-blue-500 hover:underline" data-i18n="feedback-form-link">
+    Abrir formulário
+</a>
+
+    </p>
+</div>
+
+
+            <div class="legend-text" style="text-align: center; margin-top: 0.5rem;">
+                <p class="text-sm text-gray-400" data-i18n="feedback-thanks">Obrigado por ajudar a melhorar o projeto ❤️</p>
+            </div>
+
         </div>
     </div>
+</div>
+
+
     
     
     <script src="language.js"></script>

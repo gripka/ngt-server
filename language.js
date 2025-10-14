@@ -615,15 +615,14 @@ document.addEventListener('DOMContentLoaded', async function() {
 // ACCORDION PARA LEGENDA DE ÍCONES
 // ============================================
 
-function toggleAccordion() {
-    const trigger = document.getElementById('iconLegendTrigger');
-    const content = document.getElementById('iconLegendContent');
+function toggleAccordion(trigger) {
+    const content = trigger.nextElementSibling; // pega o conteúdo logo abaixo do botão
     
     if (!trigger || !content) return;
     
     const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
     
-    // Toggle estado
+    // Alterna o estado
     trigger.setAttribute('aria-expanded', !isExpanded);
     
     if (!isExpanded) {
