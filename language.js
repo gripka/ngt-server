@@ -55,6 +55,14 @@ function changeLanguage(lang) {
         }
     });
     
+    // Atualiza todos os elementos com data-i18n (para compatibilidade)
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+    
     // Atualiza o valor do select
     const languageSelect = document.getElementById('languageSelect');
     if (languageSelect) {
@@ -582,3 +590,25 @@ document.addEventListener('DOMContentLoaded', async function() {
         document.body.classList.add('translations-ready');
     }
 });
+
+// ============================================
+// ACCORDION PARA LEGENDA DE ÍCONES
+// ============================================
+
+function toggleAccordion() {
+    const trigger = document.getElementById('iconLegendTrigger');
+    const content = document.getElementById('iconLegendContent');
+    
+    if (!trigger || !content) return;
+    
+    const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+    
+    // Toggle estado
+    trigger.setAttribute('aria-expanded', !isExpanded);
+    
+    if (!isExpanded) {
+        content.classList.add('expanded');
+    } else {
+        content.classList.remove('expanded');
+    }
+}

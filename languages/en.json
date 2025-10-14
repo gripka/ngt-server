@@ -1290,5 +1290,28 @@
   
   "join-our": "Join our",
   "footer-text": "© 2025 - Mechanics Management System - v 0.3",
-  "filter-all": "All"
+  "filter-all": "All",
+  
+  "professions-table-title": "Professions & Elite Specializations",
+  "prof-guardian": "Guardian",
+  "prof-warrior": "Warrior",
+  "prof-revenant": "Revenant",
+  "prof-engineer": "Engineer",
+  "prof-ranger": "Ranger",
+  "prof-thief": "Thief",
+  "prof-elementalist": "Elementalist",
+  "prof-mesmer": "Mesmer",
+  "prof-necromancer": "Necromancer",
+  
+  "icon-legend-title": "Role Types",
+  "legend-power-title": "Power",
+  "legend-power-desc": "Direct damage based on Power stat",
+  "legend-condi-title": "Condition Damage",
+  "legend-condi-desc": "Damage over time (DoT)",
+  "legend-alacrity-title": "Alacrity",
+  "legend-alacrity-desc": "Reduces skill cooldowns",
+  "legend-quickness-title": "Quickness",
+  "legend-quickness-desc": "Increases attack speed",
+  "legend-healing-title": "Healing Power",
+  "legend-healing-desc": "Support and healing for the group"
 }
