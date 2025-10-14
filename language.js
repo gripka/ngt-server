@@ -212,15 +212,27 @@ function updateViewModeUI(mode) {
     const button = document.getElementById('toggleCMBtn');
     const indicator = document.getElementById('viewModeIndicator');
     
+    // Botões de adicionar mecânicas
+    const addNormalBtn = document.querySelector('button[onclick="addNewMechanic(\'normal\')"]');
+    const addCMBtn = document.querySelector('button[onclick="addNewMechanic(\'cm\')"]');
+    
     if (button) {
         if (mode === 'cm') {
             button.textContent = translations[lang]['toggle-normal'];
             button.classList.add('active-cm');
             document.body.classList.add('cm-mode-active');
+            
+            // Quando CM estiver ativo: esconder botão normal, mostrar botão CM
+            if (addNormalBtn) addNormalBtn.style.display = 'none';
+            if (addCMBtn) addCMBtn.style.display = 'inline-block';
         } else {
             button.textContent = translations[lang]['toggle-cm'];
             button.classList.remove('active-cm');
             document.body.classList.remove('cm-mode-active');
+            
+            // Quando Normal estiver ativo: mostrar botão normal, esconder botão CM
+            if (addNormalBtn) addNormalBtn.style.display = 'inline-block';
+            if (addCMBtn) addCMBtn.style.display = 'none';
         }
     }
     
