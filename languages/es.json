@@ -1315,5 +1315,20 @@
   "legend-healing-title": "Healing Power",
   "legend-healing-desc": "Soporte y curación para el grupo",
   
-  "search-event-placeholder": "Buscar evento..."
+  "search-event-placeholder": "Buscar evento...",
+
+  "feedback-title": "Sugerencias y Mejoras",
+  "feedback-intro-title": "Ayuda a mejorar el proyecto",
+  "feedback-intro-desc": "Aquí puedes enviar ideas, reportar problemas o dar sugerencias sobre el sitio.",
+  "feedback-idea-title": "¿Tienes una idea?",
+  "feedback-idea-desc": "Envía sugerencias de mejoras, ajustes de diseño o nuevas funciones que te gustaría ver.",
+  "feedback-bug-title": "¿Encontraste un error?",
+  "feedback-bug-desc": "Si algo no funciona correctamente, avísanos para poder corregirlo.",
+  "feedback-discord-title": "Únete al Discord",
+  "feedback-discord-desc": "Puedes enviar sugerencias en Discord a través del canal Soporte > Sugerencias",
+  "feedback-discord-link": "Entrar al servidor",
+  "feedback-form-title": "Enviar mediante el formulario",
+  "feedback-form-desc": "¿Prefieres algo más directo? Envía tu sugerencia a través del formulario:",
+  "feedback-form-link": "Abrir formulario",
+  "feedback-thanks": "Gracias por ayudar a mejorar el proyecto ♡"
 }
