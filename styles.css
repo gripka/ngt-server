@@ -807,6 +807,19 @@ body.cm-mode-active .btn-secondary {
     background: #f8f9fa;
 }
 
+/* Fix: Texto visível enquanto digita em modo CM */
+.flashcard.cm-mode-card .flashcard-title[contenteditable="true"] {
+    -webkit-text-fill-color: #dc3545;
+    background: none;
+    color: #dc3545;
+}
+
+.flashcard.cm-mode-card .flashcard-title[contenteditable="true"]:focus {
+    -webkit-text-fill-color: #dc3545;
+    background: #fff3f4;
+    color: #dc3545;
+}
+
 .flashcard-actions {
     display: flex;
     gap: 10px;
