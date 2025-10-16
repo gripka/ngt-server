@@ -1220,7 +1220,7 @@
   "ura-cm-heal": " Cura de 1% e Resistência Titânica",
   "ura-cm-heal-desc": " A 1% de vida Ura cura 15% e o timer estende; Resistência Titânica aumenta sua barra após cada quebra, tornando quebras subsequentes mais difíceis. Cura 15% a 1%. O timer estende. Resistência Titânica acumula. A barra aumenta após as quebras. As quebras posteriores são mais difíceis. Prepare para a luta longa. Gerencie os recursos de CC.",
   "join-our": "Junte-se ao nosso",
-  "footer-text": "© 2025 - Sistema de Gerenciamento de Mecânicas - v 0.6",
+  "footer-text": "© 2025 - v 0.6",
   "filter-all": "Todos",
   
   "professions-table-title": "Profissões & Especializações de Elite por Tipo de Função",
@@ -1261,5 +1261,13 @@
   "feedback-form-title": "Enviar pelo formulário",
   "feedback-form-desc": "Prefere algo mais direto? Envie sua sugestão através do formulário:",
   "feedback-form-link": "Abrir formulário",
-  "feedback-thanks": "Obrigado por ajudar a melhorar o projeto ♡"
+  "feedback-thanks": "Obrigado por ajudar a melhorar o projeto ♡",
+  
+  "settings-title": "Configurações",
+  "export-mechanics": "Exportar Mecânicas",
+  "export-mechanics-desc": "Salva suas mecânicas customizadas desta página em um arquivo JSON",
+  "import-mechanics": "Importar Mecânicas",
+  "import-mechanics-desc": "Carrega mecânicas customizadas de um arquivo JSON para esta página",
+  "close": "Fechar",
+  "changelog-title": "Histórico de Atualizações"
 }

@@ -1289,7 +1289,7 @@
   "ura-cm-heal-desc": " A 1% de salud Ura cura 15% y el cronómetro se extiende; Resistencia Titánica aumenta su barra después de cada quiebre, haciendo quiebres subsecuentes más difíciles. Cura 15% a 1%. Cronómetro se extiende. Resistencia Titánica acumula. Barra aumenta después de quiebres. Quiebres posteriores más difíciles. Prepárate para pelea larga. Maneja recursos de CC.",
   
   "join-our": "Únete a nuestro",
-  "footer-text": "© 2025 - Gestión de Mecánicas - v 0.6",
+  "footer-text": "© 2025 - v 0.6",
   "filter-all": "Todos",
   
   "professions-table-title": "Profesiones y Especializaciones de Élite por tipo de rol",
@@ -1330,5 +1330,13 @@
   "feedback-form-title": "Enviar mediante el formulario",
   "feedback-form-desc": "¿Prefieres algo más directo? Envía tu sugerencia a través del formulario:",
   "feedback-form-link": "Abrir formulario",
-  "feedback-thanks": "Gracias por ayudar a mejorar el proyecto ♡"
+  "feedback-thanks": "Gracias por ayudar a mejorar el proyecto ♡",
+  
+  "settings-title": "Configuración",
+  "export-mechanics": "Exportar Mecánicas",
+  "export-mechanics-desc": "Guarda tus mecánicas personalizadas de esta página en un archivo JSON",
+  "import-mechanics": "Importar Mecánicas",
+  "import-mechanics-desc": "Carga mecánicas personalizadas desde un archivo JSON a esta página",
+  "close": "Cerrar",
+  "changelog-title": "Historial de Actualizaciones"
 }

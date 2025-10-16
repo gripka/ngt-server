@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpar Cache - NGT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        .success {
+            color: #22c55e;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Limpar Cache do Site</h1>
+        <p>Clique no botão abaixo para limpar o cache do footer e recarregar a página.</p>
+        <button onclick="clearCache()">Limpar Cache</button>
+        <button onclick="goToIndex()">Voltar ao Início</button>
+        <p class="success" id="success">✅ Cache limpo com sucesso!</p>
+    </div>
+    
+    <script>
+        function clearCache() {
+            sessionStorage.clear();
+            localStorage.removeItem('footerHTML-root');
+            localStorage.removeItem('footerHTML-subfolder');
+            document.getElementById('success').style.display = 'block';
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        }
+        
+        function goToIndex() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1289,7 +1289,7 @@
   "ura-cm-heal-desc": "At 1% health Ura heals 15% and the timer extends; Titanic Resistance increases her bar after each break, making subsequent breaks harder. Heals 15% at 1%. Timer extends. Titanic Resistance stacks. Bar increases after breaks. Later breaks harder. Prepare for long fight. Manage CC resources.",
   
   "join-our": "Join our",
-  "footer-text": "© 2025 - Mechanics Management System - v 0.6",
+  "footer-text": "© 2025 - 0.6",
   "filter-all": "All",
   
   "professions-table-title": "Professions & Elite Specializations by Role Type",
@@ -1330,5 +1330,13 @@
   "feedback-form-title": "Submit through the form",
   "feedback-form-desc": "Prefer something simpler? Send your suggestion using the form:",
   "feedback-form-link": "Feedback form",
-  "feedback-thanks": "Thank you for helping improve the project ♡"
+  "feedback-thanks": "Thank you for helping improve the project ♡",
+  
+  "settings-title": "Settings",
+  "export-mechanics": "Export Mechanics",
+  "export-mechanics-desc": "Save your custom mechanics from this page to a JSON file",
+  "import-mechanics": "Import Mechanics",
+  "import-mechanics-desc": "Load custom mechanics from a JSON file to this page",
+  "close": "Close",
+  "changelog-title": "Update History"
 }
