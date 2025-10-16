@@ -472,11 +472,11 @@ h1 {
 }
 
 .list-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.986);
     padding: 25px;
     border-radius: 12px;
     text-align: left;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgb(0, 0, 0);
     transition: all 0.3s ease;
     text-decoration: none;
     color: inherit;
@@ -498,6 +498,9 @@ h1 {
 .list-card p {
     color: #666;
     line-height: 1.6;
+    min-height: 48px; 
+    display: flex;
+    align-items: flex-start;
 }
 
 /* Responsividade */
@@ -706,6 +709,7 @@ body.cm-mode-active .btn-secondary {
 .flashcard {
     background: white;
     padding: 25px;
+    text-align: left;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
