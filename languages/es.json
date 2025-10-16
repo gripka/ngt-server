@@ -1330,5 +1330,12 @@
   "feedback-form-title": "Enviar mediante el formulario",
   "feedback-form-desc": "¿Prefieres algo más directo? Envía tu sugerencia a través del formulario:",
   "feedback-form-link": "Abrir formulario",
-  "feedback-thanks": "Gracias por ayudar a mejorar el proyecto ♡"
+  "feedback-thanks": "Gracias por ayudar a mejorar el proyecto ♡",
+  
+  "settings-title": "Configuración",
+  "export-mechanics": "Exportar Mecánicas",
+  "export-mechanics-desc": "Guarda tus mecánicas personalizadas de esta página en un archivo JSON",
+  "import-mechanics": "Importar Mecánicas",
+  "import-mechanics-desc": "Carga mecánicas personalizadas desde un archivo JSON a esta página",
+  "close": "Cerrar"
 }

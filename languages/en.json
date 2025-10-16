@@ -1330,5 +1330,12 @@
   "feedback-form-title": "Submit through the form",
   "feedback-form-desc": "Prefer something simpler? Send your suggestion using the form:",
   "feedback-form-link": "Feedback form",
-  "feedback-thanks": "Thank you for helping improve the project ♡"
+  "feedback-thanks": "Thank you for helping improve the project ♡",
+  
+  "settings-title": "Settings",
+  "export-mechanics": "Export Mechanics",
+  "export-mechanics-desc": "Save your custom mechanics from this page to a JSON file",
+  "import-mechanics": "Import Mechanics",
+  "import-mechanics-desc": "Load custom mechanics from a JSON file to this page",
+  "close": "Close"
 }

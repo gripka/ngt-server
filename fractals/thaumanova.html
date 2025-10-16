@@ -14,7 +14,12 @@
         </a>
     </div>
     
-    <div class="language-selector">
+    <!-- BotÃ£o de ConfiguraÃ§Ãµes -->
+    <button class="settings-button" onclick="openSettingsModal()" title="ConfiguraÃ§Ãµes">
+        <img src="../icon/settings.png" alt="Settings" width="24" height="24">
+    </button>
+    
+        <div class="language-selector">
         <label for="languageSelect" data-translate="language-label">Idioma:</label>
         <select id="languageSelect">
             <option value="pt">Português</option>
@@ -107,6 +112,43 @@
 
     <!-- Rodapé carregado dinamicamente via JavaScript -->
     
-    <script src="../language.js"></script>
+
+    <!-- Modal de ConfiguraÃ§Ãµes -->
+    <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()">
+        <div class="settings-modal-content">
+            <div class="settings-modal-header">
+                <h2 data-translate="settings-title">ConfiguraÃ§Ãµes</h2>
+                <button class="close-modal-btn" onclick="closeSettingsModal()">&times;</button>
+            </div>
+            <div class="settings-options">
+                <div class="settings-option">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span data-translate="export-mechanics">Exportar MecÃ¢nicas</span>
+                    </h3>
+                    <p data-translate="export-mechanics-desc">Salva suas mecÃ¢nicas customizadas desta pÃ¡gina em um arquivo JSON</p>
+                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar MecÃ¢nicas</button>
+                </div>
+                
+                <div class="settings-option">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span data-translate="import-mechanics">Importar MecÃ¢nicas</span>
+                    </h3>
+                    <p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p>
+                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script src="../language.js"></script>
 </body>
 </html>

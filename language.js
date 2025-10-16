@@ -631,3 +631,217 @@ function toggleAccordion(trigger) {
         content.classList.remove('expanded');
     }
 }
+
+// ============================================
+// SISTEMA DE IMPORTAÇÃO E EXPORTAÇÃO DE MECÂNICAS
+// ============================================
+
+// Abre o modal de configurações
+function openSettingsModal() {
+    const modal = document.getElementById('settingsModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Fecha o modal de configurações
+function closeSettingsModal() {
+    const modal = document.getElementById('settingsModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Exporta TODAS as mecânicas customizadas do site
+function exportMechanics() {
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    // Coleta todas as chaves do localStorage que começam com 'flashcards-'
+    const allMechanics = {};
+    let totalCount = 0;
+    
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        
+        // Verifica se é uma chave de flashcards
+        if (key && key.startsWith('flashcards-')) {
+            const value = localStorage.getItem(key);
+            if (value) {
+                try {
+                    const parsed = JSON.parse(value);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        allMechanics[key] = parsed;
+                        totalCount += parsed.length;
+                    }
+                } catch (e) {
+                    console.error(`Erro ao parsear ${key}:`, e);
+                }
+            }
+        }
+    }
+    
+    // Verifica se há mecânicas para exportar
+    if (totalCount === 0) {
+        const messages = {
+            pt: 'Não há mecânicas customizadas para exportar em nenhuma página do site.',
+            en: 'No custom mechanics to export from any page on the site.',
+            es: 'No hay mecánicas personalizadas para exportar de ninguna página del sitio.'
+        };
+        alert(messages[lang]);
+        return;
+    }
+    
+    // Cria estrutura organizada por página
+    const organizedData = {};
+    for (const [key, mechanics] of Object.entries(allMechanics)) {
+        // Extrai o pageId e mode da chave (formato: flashcards-{pageId}-{mode})
+        const parts = key.replace('flashcards-', '').split('-');
+        const mode = parts.pop(); // último elemento é o mode (normal ou cm)
+        const pageId = parts.join('-'); // resto é o pageId
+        
+        if (!organizedData[pageId]) {
+            organizedData[pageId] = {
+                normal: [],
+                cm: []
+            };
+        }
+        
+        organizedData[pageId][mode] = mechanics;
+    }
+    
+    const exportData = {
+        version: '2.0',
+        exportDate: new Date().toISOString(),
+        totalPages: Object.keys(organizedData).length,
+        totalMechanics: totalCount,
+        pages: organizedData
+    };
+    
+    // Cria o arquivo JSON
+    const dataStr = JSON.stringify(exportData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    
+    // Cria link de download
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `ngt-all-mechanics-${Date.now()}.json`;
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    const messages = {
+        pt: `Exportadas ${totalCount} mecânicas de ${Object.keys(organizedData).length} páginas com sucesso!`,
+        en: `Successfully exported ${totalCount} mechanics from ${Object.keys(organizedData).length} pages!`,
+        es: `¡${totalCount} mecánicas de ${Object.keys(organizedData).length} páginas exportadas con éxito!`
+    };
+    alert(messages[lang]);
+}
+
+// Importa mecânicas de um arquivo JSON (suporta formato completo e individual)
+function importMechanics() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    
+    input.onchange = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        try {
+            const text = await file.text();
+            const importData = JSON.parse(text);
+            const lang = localStorage.getItem('selectedLanguage') || 'pt';
+            
+            // Detecta o formato do arquivo
+            let isFullExport = false;
+            let pagesToImport = {};
+            
+            // Formato completo (versão 2.0) - todas as páginas
+            if (importData.version === '2.0' && importData.pages) {
+                isFullExport = true;
+                pagesToImport = importData.pages;
+            }
+            // Formato antigo (versão 1.0) - página única
+            else if (importData.pageId && importData.mechanics) {
+                pagesToImport[importData.pageId] = importData.mechanics;
+            }
+            // Formato inválido
+            else {
+                throw new Error('Formato de arquivo inválido');
+            }
+            
+            // Conta quantas mecânicas serão importadas
+            let totalMechanics = 0;
+            let totalPages = Object.keys(pagesToImport).length;
+            
+            for (const [pageId, mechanics] of Object.entries(pagesToImport)) {
+                if (mechanics.normal) totalMechanics += mechanics.normal.length;
+                if (mechanics.cm) totalMechanics += mechanics.cm.length;
+            }
+            
+            // Mensagem de confirmação
+            const confirmMessages = {
+                pt: isFullExport 
+                    ? `Isso importará ${totalMechanics} mecânicas de ${totalPages} páginas e substituirá todas as mecânicas customizadas atuais do site. Deseja continuar?`
+                    : `Isso importará mecânicas e substituirá as mecânicas customizadas atuais da página "${Object.keys(pagesToImport)[0]}". Deseja continuar?`,
+                en: isFullExport
+                    ? `This will import ${totalMechanics} mechanics from ${totalPages} pages and replace all current custom mechanics on the site. Do you want to continue?`
+                    : `This will import mechanics and replace current custom mechanics on page "${Object.keys(pagesToImport)[0]}". Do you want to continue?`,
+                es: isFullExport
+                    ? `Esto importará ${totalMechanics} mecánicas de ${totalPages} páginas y reemplazará todas las mecánicas personalizadas actuales del sitio. ¿Deseas continuar?`
+                    : `Esto importará mecánicas y reemplazará las mecánicas personalizadas actuales de la página "${Object.keys(pagesToImport)[0]}". ¿Deseas continuar?`
+            };
+            
+            if (!confirm(confirmMessages[lang])) {
+                return;
+            }
+            
+            // Importa as mecânicas
+            let importedCount = 0;
+            for (const [pageId, mechanics] of Object.entries(pagesToImport)) {
+                if (mechanics.normal && mechanics.normal.length > 0) {
+                    localStorage.setItem(`flashcards-${pageId}-normal`, JSON.stringify(mechanics.normal));
+                    importedCount += mechanics.normal.length;
+                }
+                
+                if (mechanics.cm && mechanics.cm.cm.length > 0) {
+                    localStorage.setItem(`flashcards-${pageId}-cm`, JSON.stringify(mechanics.cm));
+                    importedCount += mechanics.cm.length;
+                }
+            }
+            
+            // Mensagem de sucesso
+            const successMessages = {
+                pt: isFullExport
+                    ? `${importedCount} mecânicas de ${totalPages} páginas importadas com sucesso! A página será recarregada.`
+                    : `Mecânicas importadas com sucesso! A página será recarregada.`,
+                en: isFullExport
+                    ? `${importedCount} mechanics from ${totalPages} pages imported successfully! The page will be reloaded.`
+                    : `Mechanics imported successfully! The page will be reloaded.`,
+                es: isFullExport
+                    ? `¡${importedCount} mecánicas de ${totalPages} páginas importadas con éxito! La página se recargará.`
+                    : `¡Mecánicas importadas con éxito! La página se recargará.`
+            };
+            alert(successMessages[lang]);
+            
+            location.reload();
+            
+        } catch (error) {
+            console.error('Erro ao importar:', error);
+            const lang = localStorage.getItem('selectedLanguage') || 'pt';
+            const errorMessages = {
+                pt: 'Erro ao importar arquivo. Verifique se o formato está correto.',
+                en: 'Error importing file. Check if the format is correct.',
+                es: 'Error al importar el archivo. Verifica si el formato es correcto.'
+            };
+            alert(errorMessages[lang]);
+        }
+    };
+    
+    input.click();
+}
