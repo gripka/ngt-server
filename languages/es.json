@@ -1337,5 +1337,6 @@
   "export-mechanics-desc": "Guarda tus mecánicas personalizadas de esta página en un archivo JSON",
   "import-mechanics": "Importar Mecánicas",
   "import-mechanics-desc": "Carga mecánicas personalizadas desde un archivo JSON a esta página",
-  "close": "Cerrar"
+  "close": "Cerrar",
+  "changelog-title": "Historial de Actualizaciones"
 }

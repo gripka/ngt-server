@@ -15,12 +15,76 @@
         
         <div class="footer-info">
             <p><strong>NGT Server</strong></p>
-            <p data-translate="footer-text">© 2025 - Sistema de Gerenciamento de Mecânicas</p>
+            <p class="footer-text-clickable" id="changelogTrigger" data-translate="footer-text">© 2025 - Sistema de Gerenciamento de Mecânicas</p>
         </div>
     </div>
 </footer>
 
+<!-- Modal de Changelog/Patch Notes -->
+<div class="changelog-modal" id="changelogModal">
+    <div class="changelog-modal-content">
+        <div class="changelog-modal-header">
+            <h2 data-translate="changelog-title">Update History</h2>
+            <button class="close-modal-btn" id="closeChangelogBtn">&times;</button>
+        </div>
+        <div class="changelog-content">
+            <div class="changelog-section">
+                <h3>August 2025</h3>
+                <ul>
+                    <li><strong>Flashcard System:</strong> Added functionality to create and manage custom mechanics</li>
+                    <li><strong>CM Mode:</strong> Support for Challenge Mode mechanics in raids and fractals</li>
+                    <li><strong>Quick Copy:</strong> Button to copy mechanic text to the clipboard</li>
+                    <li><strong>Responsive Design:</strong> Interface adapted for desktop and mobile</li>
+                    <li><strong>Import/Export System:</strong> You can now export and import all your custom mechanics in a single JSON file</li>
+                    <li><strong>Settings Button:</strong> New gear button on all pages for quick access to settings</li>
+                    <li><strong>Multilingual Support:</strong> Full translation system for Portuguese, English, and Spanish</li>
+                    <li><strong>UI Improvements:</strong> Modernized interface with gradients and smooth animations</li>
+                    <li><strong>Content Organization:</strong> All Fractal, Strike, and Raid mechanics organized and translated</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+// Configurar modal de changelog
+(function() {
+    function setupChangelogModal() {
+        const changelogTrigger = document.getElementById('changelogTrigger');
+        const changelogModal = document.getElementById('changelogModal');
+        const closeBtn = document.getElementById('closeChangelogBtn');
+        
+        if (changelogTrigger && changelogModal) {
+            // Abrir modal ao clicar no texto do footer
+            changelogTrigger.addEventListener('click', function() {
+                changelogModal.style.display = 'flex';
+            });
+            
+            // Fechar modal ao clicar no X
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    changelogModal.style.display = 'none';
+                });
+            }
+            
+            // Fechar modal ao clicar fora do conteúdo
+            changelogModal.addEventListener('click', function(event) {
+                if (event.target === changelogModal) {
+                    changelogModal.style.display = 'none';
+                }
+            });
+        }
+    }
+    
+    // Executar setup
+    setupChangelogModal();
+    
+    // Backup se o DOM ainda estiver carregando
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupChangelogModal);
+    }
+})();
+
 // Configurar botão Voltar no footer baseado na página atual
 (function() {
     // Executar imediatamente quando o footer for inserido

@@ -481,6 +481,38 @@ function filterFractals(filterType) {
 // CARREGAMENTO DO RODAPÉ
 // ============================================
 
+// Função para inicializar os event listeners do footer
+function initializeFooterEvents() {
+    const changelogTrigger = document.getElementById('changelogTrigger');
+    const changelogModal = document.getElementById('changelogModal');
+    const closeBtn = document.getElementById('closeChangelogBtn');
+    
+    if (changelogTrigger && changelogModal) {
+        // Remove listeners antigos (se existirem)
+        changelogTrigger.replaceWith(changelogTrigger.cloneNode(true));
+        const newTrigger = document.getElementById('changelogTrigger');
+        
+        // Abrir modal ao clicar no texto do footer
+        newTrigger.addEventListener('click', function() {
+            changelogModal.style.display = 'flex';
+        });
+        
+        // Fechar modal ao clicar no X
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                changelogModal.style.display = 'none';
+            });
+        }
+        
+        // Fechar modal ao clicar fora do conteúdo
+        changelogModal.addEventListener('click', function(event) {
+            if (event.target === changelogModal) {
+                changelogModal.style.display = 'none';
+            }
+        });
+    }
+}
+
 function loadFooter() {
     // Detecta se está em subpasta para ajustar os caminhos
     const isInSubfolder = window.location.pathname.includes('/fractals/') || 
@@ -499,6 +531,8 @@ function loadFooter() {
         document.body.insertAdjacentHTML('beforeend', cachedFooter);
         const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
         changeLanguage(savedLanguage);
+        // Reinicializa os event listeners do footer
+        initializeFooterEvents();
     } else {
         // Carrega o footer pela primeira vez
         fetch(footerPath)
@@ -521,6 +555,9 @@ function loadFooter() {
                 // Aplica traduções no footer após inserir
                 const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
                 changeLanguage(savedLanguage);
+                
+                // Reinicializa os event listeners do footer
+                initializeFooterEvents();
             })
             .catch(error => {
                 console.error('Erro ao carregar rodapé:', error);

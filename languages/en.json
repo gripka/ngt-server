@@ -1337,5 +1337,6 @@
   "export-mechanics-desc": "Save your custom mechanics from this page to a JSON file",
   "import-mechanics": "Import Mechanics",
   "import-mechanics-desc": "Load custom mechanics from a JSON file to this page",
-  "close": "Close"
+  "close": "Close",
+  "changelog-title": "Update History"
 }
