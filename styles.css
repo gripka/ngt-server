@@ -778,12 +778,6 @@ body.cm-mode-active .btn-secondary {
     font-weight: 700;
 }
 
-.flashcard.cm-mode-card.editable .flashcard-title::before {
-    content: "🔥 ";
-    -webkit-text-fill-color: initial;
-    margin-right: 5px;
-}
-
 .flashcard-header {
     display: flex;
     justify-content: space-between;
@@ -882,12 +876,6 @@ body.cm-mode-active .btn-secondary {
 
 .flashcard.editable {
     border-left: 4px solid #667eea;
-}
-
-/* Indicador de que é editável */
-.flashcard.editable:not(.cm-mode-card) .flashcard-title::before {
-    content: "✏️ ";
-    margin-right: 5px;
 }
 
 /* Responsividade para páginas de detalhes */
