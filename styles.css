@@ -1865,8 +1865,9 @@ body.cm-mode-active .btn-secondary {
 }
 
 .accordion-content.expanded {
-    max-height: 600px;
+    max-height: 2000px;
     transition: max-height 0.4s ease-in;
+    overflow-y: auto;
 }
 
 .legend-grid {
@@ -1919,6 +1920,171 @@ body.cm-mode-active .btn-secondary {
     font-size: 0.9rem;
     margin: 0;
     line-height: 1.4;
+}
+
+/* Estilos do Glossário */
+.glossary-container {
+    padding: 20px;
+    background: #fafbfc;
+}
+
+.glossary-section {
+    margin-bottom: 25px;
+}
+
+.glossary-section:last-of-type {
+    margin-bottom: 15px;
+}
+
+.glossary-section h3 {
+    color: #667eea;
+    font-size: 1.2rem;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+.glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.glossary-item {
+    background: white;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border-left: 3px solid #667eea;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.glossary-item:hover {
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.15);
+    transform: translateX(3px);
+}
+
+.glossary-item strong {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.glossary-item strong .card-icon-group {
+    margin: 0;
+}
+
+.glossary-item p {
+    color: #666;
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.glossary-note {
+    background: linear-gradient(135deg, #fff3cd 0%, #fffbe6 100%);
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 3px solid #ffc107;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.glossary-note p {
+    color: #856404;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.glossary-note strong {
+    color: #856404;
+}
+
+.glossary-item strong {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* espaçamento entre o ícone e o texto */
+}
+
+.glossary-item .icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Links Úteis */
+.useful-links-container {
+    padding: 20px;
+}
+
+.links-section {
+    margin-bottom: 25px;
+}
+
+.links-section:last-child {
+    margin-bottom: 0;
+}
+
+.links-section h3 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+    text-align: left;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.link-item {
+    display: block;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.link-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #4a90e2;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+}
+
+.link-item strong {
+    display: block;
+    color: #4a90e2;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.link-item:hover strong {
+    color: #2868c7;
+}
+
+.link-item p {
+    color: #666;
+    font-size: 0.8rem;
+    margin: 0;
+    line-height: 1.3;
 }
 
 /* Responsividade para tabela de profissões */
@@ -2216,6 +2382,38 @@ body.cm-mode-active .btn-secondary {
     transform: translateY(0);
 }
 
+/* Botões de ação das configurações (sem card) */
+.settings-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.reset-settings-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    font-size: 0.95rem;
+}
+
+.reset-settings-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+}
+
+.reset-settings-btn:active {
+    transform: translateY(0);
+}
+
 /* Modal de Changelog */
 .changelog-modal {
     display: none;
@@ -2315,6 +2513,88 @@ body.cm-mode-active .btn-secondary {
     font-weight: 600;
 }
 
+/* Modal de Confirmação de Reset */
+.reset-confirm-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.reset-confirm-content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    text-align: center;
+}
+
+.reset-confirm-content h3 {
+    color: #667eea;
+    font-size: 1.4rem;
+    margin: 0 0 15px 0;
+}
+
+.reset-confirm-content p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 25px 0;
+}
+
+.reset-confirm-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.reset-confirm-buttons button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.reset-confirm-buttons .confirm-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.reset-confirm-buttons .confirm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+}
+
+.reset-confirm-buttons .cancel-btn {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+.reset-confirm-buttons .cancel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+}
+
+.reset-confirm-buttons button:active {
+    transform: translateY(0);
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
     .settings-button {
@@ -2377,5 +2657,59 @@ body.cm-mode-active .btn-secondary {
     .changelog-section li:before {
         font-size: 1rem;
         top: 2px;
+    }
+    
+    /* Glossário responsivo */
+    .glossary-container {
+        padding: 15px;
+    }
+    
+    .glossary-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .glossary-section h3 {
+        font-size: 1rem;
+    }
+    
+    .glossary-item {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .glossary-item strong {
+        font-size: 0.85rem;
+    }
+    
+    .glossary-note {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+    
+    /* Links Úteis responsivo */
+    .useful-links-container {
+        padding: 15px;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .links-section h3 {
+        font-size: 1rem;
+    }
+    
+    .link-item {
+        padding: 10px 12px;
+    }
+    
+    .link-item strong {
+        font-size: 0.85rem;
+    }
+    
+    .link-item p {
+        font-size: 0.75rem;
     }
 }

@@ -80,6 +80,22 @@
                     <button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button>
                 </div>
             </div>
+            
+            <div class="settings-action-buttons">
+                <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configurações</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Confirmação de Reset -->
+    <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()">
+        <div class="reset-confirm-content">
+            <h3 data-translate="reset-confirm-title">Confirmar Reset</h3>
+            <p data-translate="reset-confirm-message">Isso irá apagar todas as suas configurações e mecânicas customizadas. Esta ação não pode ser desfeita.</p>
+            <div class="reset-confirm-buttons">
+                <button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button>
+                <button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button>
+            </div>
         </div>
     </div>
     
@@ -147,7 +163,7 @@
 <!-- Old tabelas here -->
 
             <!-- Accordion para explicar ícones -->
-            <div class="icon-legend-accordion">
+            <!--<div class="icon-legend-accordion">
 <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
                     <span class="accordion-title" data-i18n="icon-legend-title">Legenda dos Ícones</span>
                     <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -193,7 +209,248 @@
                         </div>
                     </div>
                 </div>
+            </div>-->
+
+<!-- Glossário GW2 -->
+<div class="icon-legend-accordion">
+    <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span class="accordion-title" data-i18n="glossary-title">Glossário GW2</span>
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+        </svg>
+    </button>
+
+    <div class="accordion-content">
+        <div class="glossary-container">
+            
+            <div class="glossary-section">
+                <h3 data-i18n="glossary-section-mechanics">Mecânicas e Termos</h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-cc">CC (Crowd Control)</strong>
+                        <p data-i18n="glossary-item-cc-desc">Habilidades que controlam inimigos: atordoamento, knockback, pull, imobilização, etc. Usado para quebrar barras de desafio.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-defiance">Defiance Bar / Break Bar</strong>
+                        <p data-i18n="glossary-item-defiance-desc">Barra azul que aparece sob alguns inimigos. Deve ser quebrada usando CC para deixar o inimigo vulnerável.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-cm">CM (Challenge Mode)</strong>
+                        <p data-i18n="glossary-item-cm-desc">Modo desafiador com mecânicas extras e recompensas melhores. Disponível em alguns fractais, strikes e raids.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-kite">Kite / Kiter</strong>
+                        <p data-i18n="glossary-item-kite-desc">Jogador responsável por manter certos adds ou mecânicas longe do grupo principal.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-boons">Boons (Bênçãos)</strong>
+                        <p data-i18n="glossary-item-boons-desc">Buffs positivos como Might, Fury, Protection, Aegis, Resistance, etc. Essenciais para o sucesso do grupo.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-stack">Stack / Empilhar</strong>
+                        <p data-i18n="glossary-item-stack-desc">Agrupar-se em um ponto para compartilhar bênçãos, curas e facilitar mecânicas de grupo.</p>
+                    </div>
+                </div>
             </div>
+
+            <div class="glossary-section">
+                <h3 data-i18n="glossary-section-roles">Funções do Grupo</h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-dps">DPS (Damage Per Second)</strong>
+                        <p data-i18n="glossary-item-dps-desc">Jogadores focados em causar dano. Podem ser Power (dano direto) ou Condition (dano ao longo do tempo).</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-healer">Healer / Suporte</strong>
+                        <p data-i18n="glossary-item-healer-desc">Responsável por curar e dar suporte ao grupo com bênçãos e utilidades.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-tank">Tank</strong>
+                        <p data-i18n="glossary-item-tank-desc">Jogador que mantém a atenção (aggro) do boss e posiciona-o adequadamente.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong data-i18n="glossary-item-boonbot">Boon Provider</strong>
+                        <p data-i18n="glossary-item-boonbot-desc">Jogador especializado em fornecer Quickness ou Alacrity para o grupo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glossary-section">
+                <h3 data-i18n="glossary-section-icons">Ícones do Site</h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <strong>
+                            <img img src="players-icon.png" alt="Ícone de Jogadores" class="icon">
+                            <span data-i18n="glossary-item-players">Número de Jogadores</span>
+                        </strong>
+                        <p data-i18n="glossary-item-players-desc">
+                            Indica quantos jogadores são necessários para o conteúdo (x5, x10, x50).
+                        </p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <div class="card-icon-group">
+                                <span class="icon-label cm-label">CM</span>
+                            </div>
+                            <span data-i18n="glossary-item-cm-icon">CM Disponível</span>
+                        </strong>
+                        <p data-i18n="glossary-item-cm-icon-desc">Badge "CM" indica que o conteúdo possui modo desafiador disponível.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong><span data-i18n="glossary-item-edit">Editar/Adicionar</span></strong>
+                        <p data-i18n="glossary-item-edit-desc">Você pode editar mecânicas existentes ou adicionar suas próprias anotações personalizadas.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong><span data-i18n="glossary-item-copy">Copiar</span></strong>
+                        <p data-i18n="glossary-item-copy-desc">Copia o texto das mecânicas para a área de transferência.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glossary-section">
+                <h3 data-i18n="glossary-section-tips">Dicas Úteis</h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <strong><span data-i18n="glossary-item-export">Exportar/Importar</span></strong>
+                        <p data-i18n="glossary-item-export-desc">Use as configurações para exportar suas mecânicas customizadas e importá-las em outro dispositivo.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>🌐 <span data-i18n="glossary-item-language">Múltiplos Idiomas</span></strong>
+                        <p data-i18n="glossary-item-language-desc">O site está disponível em Português, English e Español. Altere no seletor de idioma.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>📱 <span data-i18n="glossary-item-mobile">Mobile Friendly</span></strong>
+                        <p data-i18n="glossary-item-mobile-desc">O site é otimizado para uso em dispositivos móveis durante as runs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glossary-note">
+                <p data-i18n="glossary-note">💡 Nota: Este glossário é um guia rápido. Para informações mais detalhadas, consulte a wiki oficial do Guild Wars 2 ou a comunidade.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Links Úteis -->
+<div class="icon-legend-accordion">
+    <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span class="accordion-title" data-i18n="useful-links-title">Links Úteis</span>
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+        </svg>
+    </button>
+
+    <div class="accordion-content">
+        <div class="useful-links-container">
+            
+            <div class="links-section">
+                <h3 data-i18n="links-section-wiki">📚 Wiki e Documentação</h3>
+                <div class="links-grid">
+                    <a href="https://wiki.guildwars2.com/" target="_blank" class="link-item">
+                        <strong data-i18n="link-official-wiki">Wiki Oficial GW2</strong>
+                        <p data-i18n="link-official-wiki-desc">Documentação completa sobre o jogo</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="links-section">
+                <h3 data-i18n="links-section-builds">⚔️ Builds e Equipamentos</h3>
+                <div class="links-grid">
+                    <a href="https://snowcrows.com/" target="_blank" class="link-item">
+                        <strong>Snow Crows</strong>
+                        <p data-i18n="link-snowcrows-desc">Builds otimizados para Raids</p>
+                    </a>
+                    <a href="https://discretize.eu/" target="_blank" class="link-item">
+                        <strong>Discretize</strong>
+                        <p data-i18n="link-discretize-desc">Guias e builds para Fractals</p>
+                    </a>
+                    <a href="https://metabattle.com/" target="_blank" class="link-item">
+                        <strong>MetaBattle</strong>
+                        <p data-i18n="link-metabattle-desc">Builds para todos os modos de jogo</p>
+                    </a>
+                    <a href="https://gw2mists.com/" target="_blank" class="link-item">
+                        <strong>GW2Mists</strong>
+                        <p data-i18n="link-gw2mists-desc">Builds focados em PvP e WvW</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="links-section">
+                <h3 data-i18n="links-section-guides">📖 Guias e Tutoriais</h3>
+                <div class="links-grid">
+                    <a href="https://hardstuck.gg/" target="_blank" class="link-item">
+                        <strong>Hardstuck</strong>
+                        <p data-i18n="link-hardstuck-desc">Guias completos e ferramentas úteis</p>
+                    </a>
+                    <a href="https://gw2guides.net/" target="_blank" class="link-item">
+                        <strong>GW2 Guides</strong>
+                        <p data-i18n="link-gw2guides-desc">Tutoriais para iniciantes e veteranos</p>
+                    </a>
+                    <a href="https://mukluk.gg/" target="_blank" class="link-item">
+                        <strong>Mukluk</strong>
+                        <p data-i18n="link-mukluk-desc">Vídeo guias e conteúdo educativo</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="links-section">
+                <h3 data-i18n="links-section-tools">🛠️ Ferramentas</h3>
+                <div class="links-grid">
+                    <a href="https://gw2efficiency.com/" target="_blank" class="link-item">
+                        <strong>GW2 Efficiency</strong>
+                        <p data-i18n="link-gw2efficiency-desc">Gerenciamento de conta e inventário</p>
+                    </a>
+                    <a href="https://gw2crafts.net/" target="_blank" class="link-item">
+                        <strong>GW2 Crafts</strong>
+                        <p data-i18n="link-gw2crafts-desc">Guias de crafting otimizados</p>
+                    </a>
+                    <a href="https://gw2timer.com/" target="_blank" class="link-item">
+                        <strong>GW2 Timer</strong>
+                        <p data-i18n="link-gw2timer-desc">Cronômetros de eventos do mundo</p>
+                    </a>
+                    <a href="https://killproof.me/" target="_blank" class="link-item">
+                        <strong>Killproof.me</strong>
+                        <p data-i18n="link-killproof-desc">Verificador de experiência em raids/strikes</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="links-section">
+                <h3 data-i18n="links-section-streamers">🎥 Streamers e Criadores</h3>
+                <div class="links-grid">
+                    <a href="https://www.twitch.tv/directory/game/Guild%20Wars%202" target="_blank" class="link-item">
+                        <strong>Twitch GW2</strong>
+                        <p data-i18n="link-twitch-desc">Lives da comunidade GW2</p>
+                    </a>
+                    <a href="https://www.youtube.com/@MightyTeapot" target="_blank" class="link-item">
+                        <strong>MightyTeapot</strong>
+                        <p data-i18n="link-teapot-desc">Conteúdo endgame e PvE</p>
+                    </a>
+                    <a href="https://www.youtube.com/@WoodenPotatoes" target="_blank" class="link-item">
+                        <strong>WoodenPotatoes</strong>
+                        <p data-i18n="link-woodenpotatoes-desc">Lore, análises e guias</p>
+                    </a>
+                    <a href="https://www.youtube.com/@MukLuk" target="_blank" class="link-item">
+                        <strong>MukLuk (YouTube)</strong>
+                        <p data-i18n="link-mukluk-yt-desc">Tutoriais e conteúdo para iniciantes</p>
+                    </a>
+                    <a href="https://www.twitch.tv/maanigold" target="_blank" class="link-item">
+                        <strong>MaaniGold</strong>
+                        <p data-i18n="link-maanigold-desc">Streamer brasileiro focado em PvE</p>
+                    </a>
+                    <a href="https://www.twitch.tv/canaldobeneco" target="_blank" class="link-item">
+                        <strong>Beneco</strong>
+                        <p data-i18n="link-beneco-desc">Streamer brasileiro de GW2</p>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <div class="icon-legend-accordion">
     <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
         <span class="accordion-title" data-i18n="feedback-title">Sugestões e Melhorias</span>
@@ -203,48 +460,24 @@
     </button>
 
     <div class="accordion-content">
-        <div class="legend-grid" style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
+        <div class="useful-links-container">
+            <div class="links-section">
+                <h3 data-i18n="feedback-intro-title">💡 Ajude a melhorar o projeto</h3>
+                <div class="links-grid">
+                    <a href="https://discord.gg/seulink" target="_blank" class="link-item">
+                        <strong>💬 <span data-i18n="feedback-discord-title">Discord</span></strong>
+                        <p data-i18n="feedback-discord-desc">Participe da comunidade e envie sugestões no canal Suporte > Sugestões</p>
+                    </a>
+                    <a href="https://forms.gle/pazp98ouoj8HJRNPA" target="_blank" class="link-item">
+                        <strong>📝 <span data-i18n="feedback-form-title">Formulário</span></strong>
+                        <p data-i18n="feedback-form-desc">Envie sua sugestão de forma rápida e direta</p>
+                    </a>
+                </div>
+            </div>
             
-            <div class="legend-text">
-                <strong data-i18n="feedback-intro-title">Ajude a melhorar o projeto</strong>
-                <p data-i18n="feedback-intro-desc">Aqui você pode enviar ideias, relatar problemas ou dar sugestões sobre o site.</p>
+            <div class="glossary-note" style="margin-top: 15px;">
+                <p data-i18n="feedback-thanks">💡 <strong>Obrigado por ajudar a melhorar o projeto!</strong> Sua opinião é muito importante para nós.</p>
             </div>
-
-            <div class="legend-text">
-                <strong data-i18n="feedback-idea-title">💡 Tem uma ideia?</strong>
-                <p data-i18n="feedback-idea-desc">Envie sugestões de melhorias, ajustes de layout ou novas funcionalidades que gostaria de ver.</p>
-            </div>
-
-            <div class="legend-text">
-                <strong data-i18n="feedback-bug-title">🐞 Achou um bug?</strong>
-                <p data-i18n="feedback-bug-desc">Se algo não estiver funcionando corretamente, conte para que possamos corrigir.</p>
-            </div>
-
-            <div class="legend-text">
-                <strong data-i18n="feedback-discord-title">💬 Entre no Discord</strong>
-                <p data-i18n="feedback-discord-desc">
-                    Participe da comunidade, tire dúvidas e envie sugestões diretamente: <br>
-                    <a href="https://discord.gg/seulink" target="_blank" class="text-blue-500 hover:underline" data-i18n="feedback-discord-link">Entrar no servidor</a>
-                </p>
-            </div>
-
-<div class="legend-text">
-    <strong data-i18n="feedback-form-title">Enviar pelo formulário</strong>
-    <p>
-        <span data-i18n="feedback-form-desc">Prefere algo mais direto? Envie sua sugestão através do formulário:</span>
-        <br>
-<a href="https://forms.gle/pazp98ouoj8HJRNPA" target="_blank" class="text-blue-500 hover:underline" data-i18n="feedback-form-link">
-    Abrir formulário
-</a>
-
-    </p>
-</div>
-
-
-            <div class="legend-text" style="text-align: center; margin-top: 0.5rem;">
-                <p class="text-sm text-gray-400" data-i18n="feedback-thanks">Obrigado por ajudar a melhorar o projeto ❤️</p>
-            </div>
-
         </div>
     </div>
 </div>
