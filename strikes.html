@@ -84,10 +84,17 @@
                     <span class="info-badge" data-translate="strikes-weekly-content">✓ Recompensas Semanais</span>
                 </div>
             </div>
+            <div class="fractal-filters">
+                <button class="tier-btn active" onclick="filterStrikesByRegion('all', this)" data-translate="filter-all">Todas</button>
+                <button class="tier-btn" onclick="filterStrikesByRegion('core', this)">Core</button>
+                <button class="tier-btn" onclick="filterStrikesByRegion('ibs', this)">IbS</button>
+                <button class="tier-btn" onclick="filterStrikesByRegion('eod', this)">EoD</button>
+                <button class="tier-btn" onclick="filterStrikesByRegion('soto', this)">SotO</button>
+            </div>
         </div>
         
         <!-- Core Game Strikes -->
-        <div class="raid-section">
+        <div class="raid-section" data-region="core">
             <h2 class="raid-title">Core Game Strikes</h2>
             <div class="cards-list">
                 <a href="strikes/oldlionscourt.html" class="list-card">
@@ -101,7 +108,7 @@
         </div>
         
         <!-- Icebrood Saga Strikes -->
-        <div class="raid-section">
+        <div class="raid-section" data-region="ibs">
             <h2 class="raid-title">Icebrood Saga Strikes</h2>
             <div class="cards-list">
                 <a href="strikes/shiverpeaks.html" class="list-card">
@@ -142,7 +149,7 @@
         </div>
         
         <!-- End of Dragons Strikes -->
-        <div class="raid-section">
+        <div class="raid-section" data-region="eod">
             <h2 class="raid-title">End of Dragons Strikes</h2>
             <div class="cards-list">
                 <a href="strikes/aetherblade.html" class="list-card">
@@ -180,7 +187,7 @@
         </div>
         
         <!-- Secrets of the Obscure Strikes -->
-        <div class="raid-section">
+        <div class="raid-section" data-region="soto">
             <h2 class="raid-title">Secrets of the Obscure Strikes</h2>
             <div class="cards-list">
                 <a href="strikes/cosmic.html" class="list-card">

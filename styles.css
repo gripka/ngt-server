@@ -293,11 +293,9 @@ h1 {
 /* Fractal Header with Filters */
 .fractal-header {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 15px;
+    margin-bottom: 25px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     padding: 20px;
     border-radius: 12px;
@@ -305,8 +303,7 @@ h1 {
 }
 
 .page-title-container {
-    flex: 1;
-    min-width: 300px;
+    width: 100%;
 }
 
 .fractal-header h1 {
@@ -393,6 +390,32 @@ h1 {
 }
 
 .filter-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Tier buttons for fractals, raids, and strikes filters */
+.tier-btn {
+    padding: 10px 20px;
+    border: 2px solid #667eea;
+    border-radius: 20px;
+    background: white;
+    color: #667eea;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.tier-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.tier-btn.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
