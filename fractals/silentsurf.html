@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -166,10 +166,28 @@
                     </h3>
                     <p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p>
                     <button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button>
+                </div>                
+                <div class="settings-action-buttons">
+                
+                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configuracoes</button>
+                
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Modal de Confirmacao de Reset -->
+    <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()">
+        <div class="reset-confirm-content">
+            <h3 data-translate="reset-confirm-title">Confirmar Reset</h3>
+            <p data-translate="reset-confirm-message">Isso ira apagar todas as suas configuracoes e mecanicas customizadas. Esta acao nao pode ser desfeita.</p>
+            <div class="reset-confirm-buttons">
+                <button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button>
+                <button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
         <script src="../language.js"></script>
 </body>
 </html>

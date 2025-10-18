@@ -882,3 +882,47 @@ function importMechanics() {
     
     input.click();
 }
+
+// Abre o modal de confirmação de reset
+function openResetConfirmModal() {
+    const modal = document.getElementById('resetConfirmModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Fecha o modal de confirmação de reset
+function closeResetConfirmModal() {
+    const modal = document.getElementById('resetConfirmModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Reseta todas as configurações do site
+function resetAllSettings() {
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    // Limpa todo o localStorage
+    localStorage.clear();
+    
+    // Fecha o modal de confirmação
+    closeResetConfirmModal();
+    
+    // Fecha o modal de configurações se estiver aberto
+    closeSettingsModal();
+    
+    // Mensagem de sucesso
+    const messages = {
+        pt: 'Todas as configurações foram resetadas. A página será recarregada.',
+        en: 'All settings have been reset. The page will be reloaded.',
+        es: 'Todas las configuraciones se han restablecido. La página se recargará.'
+    };
+    alert(messages[lang]);
+    
+    // Recarrega a página
+    location.reload();
+}
+
