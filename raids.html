@@ -83,10 +83,21 @@
                     <span class="info-badge" data-translate="raids-weekly-content">✓ Recompensas Semanais</span>
                 </div>
             </div>
+            <div class="fractal-filters">
+                <button class="tier-btn active" onclick="filterRaidsByWing('all', this)" data-translate="filter-all">Todas</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w1', this)">W1</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w2', this)">W2</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w3', this)">W3</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w4', this)">W4</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w5', this)">W5</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w6', this)">W6</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w7', this)">W7</button>
+                <button class="tier-btn" onclick="filterRaidsByWing('w8', this)">W8</button>
+            </div>
         </div>
         
         <!-- Raid 1 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w1">
             <h2 class="raid-title">Wing 1 - Spirit Vale</h2>
             <div class="cards-list">
                 <a href="raids/vale.html" class="list-card">
@@ -112,7 +123,7 @@
         </div>
         
         <!-- Raid 2 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w2">
             <h2 class="raid-title">Wing 2 - Salvation Pass</h2>
             <div class="cards-list">
                 <a href="raids/slothasor.html" class="list-card">
@@ -133,7 +144,7 @@
         </div>
         
         <!-- Raid 3 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w3">
             <h2 class="raid-title">Wing 3 - Stronghold of the Faithful</h2>
             <div class="cards-list">
                 <a href="raids/escort.html" class="list-card">
@@ -162,7 +173,7 @@
         </div>
         
         <!-- Raid 4 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w4">
             <h2 class="raid-title">Wing 4 - Bastion of the Penitent</h2>
             <div class="cards-list">
                 <a href="raids/cairn.html" class="list-card">
@@ -200,7 +211,7 @@
         </div>
         
         <!-- Raid 5 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w5">
             <h2 class="raid-title">Wing 5 - Hall of Chains</h2>
             <div class="cards-list">
                 <a href="raids/soulless.html" class="list-card">
@@ -242,7 +253,7 @@
         </div>
         
         <!-- Raid 6 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w6">
             <h2 class="raid-title">Wing 6 - Mythwright Gambit</h2>
             <div class="cards-list">
                 <a href="raids/ca.html" class="list-card">
@@ -272,7 +283,7 @@
         </div>
         
         <!-- Raid 7 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w7">
             <h2 class="raid-title">Wing 7 - The Key of Ahdashim</h2>
             <div class="cards-list">
                 <a href="raids/sabir.html" class="list-card">
@@ -302,7 +313,7 @@
         </div>
         
         <!-- Raid 8 -->
-        <div class="raid-section">
+        <div class="raid-section" data-wing="w8">
             <h2 class="raid-title">Wing 8 - Mount Balrior</h2>
             <div class="cards-list">
                 <a href="raids/greer.html" class="list-card">
@@ -350,5 +361,32 @@
 
     
     <script src="language.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.tier-btn');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const selectedWing = this.getAttribute('onclick').match(/'(.*?)'/)[1];
+                filterRaidsByWing(selectedWing);
+
+                // Atualiza botões ativos
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    });
+
+    function filterRaidsByWing(wing) {
+        const raidSections = document.querySelectorAll('.raid-section[data-wing]');
+        
+        raidSections.forEach(section => {
+            section.style.display = (wing === 'all' || section.getAttribute('data-wing') === wing)
+                ? 'block'
+                : 'none';
+        });
+    }
+</script>
+
 </body>
 </html>

@@ -393,7 +393,7 @@ function filterFractals(filterType) {
     if (!fractalsList) return;
     
     const cards = fractalsList.querySelectorAll('.fractal-card');
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterButtons = document.querySelectorAll('.fractal-filters .tier-btn');
     const allBadges = document.querySelectorAll('.tier-badge');
     
     // Atualiza botões ativos
@@ -475,6 +475,62 @@ function filterFractals(filterType) {
             fractalsList.appendChild(card);
         });
     }
+}
+
+// ============================================
+// FILTROS DE RAIDS POR WING
+// ============================================
+
+function filterRaidsByWing(wing, clickedButton) {
+    const container = document.querySelector('.container.menu-container');
+    if (!container) return;
+    
+    const sections = container.querySelectorAll('.raid-section');
+    const filterButtons = container.querySelectorAll('.fractal-filters .tier-btn');
+    
+    // Atualiza botões ativos
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+    
+    // Filtra seções
+    sections.forEach(section => {
+        if (wing === 'all') {
+            section.style.display = 'block';
+        } else {
+            const sectionWing = section.getAttribute('data-wing');
+            section.style.display = (sectionWing === wing) ? 'block' : 'none';
+        }
+    });
+}
+
+// ============================================
+// FILTROS DE STRIKES POR REGIÃO
+// ============================================
+
+function filterStrikesByRegion(region, clickedButton) {
+    const container = document.querySelector('.container.menu-container');
+    if (!container) return;
+    
+    const sections = container.querySelectorAll('.raid-section');
+    const filterButtons = container.querySelectorAll('.fractal-filters .tier-btn');
+    
+    // Atualiza botões ativos
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+    
+    // Filtra seções
+    sections.forEach(section => {
+        if (region === 'all') {
+            section.style.display = 'block';
+        } else {
+            const sectionRegion = section.getAttribute('data-region');
+            section.style.display = (sectionRegion === region) ? 'block' : 'none';
+        }
+    });
 }
 
 // ============================================
