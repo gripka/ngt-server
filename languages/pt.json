@@ -30,6 +30,15 @@
   "menu2-page-title": "Strikes",
   "menu3-page-title": "Raids",
   "menu4-page-title": "Meta Eventos",
+  "players-count": "5 Jogadores",
+  "difficulty-scale": "Dificuldade: T1-T4 + CM",
+  "daily-content": "✓ Recompensas Diárias",
+  "strikes-players-count": "10 Jogadores",
+  "strikes-difficulty": "Dificuldade Variada",
+  "strikes-weekly-content": "✓ Recompensas Semanais",
+  "raids-players-count": "10 Jogadores",
+  "raids-difficulty": "Alta Dificuldade",
+  "raids-weekly-content": "✓ Recompensas Semanais",
   "fractal-aquatic-ruins": "Aquatic Ruins",
   "fractal-aquatic-ruins-desc": "Fractal subaquática com puzzles e bosses marinhos.",
   "fractal-aetherblade": "Aetherblade",
@@ -1290,7 +1299,7 @@
   "glossary-item-mobile": "Mobile Friendly",
   "glossary-item-mobile-desc": "O site é otimizado para uso em dispositivos móveis durante as runs.",
   
-  "glossary-note": "💡 Nota: Este glossário é um guia rápido. Para informações mais detalhadas, consulte a wiki oficial do Guild Wars 2 ou a comunidade.",
+  "glossary-note": "Nota: Este glossário é um guia rápido. Para informações mais detalhadas, consulte a wiki oficial do Guild Wars 2 ou a comunidade.",
   
   "search-event-placeholder": "Buscar evento...",
 

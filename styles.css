@@ -294,10 +294,55 @@ h1 {
 .fractal-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
+    align-items: flex-start;
+    margin-bottom: 25px;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+}
+
+.page-title-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.fractal-header h1 {
+    margin: 0 0 8px 0;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.page-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+}
+
+.page-info {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.info-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 6px 12px;
+    border-radius: 15px;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .fractal-header h1 {
@@ -308,6 +353,7 @@ h1 {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 /* Wrapper for filters and search */

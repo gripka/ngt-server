@@ -32,6 +32,15 @@
   "menu2-page-title": "Strikes",
   "menu3-page-title": "Raids",
   "menu4-page-title": "Meta Eventos",
+  "players-count": "5 Jugadores",
+  "difficulty-scale": "Dificultad: T1-T4 + CM",
+  "daily-content": "✓ Recompensas Diarias",
+  "strikes-players-count": "10 Jugadores",
+  "strikes-difficulty": "Dificultad Variada",
+  "strikes-weekly-content": "✓ Recompensas Semanales",
+  "raids-players-count": "10 Jugadores",
+  "raids-difficulty": "Alta Dificultad",
+  "raids-weekly-content": "✓ Recompensas Semanales",
   
   "fractal-aquatic-ruins": "Ruinas Acuáticas",
   "fractal-aquatic-ruins-desc": "Fractal submarina con puzzles y jefes marinos.",
@@ -1359,7 +1368,7 @@
   "glossary-item-mobile": "Mobile Friendly",
   "glossary-item-mobile-desc": "El sitio está optimizado para uso en dispositivos móviles durante las runs.",
   
-  "glossary-note": "❤️ Nota: Este glosario es una guía rápida. Para información más detallada, consulta la wiki oficial de Guild Wars 2 o la comunidad.",
+  "glossary-note": "Nota: Este glosario es una guía rápida. Para información más detallada, consulta la wiki oficial de Guild Wars 2 o la comunidad.",
   
   "search-event-placeholder": "Buscar evento...",
 
@@ -1369,7 +1378,7 @@
   "feedback-discord-desc": "Únete a la comunidad y envía sugerencias en el canal Soporte > Sugerencias",
   "feedback-form-title": "Formulario",
   "feedback-form-desc": "Envía tu sugerencia de forma rápida y directa",
-  "feedback-thanks": "💡 ¡Gracias por ayudar a mejorar el proyecto! Tu opinión es muy importante para nosotros.",
+  "feedback-thanks": "❤️  ¡Gracias por ayudar a mejorar el proyecto! Tu opinión es muy importante para nosotros.",
   
   "useful-links-title": "Enlaces Útiles",
   "links-section-wiki": "📚 Wiki y Documentación",
