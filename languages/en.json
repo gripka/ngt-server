@@ -32,6 +32,15 @@
   "menu2-page-title": "Strikes",
   "menu3-page-title": "Raids",
   "menu4-page-title": "Meta Events",
+  "players-count": "5 Players",
+  "difficulty-scale": "Difficulty: T1-T4 + CM",
+  "daily-content": "✓ Daily Rewards",
+  "strikes-players-count": "10 Players",
+  "strikes-difficulty": "Varied Difficulty",
+  "strikes-weekly-content": "✓ Weekly Rewards",
+  "raids-players-count": "10 Players",
+  "raids-difficulty": "High Difficulty",
+  "raids-weekly-content": "✓ Weekly Rewards",
   
   "fractal-aquatic-ruins": "Aquatic Ruins",
   "fractal-aquatic-ruins-desc": "Underwater fractal with puzzles and marine bosses.",
@@ -1359,7 +1368,7 @@
   "glossary-item-mobile": "Mobile Friendly",
   "glossary-item-mobile-desc": "The site is optimized for use on mobile devices during runs.",
   
-  "glossary-note": "❤️ Note:This glossary is a quick guide. For more detailed information, consult the official Guild Wars 2 wiki or community.",
+  "glossary-note": "Note: This glossary is a quick guide. For more detailed information, consult the official Guild Wars 2 wiki or community.",
   
   "search-event-placeholder": "Search event...",
 
@@ -1369,7 +1378,7 @@
   "feedback-discord-desc": "Join the community and send suggestions in the Support > Suggestions channel",
   "feedback-form-title": "Form",
   "feedback-form-desc": "Send your suggestion quickly and directly",
-  "feedback-thanks": "Thank you for helping improve the project ♡",
+  "feedback-thanks": "❤️ Thank you for helping improve the project ♡",
   
   "useful-links-title": "Useful Links",
   "links-section-wiki": "📚 Wiki & Documentation",
