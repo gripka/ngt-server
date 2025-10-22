@@ -30,17 +30,19 @@
     
     <div class="container menu-container">
         
-        <div class="detail-header">
-            <h1 data-translate="strike-temple">Temple of Febe</h1>
-            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
-            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
-        </div>
-        
-        <div class="action-buttons">
-            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
-            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
-            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        <div class="detail-page-header">
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 data-translate="strike-temple">Temple of Febe
+                    </h1><p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas
+                </p></div>
+                            <div class="header-actions">
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                </div></div>
+            <div class="header-buttons"><button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
         </div>
 
         <div class="flashcards-container" id="flashcardsContainer">
@@ -198,7 +200,7 @@
             <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
         </div>
     </div>
-    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">? Voltar</a>
     
     <!-- Rodapé carregado dinamicamente via JavaScript -->
     
@@ -260,3 +262,21 @@
         <script src="../language.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

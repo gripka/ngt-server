@@ -697,6 +697,202 @@ h1 {
     flex-wrap: wrap;
 }
 
+/* Novo header para páginas de detalhes */
+.detail-page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detail-page-header .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+}
+
+.detail-page-header .header-title {
+    flex: 1;
+    min-width: 200px;
+    text-align: left;
+}
+
+.detail-page-header .header-title {
+    flex: 1;
+    min-width: 200px;
+}
+
+.detail-page-header h1 {
+    color: white;
+    font-size: 2.2rem;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+}
+
+.detail-page-header .header-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.detail-page-header .header-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.detail-page-header .view-mode-indicator {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.detail-page-header .view-mode-indicator.normal-mode {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.detail-page-header .view-mode-indicator.cm-mode {
+    color: #ffcccc;
+    border-color: rgba(255, 53, 69, 0.4);
+    background: rgba(255, 53, 69, 0.1);
+}
+
+.detail-page-header .header-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.detail-page-header .btn-primary, 
+.detail-page-header .btn-secondary, 
+.detail-page-header .copy-all-btn,
+.detail-page-header .btn-toggle-cm {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.detail-page-header .btn-primary {
+    background: rgba(255, 255, 255, 0.9);
+    color: #667eea;
+}
+
+.detail-page-header .btn-primary:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.detail-page-header .btn-secondary {
+    background: rgba(118, 75, 162, 0.9);
+    color: white;
+    display: none; /* Oculto por padrão */
+}
+
+body.cm-mode-active .detail-page-header .btn-secondary {
+    display: inline-block; /* Mostra quando CM está ativo */
+}
+
+.detail-page-header .btn-secondary:hover {
+    background: #5a3680;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+}
+
+.detail-page-header .copy-all-btn {
+    background: rgba(40, 167, 69, 0.9);
+    color: white;
+}
+
+.detail-page-header .copy-all-btn:hover {
+    background: #28a745;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.detail-page-header .btn-toggle-cm {
+    background: rgba(255, 255, 255, 0.9);
+    color: #667eea;
+}
+
+.detail-page-header .btn-toggle-cm:hover {
+    background: white;
+    color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.detail-page-header .btn-toggle-cm.active-cm {
+    background: linear-gradient(135deg, #dc3545 0%, #9b59b6 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+.detail-page-header .btn-toggle-cm.active-cm:hover {
+    background: linear-gradient(135deg, #c82333 0%, #8e44ad 100%);
+    transform: translateY(-2px);
+}
+
+/* Responsividade para o novo header */
+@media (max-width: 768px) {
+    .detail-page-header {
+        padding: 15px 20px;
+    }
+    
+    .detail-page-header .header-top {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .detail-page-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .detail-page-header .header-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .detail-page-header .header-actions {
+        justify-content: center;
+    }
+    
+    .detail-page-header .header-buttons {
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .detail-page-header .btn-primary, 
+    .detail-page-header .btn-secondary, 
+    .detail-page-header .copy-all-btn,
+    .detail-page-header .btn-toggle-cm {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+}
+
 .btn-primary, .btn-secondary, .copy-all-btn {
     padding: 12px 25px;
     border: none;
