@@ -22,9 +22,9 @@
         <div class="language-selector">
         <label for="languageSelect" data-translate="language-label">Idioma:</label>
         <select id="languageSelect">
-            <option value="pt">Portuguï¿½s</option>
+            <option value="pt">Português</option>
             <option value="en">English</option>
-            <option value="es">Espaï¿½ol</option>
+            <option value="es">Español</option>
         </select>
     </div>
     
@@ -39,15 +39,16 @@
                             <div class="header-actions">
                     <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
                 </div></div>
-            <div class="header-buttons"><button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+            <div class="header-buttons">
+<button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
                 <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
-                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecï¿½nica</button>
-                <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecï¿½nica</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
             </div>
-        </div>
-
+        
+        
         <div class="flashcards-container" id="flashcardsContainer">
-            <!-- Flashcards padrï¿½o -->
+            <!-- Flashcards padrão -->
             <div class="flashcard" data-mode="normal">
                 <div class="flashcard-header">
                     <h3 class="flashcard-title" data-translate="xunlai-spread">Orange circles</h3>
@@ -55,7 +56,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-spread-desc">Espalhe-se quando cï¿½rculos laranjas aparecerem; sobrepor eles causa dano letal</p>
+                <p class="flashcard-description" data-translate="xunlai-spread-desc">Espalhe-se quando círculos laranjas aparecerem; sobrepor eles causa dano letal</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -65,7 +66,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-poison-desc">Evite poï¿½as de veneno verdes e limpe condiï¿½ï¿½es rapidamente</p>
+                <p class="flashcard-description" data-translate="xunlai-poison-desc">Evite poças de veneno verdes e limpe condições rapidamente</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -75,7 +76,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-vacuum-desc">Esquive do vï¿½cuo giratï¿½rio (Imminent Death) ou use habilidades de movimento para escapar</p>
+                <p class="flashcard-description" data-translate="xunlai-vacuum-desc">Esquive do vácuo giratório (Imminent Death) ou use habilidades de movimento para escapar</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -95,7 +96,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-hallucinations-desc">Lide com alucinaï¿½ï¿½es: mate adds Krait rapidamente, vire de costas pro medo do Lich, e faï¿½a kite das explosï¿½es Quaggan pra longe do grupo</p>
+                <p class="flashcard-description" data-translate="xunlai-hallucinations-desc">Lide com alucinações: mate adds Krait rapidamente, vire de costas pro medo do Lich, e faça kite das explosões Quaggan pra longe do grupo</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -105,7 +106,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-final-desc">Fique nos santuï¿½rios roxos para sobreviver aos stacks de Devouring Void e foque em derrubar o add Reanimated Eye</p>
+                <p class="flashcard-description" data-translate="xunlai-final-desc">Fique nos santuários roxos para sobreviver aos stacks de Devouring Void e foque em derrubar o add Reanimated Eye</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -115,7 +116,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-cm-timer-desc">Timer de 10 minutos; Inevitability of Death age como enrage que reseta nas mudanï¿½as de fase</p>
+                <p class="flashcard-description" data-translate="xunlai-cm-timer-desc">Timer de 10 minutos; Inevitability of Death age como enrage que reseta nas mudanças de fase</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -135,7 +136,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-cm-pull-desc">Cï¿½rculos de pull do Imminent Death matam instantaneamente qualquer um stackado junto; espalhe-se e saia imediatamente</p>
+                <p class="flashcard-description" data-translate="xunlai-cm-pull-desc">Círculos de pull do Imminent Death matam instantaneamente qualquer um stackado junto; espalhe-se e saia imediatamente</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -145,7 +146,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-cm-orange-desc">Cï¿½rculos laranjas se tornam mais letais e devem ser baitados e espalhados perfeitamente</p>
+                <p class="flashcard-description" data-translate="xunlai-cm-orange-desc">Círculos laranjas se tornam mais letais e devem ser baitados e espalhados perfeitamente</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -155,15 +156,15 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="xunlai-cm-final-desc">Na fase final, fique nos santuï¿½rios protetores para sobreviver ao Devouring Void e mate o Reanimated Antipathy rapidamente</p>
+                <p class="flashcard-description" data-translate="xunlai-cm-final-desc">Na fase final, fique nos santuários protetores para sobreviver ao Devouring Void e mate o Reanimated Antipathy rapidamente</p>
             </div>
             
-            <!-- Os flashcards editï¿½veis serï¿½o adicionados aqui dinamicamente -->
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
         </div>
     </div>
-    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">? Voltar</a>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
     
-    <!-- Rodapï¿½ carregado dinamicamente via JavaScript -->
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
     
 
     <!-- Modal de ConfiguraÃ§Ãµes -->
@@ -223,21 +224,3 @@
         <script src="../language.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
