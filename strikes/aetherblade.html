@@ -14,37 +14,42 @@
         </a>
     </div>
     
-    <!-- BotÃ£o de ConfiguraÃ§Ãµes -->
-    <button class="settings-button" onclick="openSettingsModal()" title="ConfiguraÃ§Ãµes">
+    <!-- Bot�o de Configura��es -->
+    <button class="settings-button" onclick="openSettingsModal()" title="Configura��es">
         <img src="../icon/settings.png" alt="Settings" width="24" height="24">
     </button>
     
         <div class="language-selector">
         <label for="languageSelect" data-translate="language-label">Idioma:</label>
         <select id="languageSelect">
-            <option value="pt">Português</option>
+            <option value="pt">Portugu?s</option>
             <option value="en">English</option>
-            <option value="es">Español</option>
+            <option value="es">Espa?ol</option>
         </select>
     </div>
     
     <div class="container menu-container">
         
-        <div class="detail-header">
-            <h1 data-translate="strike-aetherblade">Aetherblade Hideout</h1>
-            <p data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
-            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
-        </div>
-        
-        <div class="action-buttons">
-            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
-            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
-            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+        <div class="detail-page-header">
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 data-translate="strike-aetherblade">Aetherblade Hideout</h1>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                </div>
+                <div class="header-actions">
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm">CM</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+            </div>
         </div>
 
         <div class="flashcards-container" id="flashcardsContainer">
-            <!-- Flashcards padrão -->
+            <!-- Flashcards padr?o -->
             <div class="flashcard" data-mode="normal">
                 <div class="flashcard-header">
                     <h3 class="flashcard-title" data-translate="aetherblade-dodge">Dodge Mai Trin</h3>
@@ -52,7 +57,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-dodge-desc">Esquive dos vários ataques de Mai Trin, quebre sua barra de desafio imediatamente para ganhar um boost de dano</p>
+                <p class="flashcard-description" data-translate="aetherblade-dodge-desc">Esquive dos v?rios ataques de Mai Trin, quebre sua barra de desafio imediatamente para ganhar um boost de dano</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -72,9 +77,9 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-split33-desc">Dois adds elite aparecem - despeje todo CC no add sudoeste primeiro já que tem uma breakbar enorme, depois mate o nordeste, depois volte pro sudoeste pra mais CC
+                <p class="flashcard-description" data-translate="aetherblade-split33-desc">Dois adds elite aparecem - despeje todo CC no add sudoeste primeiro j? que tem uma breakbar enorme, depois mate o nordeste, depois volte pro sudoeste pra mais CC
 
-Fique no círculo verde quando ele aparecer</p>
+Fique no c?rculo verde quando ele aparecer</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -94,7 +99,7 @@ Fique no círculo verde quando ele aparecer</p>
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-blueline-desc">Se você pegar uma linha azul sobre sua cabeça / borda azul na tela - corra pra fora ou wipa o grupo</p>
+                <p class="flashcard-description" data-translate="aetherblade-blueline-desc">Se voc? pegar uma linha azul sobre sua cabe?a / borda azul na tela - corra pra fora ou wipa o grupo</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -104,7 +109,7 @@ Fique no círculo verde quando ele aparecer</p>
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-deathray-desc">3 áreas "seguras" rotativas aparecem e Scarlet aparece na borda - fique onde ela não te acertaria num ataque em linha reta para aguardar o spot seguro correto - os outros dois são destruídos</p>
+                <p class="flashcard-description" data-translate="aetherblade-deathray-desc">3 ?reas "seguras" rotativas aparecem e Scarlet aparece na borda - fique onde ela n?o te acertaria num ataque em linha reta para aguardar o spot seguro correto - os outros dois s?o destru?dos</p>
             </div>
             
             <div class="flashcard" data-mode="normal">
@@ -114,7 +119,7 @@ Fique no círculo verde quando ele aparecer</p>
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-saturation-desc">Spreads/aoes mal executados dão uma redução de HP máximo stackável - espalhe corretamente para evitar dano desnecessário</p>
+                <p class="flashcard-description" data-translate="aetherblade-saturation-desc">Spreads/aoes mal executados d?o uma redu??o de HP m?ximo stack?vel - espalhe corretamente para evitar dano desnecess?rio</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -124,7 +129,7 @@ Fique no círculo verde quando ele aparecer</p>
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-cm-cleave-desc">O cleave de Mai Trin e o slam de Scarlet Briar agora adicionam um debuff stackável, priorize esquivar</p>
+                <p class="flashcard-description" data-translate="aetherblade-cm-cleave-desc">O cleave de Mai Trin e o slam de Scarlet Briar agora adicionam um debuff stack?vel, priorize esquivar</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -134,7 +139,7 @@ Fique no círculo verde quando ele aparecer</p>
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-cm-green-desc">Círculo verde requer EXATAMENTE 3 jogadores, nem mais nem menos - fazer essa mecânica te dá um debuff então você morre instantaneamente se fizer de novo</p>
+                <p class="flashcard-description" data-translate="aetherblade-cm-green-desc">C?rculo verde requer EXATAMENTE 3 jogadores, nem mais nem menos - fazer essa mec?nica te d? um debuff ent?o voc? morre instantaneamente se fizer de novo</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -144,7 +149,7 @@ Fique no círculo verde quando ele aparecer</p>
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-cm-blueline-desc">Mecânica de linha azul agora mira em dois jogadores, corra pra fora do grupo e solte elas juntas para evitar muitas AoEs persistentes, certifique-se de não soltar onde os dois adds grandes aparecem</p>
+                <p class="flashcard-description" data-translate="aetherblade-cm-blueline-desc">Mec?nica de linha azul agora mira em dois jogadores, corra pra fora do grupo e solte elas juntas para evitar muitas AoEs persistentes, certifique-se de n?o soltar onde os dois adds grandes aparecem</p>
             </div>
             
             <div class="flashcard" data-mode="cm">
@@ -154,22 +159,22 @@ Fique no círculo verde quando ele aparecer</p>
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="aetherblade-cm-deathray-desc">Mecânica Deathray agora tem dois jogadores com marcadores de AoE de cruz gigante sobre eles, eles precisam usar a special action key para anexar seus marcadores a "objetos ferrosos" próximos de forma que as cruzes não atinjam a zona segura do time</p>
+                <p class="flashcard-description" data-translate="aetherblade-cm-deathray-desc">Mec?nica Deathray agora tem dois jogadores com marcadores de AoE de cruz gigante sobre eles, eles precisam usar a special action key para anexar seus marcadores a "objetos ferrosos" pr?ximos de forma que as cruzes n?o atinjam a zona segura do time</p>
             </div>
             
-            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+            <!-- Os flashcards edit?veis ser?o adicionados aqui dinamicamente -->
         </div>
     </div>
-    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">← Voltar</a>
+    <a href="../strikes.html" class="back-button-fixed" data-translate="back-button">? Voltar</a>
     
-    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    <!-- Rodap? carregado dinamicamente via JavaScript -->
     
 
-    <!-- Modal de ConfiguraÃ§Ãµes -->
+    <!-- Modal de Configura��es -->
     <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()">
         <div class="settings-modal-content">
             <div class="settings-modal-header">
-                <h2 data-translate="settings-title">ConfiguraÃ§Ãµes</h2>
+                <h2 data-translate="settings-title">Configura��es</h2>
                 <button class="close-modal-btn" onclick="closeSettingsModal()">&times;</button>
             </div>
             <div class="settings-options">
@@ -180,10 +185,10 @@ Fique no círculo verde quando ele aparecer</p>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        <span data-translate="export-mechanics">Exportar MecÃ¢nicas</span>
+                        <span data-translate="export-mechanics">Exportar Mec�nicas</span>
                     </h3>
-                    <p data-translate="export-mechanics-desc">Salva suas mecÃ¢nicas customizadas desta pÃ¡gina em um arquivo JSON</p>
-                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar MecÃ¢nicas</button>
+                    <p data-translate="export-mechanics-desc">Salva suas mec�nicas customizadas desta p�gina em um arquivo JSON</p>
+                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mec�nicas</button>
                 </div>
                 
                 <div class="settings-option">
@@ -193,10 +198,10 @@ Fique no círculo verde quando ele aparecer</p>
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <span data-translate="import-mechanics">Importar MecÃ¢nicas</span>
+                        <span data-translate="import-mechanics">Importar Mec�nicas</span>
                     </h3>
-                    <p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p>
-                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button>
+                    <p data-translate="import-mechanics-desc">Carrega mec�nicas customizadas de um arquivo JSON para esta p�gina</p>
+                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar Mec�nicas</button>
                 </div>                
                 <div class="settings-action-buttons">
                 
@@ -222,3 +227,21 @@ Fique no círculo verde quando ele aparecer</p>
         <script src="../language.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
