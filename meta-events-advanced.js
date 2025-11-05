@@ -14,6 +14,101 @@ window.eventData = null;
 // Detect if animations should be reduced
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Event name to detail page mapping
+const EVENT_DETAIL_PAGES = {
+    // Core Tyria - Hard World Bosses
+    'The Shatterer': 'meta-events/shatterer.html',
+    'Tequatl the Sunless': 'meta-events/tequatl.html',
+    'Triple Trouble': 'meta-events/triple-trouble.html',
+    'Great Jungle Wurm': 'meta-events/triple-trouble.html',
+    'Karka Queen': 'meta-events/karka-queen.html',
+    // Core Tyria - Ley-Line Anomaly
+    'Ley-Line Anomaly': 'meta-events/ley-line-anomaly.html',
+    'Timberline Falls': 'meta-events/ley-line-anomaly.html',
+    'Iron Marches': 'meta-events/ley-line-anomaly.html',
+    'Gendarran Fields': 'meta-events/ley-line-anomaly.html',
+    // Living World Season 1
+    'Twisted Marionette (Public)': 'meta-events/twisted-marionette.html',
+    'Tower of Nightmares (Public)': 'meta-events/tower-nightmares.html',
+    'Battle For Lion\'s Arch (Public)': 'meta-events/battle-lions-arch.html',
+    // Living World Season 2
+    'Crash Site': 'meta-events/dry-top.html',
+    'Sandstorm': 'meta-events/dry-top.html',
+    'Dry Top': 'meta-events/dry-top.html',
+    // Heart of Thorns
+    'Night and the Enemy': 'meta-events/verdant-brink.html',
+    'Verdant Brink': 'meta-events/verdant-brink.html',
+    'Auric Basin': 'meta-events/auric-basin.html',
+    'Octovine': 'meta-events/auric-basin.html',
+    'Tangled Depths': 'meta-events/tangled-depths.html',
+    'Chak Gerent': 'meta-events/tangled-depths.html',
+    'Dragon\'s Stand': 'meta-events/dragons-stand.html',
+    'Mouth of Mordremoth': 'meta-events/dragons-stand.html',
+    // Living World Season 3
+    'Lake Doric': 'meta-events/lake-doric.html',
+    'White Mantle Control': 'meta-events/lake-doric.html',
+    'Noran\'s Homestead': 'meta-events/lake-doric.html',
+    'Saidra\'s Haven': 'meta-events/lake-doric.html',
+    'New Loamhurst': 'meta-events/lake-doric.html',
+    // Path of Fire
+    'Casino Blitz': 'meta-events/casino-blitz.html',
+    'Crystal Oasis': 'meta-events/casino-blitz.html',
+    'Serpents\' Ire': 'meta-events/serpents-ire.html',
+    'Domain of Vabbi': 'meta-events/serpents-ire.html',
+    'Forged with Fire': 'meta-events/serpents-ire.html',
+    'Maws of Torment': 'meta-events/desolation.html',
+    'Junundu Rising': 'meta-events/desolation.html',
+    'The Desolation': 'meta-events/desolation.html',
+    // Living World Season 4
+    'Palawadan': 'meta-events/palawadan.html',
+    'Domain of Istan': 'meta-events/palawadan.html',
+    'Death-Branded Shatterer': 'meta-events/branded-shatterer.html',
+    'Destroy the Death-Branded Shatterer': 'meta-events/branded-shatterer.html',
+    'Jahai Bluffs': 'meta-events/branded-shatterer.html',
+    // The Icebrood Saga
+    'Grothmar Valley': 'meta-events/grothmar-valley.html',
+    'Effigy': 'meta-events/grothmar-valley.html',
+    'Doomlore Shrine': 'meta-events/grothmar-valley.html',
+    'Ooze Pits': 'meta-events/grothmar-valley.html',
+    'Metal Concert': 'meta-events/grothmar-valley.html',
+    'Bjora Marches': 'meta-events/bjora-marches.html',
+    'Storms of Winter': 'meta-events/bjora-marches.html',
+    'Drakkar': 'meta-events/bjora-marches.html',
+    'Champion of the Ice Dragon': 'meta-events/bjora-marches.html',
+    'Dragonstorm': 'meta-events/dragonstorm.html',
+    'Dragonstorm (Public)': 'meta-events/dragonstorm.html',
+    // End of Dragons
+    'Seitung Province': 'meta-events/seitung-province.html',
+    'Aetherblade Assault': 'meta-events/seitung-province.html',
+    'Battle for the Jade Sea': 'meta-events/seitung-province.html',
+    'New Kaineng City': 'meta-events/kaineng-city.html',
+    'Kaineng Blackout': 'meta-events/kaineng-city.html',
+    'Echovald Wilds': 'meta-events/echovald-wilds.html',
+    'Gang War': 'meta-events/echovald-wilds.html',
+    'The Gang War of Echovald': 'meta-events/echovald-wilds.html',
+    'Dragon\'s End': 'meta-events/dragons-end.html',
+    'The Battle for the Jade Sea': 'meta-events/dragons-end.html',
+    'Jade Maw': 'meta-events/dragons-end.html',
+    // Secrets of the Obscure
+    'Skywatch Archipelago': 'meta-events/skywatch.html',
+    'Decima': 'meta-events/skywatch.html',
+    'Decima the Stormsinger': 'meta-events/skywatch.html',
+    'Defeat Decima': 'meta-events/skywatch.html',
+    'Inner Nayos': 'meta-events/inner-nayos.html',
+    'Convergence': 'meta-events/inner-nayos.html',
+    'The Midnight King': 'meta-events/inner-nayos.html',
+    'Eparch': 'meta-events/inner-nayos.html',
+    'Defense of Amnytas': 'meta-events/amnytas.html',
+    'Amnytas': 'meta-events/amnytas.html',
+    // Janthir Wilds
+    'Janthir Syntri': 'meta-events/janthir-syntri.html',
+    'Stoic Rampart': 'meta-events/janthir-syntri.html',
+    'The Stoic Rampart': 'meta-events/janthir-syntri.html',
+    'Lowland Shore': 'meta-events/lowland-shore.html',
+    'Titan\'s Threshold': 'meta-events/lowland-shore.html',
+    'Greer': 'meta-events/lowland-shore.html'
+};
+
 // Categories to display (filter out PvP tournaments and some others)
 const CATEGORIES_TO_SHOW = [
     'Core Tyria',
@@ -536,6 +631,26 @@ function createEventBar(eventKey, eventConfig, lang) {
         card.appendChild(timeInfo);
         card.appendChild(waypointBtn);
         card.appendChild(duration);
+        
+        // Add click handler to navigate to detail page if exists
+        if (EVENT_DETAIL_PAGES[event.name]) {
+            card.style.cursor = 'pointer';
+            card.onclick = (e) => {
+                // Don't navigate if clicking on waypoint button
+                if (e.target.closest('.event-card-waypoint')) {
+                    return;
+                }
+                window.location.href = EVENT_DETAIL_PAGES[event.name];
+            };
+            // Add hover effect
+            card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        }
         
         timeline.appendChild(card);
     });

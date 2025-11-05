@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tequatl the Sunless - Detalhes</title>
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body data-page-id="meta-tequatl">
+    <!-- Logo -->
+    <div class="logo-container">
+        <a href="../index.html">
+            <img src="../logo.png" alt="NGT Logo" class="site-logo">
+        </a>
+    </div>
+    
+    <!-- Botão de Configurações -->
+    <button class="settings-button" onclick="openSettingsModal()" title="Configurações">
+        <img src="../icon/settings.png" alt="Settings" width="24" height="24">
+    </button>
+    
+    <div class="language-selector">
+        <label for="languageSelect" data-translate="language-label">Idioma:</label>
+        <select id="languageSelect">
+            <option value="pt">Português</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+        </select>
+    </div>
+    
+    <div class="container menu-container">
+        
+        <div class="detail-page-header">
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 data-translate="meta-tequatl">Tequatl the Sunless</h1>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                </div>
+                <div class="header-actions">
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            </div>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <!-- Flashcards padrão -->
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-location">Localização</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-location-desc">Sparkfly Fen (Pântano Cintilante) - Praia sul perto de Splintered Coast Waypoint</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-dps">DPS Constante</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-dps-desc">Mantenha DPS constante em Tequatl. O evento tem timer de 15 minutos. Foque principalmente na cabeça e pés</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-poison">Poças de Veneno</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-poison-desc">Evite as poças verdes no chão que causam dano e aplicam condições pesadas. Elas aparecem frequentemente</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-waves">Onda de Dedos</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-waves-desc">Quando Tequatl bate com as garras no chão, ondas de choque se espalham. Pule por cima delas ou use dodge</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-battery">Baterias de Defesa</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-battery-desc">Grupo deve defender 6 baterias dos Risen. Se uma bateria cair, o grupo falha. Organize equipes de defesa</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-turrets">Turrets (Mega Lasers)</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-turrets-desc">6 jogadores devem usar as turrets nos ossos da espinha para quebrar Defiance Bar de Tequatl durante a fase aérea</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-breath">Ataque de Sopro</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-breath-desc">Tequatl faz breath attack devastador que insta-kill. Quando ele levantar a cabeça, corra para os lados imediatamente</p>
+            </div>
+            
+            <div class="flashcard">
+                <div class="flashcard-header">
+                    <h3 class="flashcard-title" data-translate="tequatl-coordination">Coordenação</h3>
+                    <div class="flashcard-actions">
+                        <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
+                    </div>
+                </div>
+                <p class="flashcard-description" data-translate="tequatl-coordination-desc">Evento requer coordenação de mapa inteiro. Siga comandos no chat. É recomendado usar mapas organizados (ex: TTS, Attuned)</p>
+            </div>
+            
+            <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
+        </div>
+    </div>
+    
+    <!-- Rodapé carregado dinamicamente via JavaScript -->
+    
+    <!-- Modal de Configurações -->
+    <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()">
+        <div class="settings-modal-content">
+            <div class="settings-modal-header">
+                <h2 data-translate="settings-title">Configurações</h2>
+                <button class="close-modal-btn" onclick="closeSettingsModal()">&times;</button>
+            </div>
+            <div class="settings-options">
+                <div class="settings-option">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span data-translate="export-mechanics">Exportar Mecânicas</span>
+                    </h3>
+                    <p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta página em um arquivo JSON</p>
+                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mecânicas</button>
+                </div>
+                
+                <div class="settings-option">
+                    <h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span data-translate="import-mechanics">Importar Mecânicas</span>
+                    </h3>
+                    <p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta página</p>
+                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button>
+                </div>
+                
+                <div class="settings-action-buttons">
+                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configurações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Confirmação de Reset -->
+    <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()">
+        <div class="reset-confirm-content">
+            <h3 data-translate="reset-confirm-title">Confirmar Reset</h3>
+            <p data-translate="reset-confirm-message">Isso irá apagar todas as suas configurações e mecânicas customizadas. Esta ação não pode ser desfeita.</p>
+            <div class="reset-confirm-buttons">
+                <button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button>
+                <button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../language.js"></script>
+</body>
+</html>

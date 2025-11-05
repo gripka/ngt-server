@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serpents' Ire - Detalhes</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body data-page-id="meta-serpents-ire">
+    <div class="logo-container"><a href="../index.html"><img src="../logo.png" alt="NGT Logo" class="site-logo"></a></div>
+    <button class="settings-button" onclick="openSettingsModal()" title="Configurações"><img src="../icon/settings.png" alt="Settings" width="24" height="24"></button>
+    <div class="language-selector"><label for="languageSelect" data-translate="language-label">Idioma:</label><select id="languageSelect"><option value="pt">Português</option><option value="en">English</option><option value="es">Español</option></select></div>
+    
+    <div class="container menu-container">
+        <div class="detail-page-header">
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 data-translate="meta-serpents-ire">Serpents' Ire</h1>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                </div>
+                <div class="header-actions"><span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span></div>
+            </div>
+            <div class="header-buttons">
+                <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+            </div>
+        </div>
+        
+        <div class="flashcards-container" id="flashcardsContainer">
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-location">Localização</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-location-desc">Domain of Vabbi - Path of Fire. Ilha de Atholma no centro do mapa</p></div>
+            
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-phases">2 Fases Principais</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-phases-desc">Fase 1: Capturar 3 shrines (15 min). Fase 2: Defender shrines e matar 3 hydra bosses (15 min). Total: 30 minutos</p></div>
+            
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-shrines">3 Shrines Simultâneos</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-shrines-desc">North, East, South shrines. Squad divide em 3 grupos iguais. Capture todos os 3 shrines para ativar fase 2</p></div>
+            
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-hydras">3 Hydra Bosses</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-hydras-desc">Após capturar shrines, 3 hydras spawnam (uma em cada shrine). Cada grupo fica em seu shrine e mata sua hydra. Coordenação crítica</p></div>
+            
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-heads">Mecânica: Hydra Heads</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-heads-desc">Cada hydra tem múltiplas cabeças. Mate todas as cabeças para derrotar a hydra. Cabeças respawnam se demo muito. DPS focado necessário</p></div>
+            
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-branded">Branded Adds</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-branded-desc">Branded enemies spawnam constantemente. Lide com adds rapidamente mas mantenha foco no hydra. Não deixe adds dominarem</p></div>
+            
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-coordination">Split de Squad</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-coordination-desc">Divide squad igualmente: 33% por shrine. Siga seu commander. Se shrine falhar, todo evento falha. Balanceamento é chave</p></div>
+            
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="serpents-rewards">Recompensas</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="serpents-rewards-desc">Serpent's Ire Chest. Trade Contracts, chance de Amalgamated Gemstone. Materiais PoF. Bom farm de ascended materials</p></div>
+        </div>
+    </div>
+    
+    <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()"><div class="settings-modal-content"><div class="settings-header"><h2 data-translate="settings">Configurações</h2><button class="close-settings" onclick="closeSettingsModal()">✕</button></div><div class="settings-options"><div class="settings-option"><h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span data-translate="export-mechanics">Exportar Mecânicas</span></h3><p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta página em um arquivo JSON</p><button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mecânicas</button></div><div class="settings-option"><h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg><span data-translate="import-mechanics">Importar Mecânicas</span></h3><p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta página</p><button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button></div><div class="settings-action-buttons"><button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configurações</button></div></div></div></div>
+    
+    <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()"><div class="reset-confirm-content"><h3 data-translate="reset-confirm-title">Confirmar Reset</h3><p data-translate="reset-confirm-message">Isso irá apagar todas as suas configurações e mecânicas customizadas. Esta ação não pode ser desfeita.</p><div class="reset-confirm-buttons"><button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button><button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button></div></div></div>
+
+    <script src="../language.js"></script>
+</body>
+</html>
