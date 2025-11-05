@@ -2699,6 +2699,238 @@
 				]
 			}
 		},
+		"castora": {
+			"category": "Visions of Eternity",
+			"name": "Castora: Day and night",
+			"segments": {
+				"1": {
+					"name": "Day",
+					"bg": [
+						255,
+						255,
+						255
+					]
+				},
+				"2": {
+					"name": "Dusk",
+					"bg": [
+						[
+							255,
+							255,
+							255
+						],
+						[
+							122,
+							134,
+							171
+						]
+					]
+				},
+				"3": {
+					"name": "Night",
+					"bg": [
+						122,
+						134,
+						171
+					]
+				},
+				"4": {
+					"name": "Dawn",
+					"bg": [
+						[
+							122,
+							134,
+							171
+						],
+						[
+							255,
+							255,
+							255
+						]
+					]
+				}
+			},
+			"sequences": {
+				"partial": [
+					{
+						"r": 3,
+						"d": 25
+					},
+					{
+						"r": 4,
+						"d": 5
+					}
+				],
+				"pattern": [
+					{
+						"r": 1,
+						"d": 70
+					},
+					{
+						"r": 2,
+						"d": 5
+					},
+					{
+						"r": 3,
+						"d": 25
+					},
+					{
+						"r": 4,
+						"d": 5
+					}
+				]
+			}
+		},
+		"shs": {
+			"category": "Visions of Eternity",
+			"name": "Shipwreck Strand",
+			"segments": {
+				"0": {
+					"name": "",
+					"bg": [
+						168,
+						194,
+						168
+					]
+				},
+				"1": {
+					"name": "Cuttlefish Cove",
+					"chatlink": "[\u0026BEEPAAA=]",
+					"bg": [
+						106,
+						141,
+						106
+					]
+				},
+				"2": {
+					"name": "The Unkindness of Ravens",
+					"chatlink": "[\u0026BCkPAAA=]",
+					"bg": [
+						106,
+						141,
+						106
+					]
+				},
+				"3": {
+					"name": "The Lost Pirate King",
+					"chatlink": "[\u0026BA4PAAA=]",
+					"bg": [
+						106,
+						141,
+						106
+					]
+				}
+			},
+			"sequences": {
+				"partial": [
+					{
+						"r": 0,
+						"d": 55
+					}
+				],
+				"pattern": [
+					{
+						"r": 1,
+						"d": 20
+					},
+					{
+						"r": 0,
+						"d": 40
+					},
+					{
+						"r": 2,
+						"d": 20
+					},
+					{
+						"r": 0,
+						"d": 40
+					},
+					{
+						"r": 3,
+						"d": 20
+					},
+					{
+						"r": 0,
+						"d": 40
+					}
+				]
+			}
+		},
+		"stw": {
+			"category": "Visions of Eternity",
+			"name": "Starlit Weald",
+			"segments": {
+				"0": {
+					"name": "",
+					"bg": [
+						168,
+						194,
+						168
+					]
+				},
+				"1": {
+					"name": "Starlight Bloom",
+					"chatlink": "[\u0026BJoPAAA=]",
+					"bg": [
+						106,
+						141,
+						106
+					]
+				},
+				"2": {
+					"name": "Constellations in the Caves",
+					"chatlink": "[\u0026BEAPAAA=]",
+					"bg": [
+						106,
+						141,
+						106
+					]
+				},
+				"3": {
+					"name": "The Ever-Flowering Grove",
+					"chatlink": "[\u0026BN8OAAA=]",
+					"bg": [
+						106,
+						141,
+						106
+					]
+				}
+			},
+			"sequences": {
+				"partial": [
+					{
+						"r": 0,
+						"d": 55
+					}
+				],
+				"pattern": [
+					{
+						"r": 1,
+						"d": 20
+					},
+					{
+						"r": 0,
+						"d": 40
+					},
+					{
+						"r": 2,
+						"d": 20
+					},
+					{
+						"r": 0,
+						"d": 40
+					},
+					{
+						"r": 3,
+						"d": 20
+					},
+					{
+						"r": 0,
+						"d": 40
+					}
+				]
+			}
+		},
 		"lc": {
 			"category": "Special Events",
 			"name": "Labyrinthine Cliffs",

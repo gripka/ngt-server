@@ -1,8 +1,6 @@
-<!-- Rodapé -->
+<!-- Rodapé - Version: Nov 2025 Update (VoE) -->
 <footer class="site-footer">
     <div class="footer-content">
-        <a href="#" class="back-button" id="footerBackButton" data-translate="back-button" style="display: none;">← Voltar</a>
-        
         <a href="https://discord.gg/PwvzkGx" target="_blank" class="discord-banner">
             <img src="discord.png" alt="Discord" class="discord-logo">
             <div class="discord-text">
@@ -28,6 +26,17 @@
             <button class="close-modal-btn" id="closeChangelogBtn">&times;</button>
         </div>
         <div class="changelog-content">
+            <div class="changelog-section">
+                <h3>November 2025</h3>
+                <ul>
+                    <li><strong>Visions of Eternity:</strong> Added new expansion to Meta Events with 3 new events</li>
+                    <li><strong>Castora Day/Night Cycle:</strong> Added day and night cycle tracking for Castora map</li>
+                    <li><strong>Shipwreck Strand Events:</strong> Added Cuttlefish Cove, The Unkindness of Ravens, and The Lost Pirate King</li>
+                    <li><strong>Starlit Weald Events:</strong> Added Starlight Bloom, Constellations in the Caves, and The Ever-Flowering Grove</li>
+                    <li><strong>VoE Filter:</strong> New filter button to show only Visions of Eternity events</li>
+                    <li><strong>Waypoint Support:</strong> All new events include clickable waypoints for easy navigation</li>
+                </ul>
+            </div>
             <div class="changelog-section">
                 <h3>August 2025</h3>
                 <ul>
@@ -56,14 +65,20 @@
         
         if (changelogTrigger && changelogModal) {
             // Abrir modal ao clicar no texto do footer
-            changelogTrigger.addEventListener('click', function() {
+            changelogTrigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Garantir que o modal apareça no topo da viewport
+                window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+                document.body.style.overflow = 'hidden';
                 changelogModal.style.display = 'flex';
+                changelogModal.scrollTop = 0;
             });
             
             // Fechar modal ao clicar no X
             if (closeBtn) {
                 closeBtn.addEventListener('click', function() {
                     changelogModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 });
             }
             
@@ -71,6 +86,7 @@
             changelogModal.addEventListener('click', function(event) {
                 if (event.target === changelogModal) {
                     changelogModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
         }
@@ -85,68 +101,28 @@
     }
 })();
 
-// Configurar botão Voltar no footer baseado na página atual
+// FORÇA o footer a ser fixo (correção crítica)
 (function() {
-    // Executar imediatamente quando o footer for inserido
-    function setupBackButton() {
-        const backButton = document.getElementById('footerBackButton');
-        if (!backButton) return;
-        
-        const path = window.location.pathname;
-        const filename = path.split('/').pop();
-        
-        console.log('Setup back button - path:', path, 'filename:', filename);
-        
-        // Mapear páginas que precisam do botão Voltar
-        const backButtonConfig = {
-            // Páginas principais voltam para index
-            'fractals.html': 'index.html',
-            'strikes.html': 'index.html',
-            'raids.html': 'index.html',
-            'meta-events.html': 'index.html',
-            'menu4.html': 'meta-events.html', // Redirect antigo
-            // Páginas legacy menu1-item
-            'menu1-item1.html': 'fractals.html',
-            'menu1-item2.html': 'fractals.html',
-            'menu1-item3.html': 'fractals.html',
-            'menu1-item4.html': 'fractals.html',
-            'menu1-item5.html': 'fractals.html',
-            // Páginas legacy menu2-item
-            'menu2-item1.html': 'strikes.html',
-            // Páginas legacy menu3-item
-            'menu3-item1.html': 'raids.html'
-        };
-        
-        // Verificar se está em uma subpasta (fractals/, strikes/, raids/)
-        if (path.includes('/fractals/')) {
-            backButton.href = '../fractals.html';
-            backButton.style.display = 'inline-block';
-            console.log('Detected fractals subfolder, href set to:', backButton.href);
-        }
-        else if (path.includes('/strikes/')) {
-            backButton.href = '../strikes.html';
-            backButton.style.display = 'inline-block';
-            console.log('Detected strikes subfolder, href set to:', backButton.href);
-        }
-        else if (path.includes('/raids/')) {
-            backButton.href = '../raids.html';
-            backButton.style.display = 'inline-block';
-            console.log('Detected raids subfolder, href set to:', backButton.href);
-        }
-        // Verificar páginas específicas (principais e legacy)
-        else if (backButtonConfig[filename]) {
-            backButton.href = backButtonConfig[filename];
-            backButton.style.display = 'inline-block';
-            console.log('Detected specific page, href set to:', backButton.href);
+    function ensureFooterFixed() {
+        const footer = document.querySelector('.site-footer') || document.querySelector('footer');
+        if (footer) {
+            footer.style.position = 'fixed';
+            footer.style.bottom = '0';
+            footer.style.left = '0';
+            footer.style.right = '0';
+            footer.style.zIndex = '9999';
+            footer.style.width = '100%';
         }
     }
     
-    // Tentar executar imediatamente
-    setupBackButton();
+    // Executar imediatamente
+    ensureFooterFixed();
     
-    // E também no DOMContentLoaded como backup
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupBackButton);
-    }
+    // Executar após load
+    window.addEventListener('load', ensureFooterFixed);
+    
+    // Executar após um pequeno delay (caso seja carregado dinamicamente)
+    setTimeout(ensureFooterFixed, 100);
+    setTimeout(ensureFooterFixed, 500);
 })();
 </script>

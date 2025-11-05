@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+/* Performance optimizations for smoother rendering */
+html {
+    /* Enable smooth scrolling */
+    scroll-behavior: smooth;
+    /* Prevent overscroll bounce on macOS/iOS */
+    overscroll-behavior: none;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #000000 0%, #000000 100%);
@@ -11,11 +19,15 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    padding: 20px 20px 120px 20px;
+    padding: 20px 20px 60px 20px;
     position: relative;
     /* Esconde conteúdo até traduções estarem prontas - previne flash */
     opacity: 0;
     transition: opacity 0.15s ease-in;
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.translations-ready {
@@ -1222,21 +1234,28 @@ body.cm-mode-active .btn-secondary {
     }
 }
 
-/* Rodapé */
+/* Rodapé - SEMPRE VISÍVEL NA PARTE INFERIOR DA TELA */
 .site-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
-    padding: 8px;
+    padding: 4px 8px;
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    display: flex;
+    z-index: 9999 !important;
+    display: flex !important;
     justify-content: center;
     align-items: center;
     gap: 3px;
     flex-wrap: wrap;
+    /* Performance optimization */
+    transform: translateZ(0);
+    will-change: transform;
+    /* Force visibility */
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .footer-content {
@@ -1244,7 +1263,7 @@ body.cm-mode-active .btn-secondary {
     align-items: center;
     gap: 20px;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: space-between; /* Mudado de flex-end para space-between */
     max-width: 100%;
     width: 100%;
     padding: 0 15px;
@@ -1252,12 +1271,14 @@ body.cm-mode-active .btn-secondary {
 
 .site-footer .back-button {
     margin-bottom: 0;
+    margin-right: auto; /* Empurra o botão para a esquerda */
     flex-shrink: 0;
     order: -1; /* Sempre primeiro */
 }
 
 .discord-banner {
     order: 1;
+    margin-left: auto; /* Empurra para a direita */
 }
 
 .footer-divider {
@@ -1389,6 +1410,10 @@ body.cm-mode-active .btn-secondary {
 /* Responsividade do rodapé - Tablets e menores */
 @media (max-width: 768px) {
     .site-footer {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
         padding: 15px 10px;
         gap: 15px;
     }
@@ -1691,9 +1716,13 @@ body.cm-mode-active .btn-secondary {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
     padding: 25px;
-    backdrop-filter: blur(15px);
+    /* Removed heavy backdrop-filter for better performance */
+    /* backdrop-filter: blur(15px); */
     border: 2px solid rgba(102, 126, 234, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    /* CSS Containment for performance */
+    contain: layout style paint;
+    content-visibility: auto;
 }
 
 .event-category-group-title {
@@ -1713,8 +1742,11 @@ body.cm-mode-active .btn-secondary {
     background: rgba(255, 255, 255, 0.08);
     border-radius: 14px;
     padding: 18px;
-    backdrop-filter: blur(10px);
+    /* Removed heavy backdrop-filter for better performance */
+    /* backdrop-filter: blur(10px); */
     border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Performance optimization */
+    contain: layout paint;
     transition: all 0.3s ease;
 }
 
@@ -1744,6 +1776,9 @@ body.cm-mode-active .btn-secondary {
     padding: 10px 5px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    /* Performance optimizations for smooth scrolling */
+    contain: layout style paint;
+    will-change: scroll-position;
 }
 
 /* Custom scrollbar for timeline */
@@ -1772,12 +1807,16 @@ body.cm-mode-active .btn-secondary {
     border-radius: 10px;
     padding: 10px 14px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    /* Performance optimizations */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .event-card::before {
@@ -1797,7 +1836,6 @@ body.cm-mode-active .btn-secondary {
 
 .event-card.event-active {
     border: 3px solid #28a745;
-    animation: pulse-green 2s infinite;
     box-shadow: 0 4px 20px rgba(40, 167, 69, 0.4);
 }
 
@@ -1807,11 +1845,19 @@ body.cm-mode-active .btn-secondary {
 
 .event-card.event-imminent {
     border: 2px solid #ffc107;
-    animation: pulse-yellow 2s infinite;
 }
 
 .event-card.event-imminent::before {
     background: #ffc107;
+}
+
+/* Only animate on hover to reduce constant animations */
+.event-card.event-active:hover {
+    animation: pulse-green 1.5s ease-in-out;
+}
+
+.event-card.event-imminent:hover {
+    animation: pulse-yellow 1.5s ease-in-out;
 }
 
 .event-card.event-soon {
@@ -1822,30 +1868,51 @@ body.cm-mode-active .btn-secondary {
     background: #ff8c00;
 }
 
+/* Optimized animations - lighter and only on hover */
 @keyframes pulse-green {
     0%, 100% {
         box-shadow: 0 4px 20px rgba(40, 167, 69, 0.4);
+        transform: translateZ(0) scale(1);
     }
     50% {
         box-shadow: 0 4px 30px rgba(40, 167, 69, 0.7);
+        transform: translateZ(0) scale(1.02);
     }
 }
 
 @keyframes pulse-yellow {
     0%, 100% {
         box-shadow: 0 4px 12px rgba(255, 193, 7, 0.4);
+        transform: translateZ(0) scale(1);
     }
     50% {
         box-shadow: 0 4px 20px rgba(255, 193, 7, 0.7);
+        transform: translateZ(0) scale(1.02);
     }
 }
 
 @keyframes pulse-red {
     0%, 100% {
         box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        transform: translateZ(0) scale(1);
     }
     50% {
         box-shadow: 0 4px 20px rgba(220, 53, 69, 0.6);
+        transform: translateZ(0) scale(1.02);
+    }
+}
+
+/* Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .event-card,
+    .event-card.event-active,
+    .event-card.event-imminent {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .event-card:hover {
+        transform: none;
     }
 }
 
@@ -2559,7 +2626,7 @@ body.cm-mode-active .btn-secondary {
     stroke: #764ba2;
 }
 
-/* Modal de configurações */
+/* Modal de configurações - Optimized */
 .settings-modal {
     display: none;
     position: fixed;
@@ -2568,11 +2635,16 @@ body.cm-mode-active .btn-secondary {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(5px);
+    /* Removed heavy backdrop-filter for performance */
+    /* backdrop-filter: blur(5px); */
     z-index: 2000;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    animation: fadeIn 0.3s ease;
+    padding-top: 50px;
+    animation: fadeIn 0.2s ease;
+    /* Garantir que o modal sempre apareça no topo da viewport visível */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -2590,8 +2662,15 @@ body.cm-mode-active .btn-secondary {
     padding: 40px;
     max-width: 500px;
     width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s ease;
+    animation: slideUp 0.2s ease;
+    /* Performance optimizations */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 @keyframes slideUp {
@@ -2733,7 +2812,7 @@ body.cm-mode-active .btn-secondary {
     transform: translateY(0);
 }
 
-/* Modal de Changelog */
+/* Modal de Changelog - Optimized for performance */
 .changelog-modal {
     display: none;
     position: fixed;
@@ -2742,11 +2821,17 @@ body.cm-mode-active .btn-secondary {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
+    /* Removed heavy backdrop-filter */
+    /* backdrop-filter: blur(5px); */
     z-index: 10000;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    animation: fadeIn 0.3s ease;
+    padding-top: 50px;
+    /* Faster animation */
+    animation: fadeIn 0.2s ease;
+    /* Garantir que o modal sempre apareça no topo da viewport visível */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .changelog-modal-content {
@@ -2758,7 +2843,14 @@ body.cm-mode-active .btn-secondary {
     max-height: 80vh;
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s ease;
+    /* Faster animation */
+    animation: slideUp 0.2s ease;
+    /* Performance optimizations */
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    /* Better scrolling performance */
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .changelog-modal-header {
@@ -2782,6 +2874,9 @@ body.cm-mode-active .btn-secondary {
 .changelog-content {
     color: #333;
     font-size: 0.9rem;
+    /* Optimize scroll performance */
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
 }
 
 .changelog-section {
@@ -2790,6 +2885,9 @@ body.cm-mode-active .btn-secondary {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
     border-radius: 12px;
     border-left: 3px solid #667eea;
+    /* Performance optimization for scrolling */
+    contain: layout paint;
+    content-visibility: auto;
 }
 
 .changelog-section:last-child {
@@ -3030,5 +3128,75 @@ body.cm-mode-active .btn-secondary {
     
     .link-item p {
         font-size: 0.75rem;
+    }
+}
+
+/* Desktop optimizations - Force GPU acceleration */
+@media (min-width: 769px) {
+    /* Optimize main container */
+    .container {
+        transform: translateZ(0);
+        will-change: scroll-position;
+        /* Ensure content doesn't overlap footer */
+        margin-bottom: 80px;
+    }
+    
+    /* Optimize event timers container */
+    .event-timers-container {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+    
+    /* Disable expensive effects on desktop */
+    .event-category-group,
+    .event-bar-section {
+        backdrop-filter: none !important;
+    }
+    
+    /* Optimize animations for desktop */
+    .event-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .event-card:hover {
+        transform: translateY(-3px) translateZ(0);
+    }
+    
+    /* FORCE footer to be always visible at bottom of viewport */
+    .site-footer {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+    }
+}
+
+/* CRITICAL: Footer must ALWAYS be fixed at bottom of screen */
+footer,
+.site-footer,
+footer.site-footer {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    width: 100% !important;
+    display: flex !important;
+}
+
+/* Ensure back button in footer is visible and not hidden */
+.site-footer .back-button,
+footer .back-button {
+    position: relative !important;
+    margin-bottom: 0 !important;
+    z-index: 10000 !important;
+    display: inline-block !important;
+}
+
+/* Optimize for high refresh rate monitors */
+@media (prefers-reduced-motion: no-preference) and (min-resolution: 120dpi) {
+    * {
+        will-change: auto !important;
     }
 }

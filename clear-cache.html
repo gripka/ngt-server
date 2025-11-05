@@ -1,71 +1,134 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+﻿<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset='UTF-8'>
+    <meta http-equiv='Cache-Control' content='no-cache, no-store, must-revalidate'>
+    <meta http-equiv='Pragma' content='no-cache'>
+    <meta http-equiv='Expires' content='0'>
     <title>Limpar Cache - NGT</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 20px;
         }
         .container {
-            text-align: center;
-            background: white;
-            color: #333;
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .message {
+            color: #333;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 20px;
+            margin: 20px 0;
+        }
+        ul {
+            text-align: left;
+            color: #666;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+        li {
+            margin: 10px 0;
+            padding-left: 10px;
         }
         button {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             padding: 15px 30px;
+            border-radius: 25px;
             font-size: 16px;
-            border-radius: 10px;
+            font-weight: bold;
             cursor: pointer;
             margin: 10px;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
         }
         button:hover {
-            transform: scale(1.05);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
         }
-        .success {
-            color: #22c55e;
-            margin-top: 20px;
-            display: none;
+        .important {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #856404;
+        }
+        .code {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+            font-weight: bold;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🔧 Limpar Cache do Site</h1>
-        <p>Clique no botão abaixo para limpar o cache do footer e recarregar a página.</p>
-        <button onclick="clearCache()">Limpar Cache</button>
-        <button onclick="goToIndex()">Voltar ao Início</button>
-        <p class="success" id="success">✅ Cache limpo com sucesso!</p>
+    <div class='container'>
+        <h1> Limpar Cache</h1>
+        <div class='success' id='status'> Cache limpo com sucesso!</div>
+        <ul>
+            <li> Cache do footer removido</li>
+            <li> SessionStorage limpo</li>
+            <li> LocalStorage limpo</li>
+        </ul>
+        <div class='important'>
+            <strong> IMPORTANTE:</strong><br>
+            Para garantir que as mudanças sejam aplicadas:
+        </div>
+        <div class='message'>
+            <strong>Opção 1 (Recomendado):</strong><br>
+            Pressione <div class='code'>Ctrl + Shift + R</div>
+            (ou <div class='code'>Cmd + Shift + R</div> no Mac)<br>
+            em cada página aberta para forçar o reload sem cache
+        </div>
+        <div class='message'>
+            <strong>Opção 2:</strong><br>
+            Use os botões abaixo para abrir as páginas já limpas
+        </div>
+        <button onclick='openPage("index.html")'> Abrir Index</button>
+        <button onclick='openPage("fractals.html")'> Abrir Fractals</button>
+        <button onclick='openPage("raids.html")'> Abrir Raids</button>
+        <button onclick='openPage("strikes.html")'> Abrir Strikes</button>
+        <button onclick='openPage("meta-events.html")'> Meta Events</button>
     </div>
-    
     <script>
-        function clearCache() {
-            sessionStorage.clear();
-            localStorage.removeItem('footerHTML-root');
-            localStorage.removeItem('footerHTML-subfolder');
-            document.getElementById('success').style.display = 'block';
-            setTimeout(() => {
-                location.reload();
-            }, 1000);
-        }
+        // Limpar TODOS os caches
+        sessionStorage.clear();
+        localStorage.clear();
         
-        function goToIndex() {
-            window.location.href = 'index.html';
+        console.log('=== CACHE COMPLETAMENTE LIMPO ===');
+        console.log('SessionStorage limpo');
+        console.log('LocalStorage limpo');
+        
+        function openPage(page) {
+            // Adicionar timestamp para forçar reload
+            const url = page + '?nocache=' + Date.now();
+            window.open(url, '_blank');
         }
     </script>
 </body>

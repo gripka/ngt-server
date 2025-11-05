@@ -4,9 +4,15 @@
 let eventData = null;
 let updateInterval = null;
 let waypointCache = {}; // Cache for waypoint names
+let animationFrameId = null; // For requestAnimationFrame
+let lastUpdateTime = 0; // Throttle updates
+let isPageVisible = true; // Track page visibility
 
 // Expose for debugging
 window.eventData = null;
+
+// Detect if animations should be reduced
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Categories to display (filter out PvP tournaments and some others)
 const CATEGORIES_TO_SHOW = [
@@ -20,7 +26,8 @@ const CATEGORIES_TO_SHOW = [
     'The Icebrood Saga',
     'End of Dragons',
     'Secrets of the Obscure',
-    'Janthir Wilds'
+    'Janthir Wilds',
+    'Visions of Eternity'
 ];
 
 // Events to exclude (we don't want PvP tournaments, day/night cycle, etc.)
@@ -88,6 +95,11 @@ const CATEGORY_NAMES = {
         pt: 'Janthir Wilds',
         en: 'Janthir Wilds',
         es: 'Janthir Wilds'
+    },
+    'Visions of Eternity': {
+        pt: 'Visions of Eternity',
+        en: 'Visions of Eternity',
+        es: 'Visions of Eternity'
     }
 };
 
@@ -418,7 +430,8 @@ function createEventBar(eventKey, eventConfig, lang) {
         return null;
     }
     
-    const upcomingEvents = calculateUpcomingEvents(eventConfig, 8);
+    // Reduced from 8 to 5 cards for better performance
+    const upcomingEvents = calculateUpcomingEvents(eventConfig, 5);
     
     if (upcomingEvents.length === 0) return null;
     
@@ -532,15 +545,30 @@ function createEventBar(eventKey, eventConfig, lang) {
     return section;
 }
 
-// Update all countdowns - recalculate time remaining every second
-function updateAllCountdowns() {
-    if (!eventData) return;
+// Update all countdowns - optimized with throttling
+function updateAllCountdowns(timestamp) {
+    if (!eventData || !isPageVisible) {
+        // Don't update if page is not visible
+        animationFrameId = requestAnimationFrame(updateAllCountdowns);
+        return;
+    }
     
+    // Throttle updates to every 1000ms (1 second) for better performance
+    if (timestamp - lastUpdateTime < 1000) {
+        animationFrameId = requestAnimationFrame(updateAllCountdowns);
+        return;
+    }
+    
+    lastUpdateTime = timestamp;
     const now = new Date().getTime();
     let needsRerender = false;
     
-    // Update each card's countdown by recalculating time difference
-    document.querySelectorAll('.event-card').forEach(card => {
+    // Batch DOM reads and writes for better performance
+    const cards = document.querySelectorAll('.event-card');
+    const updates = [];
+    
+    // Read phase - collect all data
+    cards.forEach(card => {
         const eventTime = parseInt(card.dataset.eventTime);
         const duration = parseInt(card.dataset.duration);
         if (!eventTime) return;
@@ -556,45 +584,76 @@ function updateAllCountdowns() {
         }
         
         const countdown = card.querySelector('.event-card-countdown');
-        if (countdown) {
-            if (isActive) {
-                // Show countdown of time remaining in the active event
-                const eventEndTime = eventTime + (duration * 60 * 1000);
-                const timeRemaining = eventEndTime - now;
-                countdown.textContent = `🔴 ${formatCountdown(timeRemaining)}`;
-                countdown.classList.add('event-active-text');
-            } else {
-                countdown.textContent = formatCountdown(timeUntil);
-                countdown.classList.remove('event-active-text');
-            }
+        if (!countdown) return;
+        
+        // Calculate new values
+        let newText, newActiveClass;
+        if (isActive) {
+            const eventEndTime = eventTime + (duration * 60 * 1000);
+            const timeRemaining = eventEndTime - now;
+            newText = `🔴 ${formatCountdown(timeRemaining)}`;
+            newActiveClass = 'event-active-text';
+        } else {
+            newText = formatCountdown(timeUntil);
+            newActiveClass = '';
         }
         
-        // Update urgency/active class
-        card.classList.remove('event-imminent', 'event-soon', 'event-active');
+        // Calculate urgency class
+        let urgencyClass = '';
         if (isActive) {
-            card.classList.add('event-active');
+            urgencyClass = 'event-active';
         } else {
             const minutes = timeUntil / (1000 * 60);
             if (minutes <= 15) {
-                card.classList.add('event-imminent');
+                urgencyClass = 'event-imminent';
             } else if (minutes <= 30) {
-                card.classList.add('event-soon');
+                urgencyClass = 'event-soon';
             }
+        }
+        
+        updates.push({ card, countdown, newText, newActiveClass, urgencyClass });
+    });
+    
+    // Write phase - apply all changes at once
+    updates.forEach(({ card, countdown, newText, newActiveClass, urgencyClass }) => {
+        // Only update if text changed (avoid unnecessary reflows)
+        if (countdown.textContent !== newText) {
+            countdown.textContent = newText;
+        }
+        
+        // Only update classes if needed
+        const currentActiveClass = countdown.classList.contains('event-active-text');
+        if (newActiveClass && !currentActiveClass) {
+            countdown.classList.add('event-active-text');
+        } else if (!newActiveClass && currentActiveClass) {
+            countdown.classList.remove('event-active-text');
+        }
+        
+        // Update card classes
+        const currentClasses = card.className;
+        const baseClass = 'event-card';
+        const newClasses = urgencyClass ? `${baseClass} ${urgencyClass}` : baseClass;
+        
+        if (currentClasses !== newClasses) {
+            card.className = newClasses;
         }
     });
     
     if (needsRerender) {
         renderAllEvents();
+        return; // Don't schedule next frame, renderAllEvents will do it
     }
+    
+    // Schedule next update
+    animationFrameId = requestAnimationFrame(updateAllCountdowns);
 }
 
-// Render all events grouped by category
+// Render all events grouped by category (optimized with DocumentFragment)
 function renderAllEvents() {
     const container = document.getElementById('eventTimersContainer');
     if (!container || !eventData) return;
     
     const lang = localStorage.getItem('selectedLanguage') || 'pt';
-    container.innerHTML = '';
     
     // Group events by category
     const groupedEvents = {};
@@ -612,6 +671,9 @@ function renderAllEvents() {
             config: eventConfig
         });
     }
+    
+    // Use DocumentFragment for better performance
+    const fragment = document.createDocumentFragment();
     
     // Render each category group
     CATEGORIES_TO_SHOW.forEach(categoryName => {
@@ -637,14 +699,19 @@ function renderAllEvents() {
             }
         });
         
-        container.appendChild(categorySection);
+        fragment.appendChild(categorySection);
     });
     
-    // Start updating countdowns every second
-    if (updateInterval) {
-        clearInterval(updateInterval);
+    // Clear and append all at once (single reflow)
+    container.innerHTML = '';
+    container.appendChild(fragment);
+    
+    // Start updating countdowns with requestAnimationFrame (more efficient)
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
     }
-    updateInterval = setInterval(updateAllCountdowns, 1000);
+    lastUpdateTime = 0; // Reset throttle timer
+    animationFrameId = requestAnimationFrame(updateAllCountdowns);
 }
 
 // Initialize when page loads
@@ -656,6 +723,25 @@ if (document.readyState === 'loading') {
 
 // Re-render when language changes
 document.addEventListener('languageChanged', renderAllEvents);
+
+// Pause updates when page is not visible (saves CPU)
+document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+    
+    if (isPageVisible) {
+        // Resume updates when page becomes visible
+        if (!animationFrameId && eventData) {
+            lastUpdateTime = 0;
+            animationFrameId = requestAnimationFrame(updateAllCountdowns);
+        }
+    } else {
+        // Pause updates when page is hidden
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+    }
+});
 
 // Filter functionality
 function setupFilters() {
@@ -698,59 +784,70 @@ setTimeout(setupFilters, 100);
 // SEARCH FUNCTIONALITY
 // ============================================
 
-// Função de busca de eventos
+// Debounce helper function
+let searchDebounceTimer = null;
+function debounce(func, delay) {
+    return function(...args) {
+        clearTimeout(searchDebounceTimer);
+        searchDebounceTimer = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Função de busca de eventos (optimized)
 function filterEventsBySearch(searchTerm) {
     const normalizedSearch = searchTerm.toLowerCase().trim();
     
-    // Buscar todos os cards de eventos E todas as seções de barras
+    // Use querySelectorAll once and reuse
     const allCards = document.querySelectorAll('.event-card');
     const allBarSections = document.querySelectorAll('.event-bar-section');
     
     // Se a busca estiver vazia, mostrar todos
     if (normalizedSearch === '') {
-        allCards.forEach(card => {
-            card.style.display = '';
-        });
-        allBarSections.forEach(section => {
-            section.style.display = '';
-        });
-        
-        // Mostrar/ocultar categorias vazias
-        document.querySelectorAll('.event-category-group').forEach(section => {
-            const visibleBars = section.querySelectorAll('.event-bar-section:not([style*="display: none"])');
-            section.style.display = visibleBars.length > 0 ? 'block' : 'none';
+        // Batch DOM updates
+        requestAnimationFrame(() => {
+            allCards.forEach(card => {
+                card.style.display = '';
+            });
+            allBarSections.forEach(section => {
+                section.style.display = '';
+            });
+            
+            // Mostrar/ocultar categorias vazias
+            document.querySelectorAll('.event-category-group').forEach(section => {
+                const visibleBars = section.querySelectorAll('.event-bar-section:not([style*="display: none"])');
+                section.style.display = visibleBars.length > 0 ? 'block' : 'none';
+            });
         });
         return;
     }
     
-    // Filtrar cards de eventos
-    allCards.forEach(card => {
-        const nameElement = card.querySelector('.event-card-name');
+    // Use requestAnimationFrame for smoother updates
+    requestAnimationFrame(() => {
+        // Filtrar cards de eventos
+        allCards.forEach(card => {
+            const nameElement = card.querySelector('.event-card-name');
+            
+            if (!nameElement) {
+                return;
+            }
+            
+            const eventName = nameElement.textContent.toLowerCase();
+            
+            // Mostrar se o nome contém o termo de busca
+            card.style.display = eventName.includes(normalizedSearch) ? '' : 'none';
+        });
         
-        if (!nameElement) {
-            return;
-        }
+        // Ocultar barras de eventos que não têm cards visíveis
+        allBarSections.forEach(section => {
+            const visibleCards = section.querySelectorAll('.event-card:not([style*="display: none"])');
+            section.style.display = visibleCards.length > 0 ? '' : 'none';
+        });
         
-        const eventName = nameElement.textContent.toLowerCase();
-        
-        // Mostrar se o nome contém o termo de busca
-        if (eventName.includes(normalizedSearch)) {
-            card.style.display = '';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-    
-    // Ocultar barras de eventos que não têm cards visíveis
-    allBarSections.forEach(section => {
-        const visibleCards = section.querySelectorAll('.event-card:not([style*="display: none"])');
-        section.style.display = visibleCards.length > 0 ? '' : 'none';
-    });
-    
-    // Ocultar categorias que não têm barras visíveis
-    document.querySelectorAll('.event-category-group').forEach(section => {
-        const visibleBars = section.querySelectorAll('.event-bar-section:not([style*="display: none"])');
-        section.style.display = visibleBars.length > 0 ? 'block' : 'none';
+        // Ocultar categorias que não têm barras visíveis
+        document.querySelectorAll('.event-category-group').forEach(section => {
+            const visibleBars = section.querySelectorAll('.event-bar-section:not([style*="display: none"])');
+            section.style.display = visibleBars.length > 0 ? 'block' : 'none';
+        });
     });
 }
 
@@ -760,9 +857,13 @@ function initEventSearch() {
     const searchIcon = document.querySelector('.search-icon');
     
     if (searchInput) {
-        // Busca ao digitar
+        // Busca ao digitar com debounce (300ms) para melhor performance
+        const debouncedSearch = debounce((value) => {
+            filterEventsBySearch(value);
+        }, 300);
+        
         searchInput.addEventListener('input', (e) => {
-            filterEventsBySearch(e.target.value);
+            debouncedSearch(e.target.value);
         });
         
         // Busca ao pressionar Enter

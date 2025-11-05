@@ -585,6 +585,20 @@ function loadFooter() {
     if (cachedFooter) {
         // Usa o footer do cache já com caminhos ajustados
         document.body.insertAdjacentHTML('beforeend', cachedFooter);
+        
+        // FORÇA footer a ser fixo (correção crítica)
+        setTimeout(() => {
+            const footer = document.querySelector('.site-footer');
+            if (footer) {
+                footer.style.position = 'fixed';
+                footer.style.bottom = '0';
+                footer.style.left = '0';
+                footer.style.right = '0';
+                footer.style.zIndex = '9999';
+                footer.style.width = '100%';
+            }
+        }, 0);
+        
         const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
         changeLanguage(savedLanguage);
         // Reinicializa os event listeners do footer
@@ -607,6 +621,19 @@ function loadFooter() {
                 
                 // Insere no documento
                 document.body.insertAdjacentHTML('beforeend', adjustedData);
+                
+                // FORÇA footer a ser fixo (correção crítica)
+                setTimeout(() => {
+                    const footer = document.querySelector('.site-footer');
+                    if (footer) {
+                        footer.style.position = 'fixed';
+                        footer.style.bottom = '0';
+                        footer.style.left = '0';
+                        footer.style.right = '0';
+                        footer.style.zIndex = '9999';
+                        footer.style.width = '100%';
+                    }
+                }, 0);
                 
                 // Aplica traduções no footer após inserir
                 const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
@@ -698,6 +725,41 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Carrega rodapé
         loadFooter();
         
+        // FORÇA footer fixo múltiplas vezes para garantir
+        const forceFooterFixed = () => {
+            const footer = document.querySelector('.site-footer') || document.querySelector('footer');
+            if (footer) {
+                footer.style.cssText = 'position: fixed !important; bottom: 0 !important; left: 0 !important; right: 0 !important; z-index: 9999 !important; width: 100% !important; display: flex !important;';
+                console.log('✅ Footer forçado a ser fixo');
+                return true;
+            }
+            return false;
+        };
+        
+        // Executa múltiplas vezes para garantir
+        setTimeout(forceFooterFixed, 50);
+        setTimeout(forceFooterFixed, 200);
+        setTimeout(forceFooterFixed, 500);
+        setTimeout(forceFooterFixed, 1000);
+        
+        // Observer para detectar quando o footer é adicionado ao DOM
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1 && (node.classList?.contains('site-footer') || node.tagName === 'FOOTER')) {
+                        console.log('🔍 Footer detectado no DOM');
+                        forceFooterFixed();
+                        observer.disconnect();
+                    }
+                });
+            });
+        });
+        
+        observer.observe(document.body, { childList: true, subtree: true });
+        
+        // Desconecta o observer após 2 segundos
+        setTimeout(() => observer.disconnect(), 2000);
+        
     } finally {
         // Mostra o conteúdo após tudo pronto
         document.body.classList.add('translations-ready');
@@ -735,6 +797,9 @@ function openSettingsModal() {
     if (modal) {
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
+        // Garantir que o modal apareça no topo da viewport
+        window.scrollTo(0, 0);
+        modal.scrollTop = 0;
     }
 }
 
