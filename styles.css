@@ -8,8 +8,9 @@
 html {
     /* Enable smooth scrolling */
     scroll-behavior: smooth;
-    /* Prevent overscroll bounce on macOS/iOS */
-    overscroll-behavior: none;
+    /* Allow pull-to-refresh on mobile */
+    overscroll-behavior-x: none;
+    overscroll-behavior-y: auto;
 }
 
 body {
@@ -32,6 +33,13 @@ body {
 
 body.translations-ready {
     opacity: 1;
+}
+
+/* Ajuste de padding para mobile - evitar sobreposição com footer */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 100px;
+    }
 }
 
 /* Logo */

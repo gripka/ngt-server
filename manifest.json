@@ -1,0 +1,27 @@
+{
+  "name": "NGT Server - Guild Wars 2 Timer",
+  "short_name": "NGT Server",
+  "description": "Timer para Meta Eventos, Fractals, Strikes e Raids do Guild Wars 2",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["games", "utilities"],
+  "lang": "pt-BR",
+  "dir": "ltr"
+}
