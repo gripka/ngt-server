@@ -449,6 +449,10 @@ function copyWaypoint(waypoint, eventName) {
     
     const lang = localStorage.getItem('selectedLanguage') || 'pt';
     
+    // Salvar posição atual do scroll
+    const scrollY = window.scrollY || window.pageYOffset;
+    const scrollX = window.scrollX || window.pageXOffset;
+    
     // Use the reliable fallback method that works in file:// protocol
     const textArea = document.createElement('textarea');
     textArea.value = waypoint;
@@ -463,9 +467,10 @@ function copyWaypoint(waypoint, eventName) {
     textArea.style.boxShadow = 'none';
     textArea.style.background = 'transparent';
     textArea.style.opacity = '0';
+    textArea.setAttribute('readonly', '');
     
     document.body.appendChild(textArea);
-    textArea.focus();
+    textArea.focus({ preventScroll: true }); // Evita scroll ao focar
     textArea.select();
     
     try {
@@ -490,6 +495,8 @@ function copyWaypoint(waypoint, eventName) {
         showCopyMessage(messages[lang], false);
     } finally {
         document.body.removeChild(textArea);
+        // Restaurar posição do scroll (caso tenha mudado)
+        window.scrollTo(scrollX, scrollY);
     }
 }
 
@@ -503,6 +510,7 @@ function showCopyMessage(message, success) {
     const notification = document.createElement('div');
     notification.className = 'copy-notification ' + (success ? 'success' : 'error');
     notification.textContent = message;
+    
     document.body.appendChild(notification);
     
     setTimeout(() => {

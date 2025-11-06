@@ -1307,7 +1307,7 @@
   "search-event-placeholder": "Buscar evento...",
 
   "feedback-title": "Sugestões e Melhorias",
-  "feedback-intro-title": "💡 Ajude a melhorar o projeto",
+  "feedback-intro-title": "Ajude a melhorar o projeto",
   "feedback-discord-title": "Discord",
   "feedback-discord-desc": "Participe da comunidade e envie sugestões no canal Suporte > Sugestões",
   "feedback-form-title": "Formulário",
@@ -1315,11 +1315,11 @@
   "feedback-thanks": "❤️ Obrigado por ajudar a melhorar o projeto! Sua opinião é muito importante para nós.",
   
   "useful-links-title": "Links Úteis",
-  "links-section-wiki": "📚 Wiki e Documentação",
-  "links-section-builds": "⚔️ Builds e Equipamentos",
-  "links-section-guides": "📖 Guias e Tutoriais",
-  "links-section-tools": "🛠️ Ferramentas",
-  "links-section-streamers": "🎥 Streamers e Criadores",
+  "links-section-wiki": "Wiki e Documentação",
+  "links-section-builds": "Builds e Equipamentos",
+  "links-section-guides": "Guias e Tutoriais",
+  "links-section-tools": "Ferramentas",
+  "links-section-streamers": "Streamers e Criadores",
   
   "link-official-wiki": "Wiki Oficial GW2",
   "link-official-wiki-desc": "Documentação completa sobre o jogo",
