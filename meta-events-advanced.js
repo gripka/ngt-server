@@ -7,6 +7,9 @@ let waypointCache = {}; // Cache for waypoint names
 let animationFrameId = null; // For requestAnimationFrame
 let lastUpdateTime = 0; // Throttle updates
 let isPageVisible = true; // Track page visibility
+let cardObserver = null; // Intersection Observer for lazy loading
+let lastRenderTime = 0; // Prevent too frequent re-renders
+const RERENDER_COOLDOWN = 60000; // Only re-render every 60 seconds max
 
 // Expose for debugging
 window.eventData = null;
@@ -31,6 +34,8 @@ const EVENT_DETAIL_PAGES = {
     'Twisted Marionette (Public)': 'meta-events/twisted-marionette.html',
     'Tower of Nightmares (Public)': 'meta-events/tower-nightmares.html',
     'Battle For Lion\'s Arch (Public)': 'meta-events/battle-lions-arch.html',
+    'Scarlet\'s Invasion': 'meta-events/scarlet-invasion.html',
+    'Defeat Scarlet\'s minions': 'meta-events/scarlet-invasion.html',
     // Living World Season 2
     'Crash Site': 'meta-events/dry-top.html',
     'Sandstorm': 'meta-events/dry-top.html',
@@ -107,6 +112,37 @@ const EVENT_DETAIL_PAGES = {
     'Lowland Shore': 'meta-events/lowland-shore.html',
     'Titan\'s Threshold': 'meta-events/lowland-shore.html',
     'Greer': 'meta-events/lowland-shore.html'
+};
+
+// Event key to detail page mapping (fallback for segments without specific links)
+const EVENT_KEY_TO_PAGE = {
+    'hwb': 'meta-events/shatterer.html', // Hard World Bosses (will use specific pages)
+    'la': 'meta-events/ley-line-anomaly.html',
+    'eotn': 'meta-events/twisted-marionette.html', // Eye of the North (will use specific pages)
+    'dt': 'meta-events/dry-top.html',
+    'vb': 'meta-events/verdant-brink.html',
+    'ab': 'meta-events/auric-basin.html',
+    'td': 'meta-events/tangled-depths.html',
+    'ds': 'meta-events/dragons-stand.html',
+    'ld': 'meta-events/lake-doric.html',
+    'co': 'meta-events/casino-blitz.html',
+    'si': 'meta-events/scarlet-invasion.html',
+    'dv': 'meta-events/serpents-ire.html',
+    'de': 'meta-events/desolation.html',
+    'pal': 'meta-events/palawadan.html',
+    'dbs': 'meta-events/branded-shatterer.html',
+    'gv': 'meta-events/grothmar-valley.html',
+    'bm': 'meta-events/bjora-marches.html',
+    'dsp': 'meta-events/dragonstorm.html',
+    'sp': 'meta-events/seitung-province.html',
+    'nkc': 'meta-events/kaineng-city.html',
+    'tew': 'meta-events/echovald-wilds.html',
+    'dre': 'meta-events/dragons-end.html',
+    'sa': 'meta-events/skywatch.html',
+    'con': 'meta-events/inner-nayos.html',
+    'am': 'meta-events/amnytas.html',
+    'js': 'meta-events/janthir-syntri.html',
+    'bn': 'meta-events/lowland-shore.html'
 };
 
 // Categories to display (filter out PvP tournaments and some others)
@@ -303,7 +339,7 @@ async function getWaypointName(chatlink) {
 }
 
 // Calculate upcoming events from a sequence
-function calculateUpcomingEvents(eventConfig, count = 5) {
+function calculateUpcomingEvents(eventConfig, count = 50) {
     const now = new Date();
     const currentTime = now.getTime();
     
@@ -354,8 +390,12 @@ function calculateUpcomingEvents(eventConfig, count = 5) {
     let accumulatedTime = 0;
     let currentCycleOffset = 0;
     
-    // Build timeline for next few cycles
-    for (let cycle = 0; cycle < 4 && upcomingEvents.length < count + 10; cycle++) {
+    // Build timeline for next 24 hours
+    const hoursToShow = 24;
+    const minutesToShow = hoursToShow * 60;
+    const maxCycles = Math.ceil(minutesToShow / cycleDuration) + 2; // +2 for safety margin
+    
+    for (let cycle = 0; cycle < maxCycles && upcomingEvents.length < count; cycle++) {
         for (let i = 0; i < pattern.length; i++) {
             const step = pattern[i];
             const stepStart = accumulatedTime;
@@ -375,8 +415,9 @@ function calculateUpcomingEvents(eventConfig, count = 5) {
                     // Check if event is currently active (started but not finished)
                     const isActive = currentTime >= eventTime.getTime() && currentTime < eventEndTime;
                     
-                    // Include active events and upcoming events
-                    if (isActive || timeUntil >= 0) {
+                    // Include events within 24 hours
+                    const timeUntilMinutes = timeUntil / (60 * 1000);
+                    if (isActive || (timeUntil >= 0 && timeUntilMinutes <= minutesToShow)) {
                         upcomingEvents.push({
                             name: segment.name,
                             location: segment.link || segment.name,
@@ -533,8 +574,8 @@ function createEventBar(eventKey, eventConfig, lang) {
         return null;
     }
     
-    // Reduced from 8 to 5 cards for better performance
-    const upcomingEvents = calculateUpcomingEvents(eventConfig, 5);
+    // Show all events within 24 hours
+    const upcomingEvents = calculateUpcomingEvents(eventConfig, 50);
     
     if (upcomingEvents.length === 0) return null;
     
@@ -641,14 +682,17 @@ function createEventBar(eventKey, eventConfig, lang) {
         card.appendChild(duration);
         
         // Add click handler to navigate to detail page if exists
-        if (EVENT_DETAIL_PAGES[event.name]) {
+        // Try specific event name first, then fall back to event key
+        const detailPage = EVENT_DETAIL_PAGES[event.name] || EVENT_KEY_TO_PAGE[eventKey];
+        
+        if (detailPage) {
             card.style.cursor = 'pointer';
             card.onclick = (e) => {
                 // Don't navigate if clicking on waypoint button
                 if (e.target.closest('.event-card-waypoint')) {
                     return;
                 }
-                window.location.href = EVENT_DETAIL_PAGES[event.name];
+                window.location.href = detailPage;
             };
             // Add hover effect
             card.style.transition = 'transform 0.2s ease, box-shadow 0.2s ease';
@@ -687,7 +731,8 @@ function updateAllCountdowns(timestamp) {
     let needsRerender = false;
     
     // Batch DOM reads and writes for better performance
-    const cards = document.querySelectorAll('.event-card');
+    // Only update visible cards for better performance
+    const cards = document.querySelectorAll('.event-card.card-visible, .event-card:not(.card-visible):nth-child(-n+3)');
     const updates = [];
     
     // Read phase - collect all data
@@ -763,8 +808,13 @@ function updateAllCountdowns(timestamp) {
     });
     
     if (needsRerender) {
-        renderAllEvents();
-        return; // Don't schedule next frame, renderAllEvents will do it
+        // Throttle re-renders to avoid performance issues
+        const now = Date.now();
+        if (now - lastRenderTime > RERENDER_COOLDOWN) {
+            lastRenderTime = now;
+            renderAllEvents();
+            return; // Don't schedule next frame, renderAllEvents will do it
+        }
     }
     
     // Schedule next update
@@ -829,12 +879,45 @@ function renderAllEvents() {
     container.innerHTML = '';
     container.appendChild(fragment);
     
+    // Setup Intersection Observer for performance optimization
+    setupCardObserver();
+    
     // Start updating countdowns with requestAnimationFrame (more efficient)
     if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
     }
     lastUpdateTime = 0; // Reset throttle timer
     animationFrameId = requestAnimationFrame(updateAllCountdowns);
+}
+
+// Setup Intersection Observer to optimize rendering of off-screen cards
+function setupCardObserver() {
+    // Disconnect existing observer
+    if (cardObserver) {
+        cardObserver.disconnect();
+    }
+    
+    // Create new Intersection Observer
+    // Cards outside viewport will have reduced updates
+    const observerOptions = {
+        root: null,
+        rootMargin: '100px', // Start observing 100px before entering viewport
+        threshold: 0
+    };
+    
+    cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('card-visible');
+            } else {
+                entry.target.classList.remove('card-visible');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all cards
+    const cards = document.querySelectorAll('.event-card');
+    cards.forEach(card => cardObserver.observe(card));
 }
 
 // Initialize when page loads

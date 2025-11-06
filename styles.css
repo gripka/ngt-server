@@ -1746,15 +1746,16 @@ body.cm-mode-active .btn-secondary {
 }
 
 .event-bar-section {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 18px;
+    border-radius: 12px;
+    padding: 12px;
     /* Removed heavy backdrop-filter for better performance */
     /* backdrop-filter: blur(10px); */
     border: 1px solid rgba(255, 255, 255, 0.15);
-    /* Performance optimization */
+    /* Performance optimizations */
     contain: layout paint;
+    content-visibility: auto; /* Browser skips rendering when off-screen */
     transition: all 0.3s ease;
 }
 
@@ -1765,12 +1766,12 @@ body.cm-mode-active .btn-secondary {
 }
 
 .event-bar-header {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .event-bar-title {
     color: rgba(255, 255, 255, 0.95);
-    font-size: 1.15rem;
+    font-size: 1rem;
     margin: 0;
     font-weight: 600;
     letter-spacing: 0.3px;
@@ -1779,9 +1780,9 @@ body.cm-mode-active .btn-secondary {
 
 .event-bar-timeline {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     overflow-x: auto;
-    padding: 10px 5px;
+    padding: 8px 5px;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     /* Performance optimizations for smooth scrolling */
@@ -1809,18 +1810,18 @@ body.cm-mode-active .btn-secondary {
 }
 
 .event-card {
-    min-width: 240px;
-    max-width: 240px;
+    min-width: 200px;
+    max-width: 200px;
     background: white;
-    border-radius: 10px;
-    padding: 10px 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    padding: 8px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
     /* Performance optimizations */
     will-change: transform;
     transform: translateZ(0);
@@ -1833,18 +1834,18 @@ body.cm-mode-active .btn-secondary {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .event-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .event-card.event-active {
-    border: 3px solid #28a745;
-    box-shadow: 0 4px 20px rgba(40, 167, 69, 0.4);
+    border: 2px solid #28a745;
+    box-shadow: 0 2px 12px rgba(40, 167, 69, 0.3);
 }
 
 .event-card.event-active::before {
@@ -1926,10 +1927,10 @@ body.cm-mode-active .btn-secondary {
 
 .event-card-name {
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     color: #333;
-    line-height: 1.2;
-    min-height: 32px;
+    line-height: 1.15;
+    min-height: 28px;
     display: flex;
     align-items: center;
 }
@@ -1937,21 +1938,21 @@ body.cm-mode-active .btn-secondary {
 .event-card-time {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    padding: 5px 0;
+    gap: 2px;
+    padding: 4px 0;
     border-top: 1px solid #e0e0e0;
     border-bottom: 1px solid #e0e0e0;
 }
 
 .event-card-utc {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #666;
     font-weight: 600;
     font-family: 'Courier New', monospace;
 }
 
 .event-card-countdown {
-    font-size: 1.05rem;
+    font-size: 0.9rem;
     color: #667eea;
     font-weight: 700;
     font-family: 'Courier New', monospace;
@@ -1960,7 +1961,7 @@ body.cm-mode-active .btn-secondary {
 .event-card-countdown.event-active-text {
     color: #28a745;
     font-weight: 900;
-    font-size: 1.2rem;
+    font-size: 1rem;
     animation: pulse-text 1.5s infinite;
 }
 
@@ -1983,9 +1984,9 @@ body.cm-mode-active .btn-secondary {
 
 .event-card-waypoint {
     background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-    padding: 8px 10px;
-    border-radius: 8px;
-    font-size: 0.85rem;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
     color: #667eea;
     font-family: 'Courier New', monospace;
     font-weight: 600;
@@ -2005,8 +2006,8 @@ body.cm-mode-active .btn-secondary {
 }
 
 .waypoint-icon-img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     transition: all 0.2s ease;
@@ -2019,45 +2020,51 @@ body.cm-mode-active .btn-secondary {
 
 .event-card-duration {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 8px;
+    right: 8px;
     background: rgba(102, 126, 234, 0.9);
     color: white;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
+    padding: 3px 7px;
+    border-radius: 10px;
+    font-size: 0.7rem;
     font-weight: 700;
 }
 
 /* Responsive para event bars */
 @media (max-width: 768px) {
     .event-bar-section {
-        padding: 15px;
+        padding: 10px;
+        margin-bottom: 10px;
     }
     
     .event-bar-title {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
         flex-wrap: wrap;
     }
     
     .event-card {
-        min-width: 180px;
-        max-width: 180px;
-        padding: 12px;
+        min-width: 170px;
+        max-width: 170px;
+        padding: 8px 10px;
     }
     
     .event-card-name {
-        font-size: 0.9rem;
-        min-height: 35px;
+        font-size: 0.8rem;
+        min-height: 26px;
     }
     
     .event-card-countdown {
-        font-size: 1rem;
+        font-size: 0.85rem;
     }
     
     .event-card-waypoint {
-        font-size: 0.75rem;
-        padding: 6px 8px;
+        font-size: 0.7rem;
+        padding: 5px 7px;
+    }
+    
+    .waypoint-icon-img {
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -3206,5 +3213,214 @@ footer .back-button {
 @media (prefers-reduced-motion: no-preference) and (min-resolution: 120dpi) {
     * {
         will-change: auto !important;
+    }
+}
+
+/* ===== META EVENT DETAIL PAGE TIMER ===== */
+.detail-timer-widget {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+}
+
+.detail-timer-header {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.detail-timer-header h3 {
+    color: #667eea;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-timer-timeline {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 8px 5px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.detail-timer-timeline::-webkit-scrollbar {
+    height: 6px;
+}
+
+.detail-timer-timeline::-webkit-scrollbar-track {
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 3px;
+}
+
+.detail-timer-timeline::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+}
+
+.detail-timer-card {
+    min-width: 140px;
+    max-width: 140px;
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border: 2px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.detail-timer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.detail-timer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+.detail-timer-card.detail-active {
+    border-color: #28a745;
+    background: rgba(40, 167, 69, 0.05);
+}
+
+.detail-timer-card.detail-active::before {
+    background: #28a745;
+}
+
+.detail-timer-card.detail-imminent {
+    border-color: #ffc107;
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.detail-timer-card.detail-imminent::before {
+    background: #ffc107;
+}
+
+.detail-timer-card.detail-soon {
+    border-color: #ff8c00;
+    background: rgba(255, 140, 0, 0.05);
+}
+
+.detail-timer-card.detail-soon::before {
+    background: #ff8c00;
+}
+
+.detail-timer-time {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    padding: 4px 0;
+}
+
+.detail-timer-countdown {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #667eea;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.detail-active-badge {
+    background: #28a745;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    animation: pulse-badge 1.5s infinite;
+}
+
+.detail-time-remaining {
+    color: #28a745;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+@keyframes pulse-badge {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+.detail-timer-duration {
+    background: rgba(102, 126, 234, 0.15);
+    color: #667eea;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.detail-timer-card.detail-active .detail-timer-countdown {
+    color: #28a745;
+}
+
+.detail-timer-card.detail-imminent .detail-timer-countdown {
+    color: #ffc107;
+}
+
+.detail-timer-card.detail-soon .detail-timer-countdown {
+    color: #ff8c00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detail-timer-widget {
+        padding: 12px;
+        margin: 15px 0;
+    }
+    
+    .detail-timer-header h3 {
+        font-size: 1rem;
+    }
+    
+    .detail-timer-card {
+        min-width: 120px;
+        max-width: 120px;
+        padding: 8px;
+    }
+    
+    .detail-timer-time {
+        font-size: 1rem;
+    }
+    
+    .detail-timer-countdown {
+        font-size: 0.75rem;
+    }
+    
+    .detail-active-badge {
+        font-size: 0.65rem;
+        padding: 2px 6px;
     }
 }
