@@ -325,7 +325,7 @@ function addNewMechanic(type) {
     const flashcardHTML = `
         <div class="flashcard editable ${cmClass}" data-id="${newId}">
             <div class="flashcard-header">
-                <h3 class="flashcard-title" contenteditable="true">${prefix}${translations[lang]['new-mechanic-title']}</h3>
+                <h3 class="flashcard-title" contenteditable="true" data-placeholder="${prefix}${translations[lang]['new-mechanic-title']}"></h3>
                 <div class="flashcard-actions">
                     <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">
                         ${translations[lang]['copy-text']}
@@ -335,12 +335,58 @@ function addNewMechanic(type) {
                     </button>
                 </div>
             </div>
-            <p class="flashcard-description" contenteditable="true">${translations[lang]['new-mechanic-desc']}</p>
+            <p class="flashcard-description" contenteditable="true" data-placeholder="${translations[lang]['new-mechanic-desc']}"></p>
         </div>
     `;
     
     container.insertAdjacentHTML('beforeend', flashcardHTML);
+    
+    // Adiciona event listeners para placeholder behavior
+    const newCard = container.lastElementChild;
+    const title = newCard.querySelector('.flashcard-title');
+    const description = newCard.querySelector('.flashcard-description');
+    
+    setupPlaceholder(title);
+    setupPlaceholder(description);
+    
+    // Foca no título para começar a digitar imediatamente
+    title.focus();
+    
     saveFlashcards();
+}
+
+// Função para configurar comportamento de placeholder em elementos contenteditable
+function setupPlaceholder(element) {
+    const placeholder = element.getAttribute('data-placeholder');
+    
+    // Mostra placeholder se estiver vazio
+    const updatePlaceholder = () => {
+        if (element.textContent.trim() === '') {
+            element.classList.add('empty');
+        } else {
+            element.classList.remove('empty');
+        }
+    };
+    
+    // Evento de foco - limpa o placeholder visual
+    element.addEventListener('focus', () => {
+        if (element.textContent.trim() === '') {
+            element.classList.remove('empty');
+        }
+    });
+    
+    // Evento de blur - restaura placeholder se vazio
+    element.addEventListener('blur', () => {
+        updatePlaceholder();
+    });
+    
+    // Evento de input - atualiza estado
+    element.addEventListener('input', () => {
+        updatePlaceholder();
+    });
+    
+    // Estado inicial
+    updatePlaceholder();
 }
 
 // Função para remover um card

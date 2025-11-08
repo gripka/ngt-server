@@ -108,10 +108,7 @@ body.translations-ready {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    padding-right: 35px;
-    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"%3E%3Cpath fill="%23667eea" d="M6 9L1 4h10z"/%3E%3C/svg%3E');
-    background-repeat: no-repeat;
-    background-position: right 12px center;
+    text-align: center;
 }
 
 .language-selector select:hover {
@@ -688,6 +685,7 @@ h1 {
     .language-selector select {
         font-size: 0.8rem;
         padding: 5px 10px;
+        text-align: center;
     }
 }
 
@@ -1211,6 +1209,20 @@ body.cm-mode-active .btn-secondary {
 .flashcard-description[contenteditable="true"]:focus {
     outline-color: #667eea;
     background: #f8f9fa;
+}
+
+/* Placeholders para elementos contenteditable vazios */
+.flashcard-title[contenteditable="true"].empty::before,
+.flashcard-description[contenteditable="true"].empty::before {
+    content: attr(data-placeholder);
+    color: #aaa;
+    font-style: italic;
+    pointer-events: none;
+}
+
+.flashcard-title[contenteditable="true"].empty:focus::before,
+.flashcard-description[contenteditable="true"].empty:focus::before {
+    content: '';
 }
 
 .flashcard.editable {
@@ -2807,20 +2819,20 @@ body.cm-mode-active .btn-secondary {
 
 .reset-settings-btn {
     padding: 12px 30px;
-    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    background: linear-gradient(135deg, #e57373 0%, #ef5350 100%);
     color: white;
     border: none;
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    box-shadow: 0 4px 12px rgba(229, 115, 115, 0.3);
     font-size: 0.95rem;
 }
 
 .reset-settings-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+    box-shadow: 0 6px 16px rgba(239, 83, 80, 0.4);
 }
 
 .reset-settings-btn:active {
@@ -3002,14 +3014,14 @@ body.cm-mode-active .btn-secondary {
 }
 
 .reset-confirm-buttons .confirm-btn {
-    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    background: linear-gradient(135deg, #e57373 0%, #ef5350 100%);
     color: white;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    box-shadow: 0 4px 12px rgba(229, 115, 115, 0.3);
 }
 
 .reset-confirm-buttons .confirm-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+    box-shadow: 0 6px 16px rgba(239, 83, 80, 0.4);
 }
 
 .reset-confirm-buttons .cancel-btn {
