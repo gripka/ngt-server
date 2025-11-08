@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -70,7 +70,7 @@
                         </svg>
                         <span data-translate="export-mechanics">Exportar Mecânicas</span>
                     </h3>
-                    <p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta página em um arquivo JSON</p>
+                    <p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta pé¡gina em um arquivo JSON</p>
                     <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mecânicas</button>
                 </div>
                 
@@ -83,7 +83,7 @@
                         </svg>
                         <span data-translate="import-mechanics">Importar Mecânicas</span>
                     </h3>
-                    <p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta página</p>
+                    <p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta pé¡gina</p>
                     <button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button>
                 </div>
             </div>
@@ -169,10 +169,10 @@
         
 <!-- Old tabelas here -->
 
-            <!-- Accordion para explicar ícones -->
+            <!-- Accordion para explicar é­cones -->
             <!--<div class="icon-legend-accordion">
 <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
-                    <span class="accordion-title" data-i18n="icon-legend-title">Legenda dos Ícones</span>
+                    <span class="accordion-title" data-i18n="icon-legend-title">Legenda dos écones</span>
                     <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m6 9 6 6 6-6"></path>
                     </svg>
@@ -218,10 +218,132 @@
                 </div>
             </div>-->
 
-<!-- Glossário GW2 -->
+<!-- Glossé¡rio GW2 -->
 <div class="icon-legend-accordion">
     <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="accordion-title" data-i18n="glossary-title">Glossário GW2</span>
+        <span class="accordion-title" data-i18n="badges-guide-title">Guia de Badges de Mecânicas</span>
+        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+        </svg>
+    </button>
+
+    <div class="accordion-content">
+        <div class="glossary-container">
+            
+            <div class="glossary-note" style="margin-bottom: 20px;">
+                <p data-i18n="badges-guide-intro">ðŸ’¡ Os badges visuais ajudam a identificar rapidamente mecânicas importantes durante combates. Eles aparecem nas pé¡ginas de detalhes de fractais, strikes, raids e meta-eventos.</p>
+            </div>
+
+            <div class="glossary-section">
+                <h3 data-i18n="badges-section-group">Mecânicas de Grupo</h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-stack">
+                                <span data-i18n="badge-stack-name">Stack</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-stack-desc">Jogadores devem se agrupar em um ponto especé­fico para compartilhar bênçãos, curas ou sobreviver a ataques em é¡rea.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-spread">
+                                <span data-i18n="badge-spread-name">Spread</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-spread-desc">Jogadores devem se espalhar para evitar que ataques em é¡rea afetem múltiplas pessoas ao mesmo tempo.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-coordination">
+                                <span data-i18n="badge-coordination-name">Coordenação</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-coordination-desc">Mecânica que requer trabalho em equipe sincronizado, como dividir grupos ou capturar pontos simultaneamente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glossary-section">
+                <h3 data-i18n="badges-section-combat">Mecânicas de Combate</h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-cc">
+                                <span data-i18n="badge-cc-name">CC / Break Bar</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-cc-desc">Crowd Control necessé¡rio para quebrar a barra de desafio (defiance bar) do inimigo e deixé¡-lo vulneré¡vel.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-critical">
+                                <span data-i18n="badge-critical-name">Cré­tico / Wipe</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-critical-desc">Mecânica cré­tica que pode causar a morte de todo o grupo (wipe) se não for executada corretamente. Atenção mé¡xima!</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-focus">
+                                <span data-i18n="badge-focus-name">Foco / Prioridade</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-focus-desc">Alvo ou objetivo priorité¡rio que deve ser focado primeiro, como adds especé­ficos ou objetivos da missão.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-dodge">
+                                <span data-i18n="badge-dodge-name">Dodge / Esquiva</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-dodge-desc">Ataques que devem ser evitados usando dodge roll, blocks ou invulnerabilidades. Timing é© essencial.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-defensive">
+                                <span data-i18n="badge-defensive-name">Defensivo</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-defensive-desc">Use habilidades defensivas como Aegis, Protection, Blocks ou Resistéªncia para sobreviver a ataques pesados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glossary-section">
+                <h3 data-i18n="badges-section-positioning">Posicionamento e Tempo</h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-position">
+                                <span data-i18n="badge-position-name">Posicionamento</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-position-desc">Posição especé­fica necessé¡ria para a mecé¢nica, como ficar atré¡s do boss, apontar cones para fora do grupo, etc.</p>
+                    </div>
+                    <div class="glossary-item">
+                        <strong>
+                            <span class="mechanic-badge badge-timer">
+                                <span data-i18n="badge-timer-name">Tempo Limitado</span>
+                            </span>
+                        </strong>
+                        <p data-i18n="badge-timer-desc">Mecânica com croné´metro restrito. Deve ser completada rapidamente antes que o tempo acabe ou fase mude.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glossary-note" style="margin-top: 20px;">
+                <p data-i18n="badges-guide-tip">ðŸ’¡ <strong>Dica:</strong> Os badges com animação pulsante (como o Cré­tico) indicam mecânicas que podem causar wipe. Preste atené§é£o extra a eles!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Glossé¡rio GW2 -->
+<div class="icon-legend-accordion">
+    <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
+        <span class="accordion-title" data-i18n="glossary-title">Glossé¡rio GW2</span>
         <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m6 9 6 6 6-6"></path>
         </svg>
@@ -239,18 +361,18 @@
                     </div>
                     <div class="glossary-item">
                         <strong data-i18n="glossary-item-defiance">Defiance Bar / Break Bar</strong>
-                        <p data-i18n="glossary-item-defiance-desc">Barra azul que aparece sob alguns inimigos. Deve ser quebrada usando CC para deixar o inimigo vulnerável.</p>
+                        <p data-i18n="glossary-item-defiance-desc">Barra azul que aparece sob alguns inimigos. Deve ser quebrada usando CC para deixar o inimigo vulneré¡vel.</p>
                     </div>
                     <div class="glossary-item">
                         <strong data-i18n="glossary-item-cm">CM (Challenge Mode)</strong>
-                        <p data-i18n="glossary-item-cm-desc">Modo desafiador com mecânicas extras e recompensas melhores. Disponível em alguns fractais, strikes e raids.</p>
+                        <p data-i18n="glossary-item-cm-desc">Modo desafiador com mecânicas extras e recompensas melhores. Disponé­vel em alguns fractais, strikes e raids.</p>
                     </div>
                     <div class="glossary-item">
                         <strong data-i18n="glossary-item-kite">Kite / Kiter</strong>
-                        <p data-i18n="glossary-item-kite-desc">Jogador responsável por manter certos adds ou mecânicas longe do grupo principal.</p>
+                        <p data-i18n="glossary-item-kite-desc">Jogador responsé¡vel por manter certos adds ou mecânicas longe do grupo principal.</p>
                     </div>
                     <div class="glossary-item">
-                        <strong data-i18n="glossary-item-boons">Boons (Bênçãos)</strong>
+                        <strong data-i18n="glossary-item-boons">Boons (Béªné§é£os)</strong>
                         <p data-i18n="glossary-item-boons-desc">Buffs positivos como Might, Fury, Protection, Aegis, Resistance, etc. Essenciais para o sucesso do grupo.</p>
                     </div>
                     <div class="glossary-item">
@@ -261,7 +383,7 @@
             </div>
 
             <div class="glossary-section">
-                <h3 data-i18n="glossary-section-roles">Funções do Grupo</h3>
+                <h3 data-i18n="glossary-section-roles">Funé§éµes do Grupo</h3>
                 <div class="glossary-grid">
                     <div class="glossary-item">
                         <strong data-i18n="glossary-item-dps">DPS (Damage Per Second)</strong>
@@ -269,11 +391,11 @@
                     </div>
                     <div class="glossary-item">
                         <strong data-i18n="glossary-item-healer">Healer / Suporte</strong>
-                        <p data-i18n="glossary-item-healer-desc">Responsável por curar e dar suporte ao grupo com bênçãos e utilidades.</p>
+                        <p data-i18n="glossary-item-healer-desc">Responsé¡vel por curar e dar suporte ao grupo com bênçãos e utilidades.</p>
                     </div>
                     <div class="glossary-item">
                         <strong data-i18n="glossary-item-tank">Tank</strong>
-                        <p data-i18n="glossary-item-tank-desc">Jogador que mantém a atenção (aggro) do boss e posiciona-o adequadamente.</p>
+                        <p data-i18n="glossary-item-tank-desc">Jogador que manté©m a atené§é£o (aggro) do boss e posiciona-o adequadamente.</p>
                     </div>
                     <div class="glossary-item">
                         <strong data-i18n="glossary-item-boonbot">Boon Provider</strong>
@@ -283,15 +405,15 @@
             </div>
 
             <div class="glossary-section">
-                <h3 data-i18n="glossary-section-icons">Ícones do Site</h3>
+                <h3 data-i18n="glossary-section-icons">écones do Site</h3>
                 <div class="glossary-grid">
                     <div class="glossary-item">
                         <strong>
-                            <img img src="players-icon.png" alt="Ícone de Jogadores" class="icon">
-                            <span data-i18n="glossary-item-players">Número de Jogadores</span>
+                            <img img src="players-icon.png" alt="écone de Jogadores" class="icon">
+                            <span data-i18n="glossary-item-players">Néºmero de Jogadores</span>
                         </strong>
                         <p data-i18n="glossary-item-players-desc">
-                            Indica quantos jogadores são necessários para o conteúdo (x5, x10, x50).
+                            Indica quantos jogadores sé£o necessé¡rios para o conteéºdo (x5, x10, x50).
                         </p>
                     </div>
                     <div class="glossary-item">
@@ -299,51 +421,51 @@
                             <div class="card-icon-group">
                                 <span class="icon-label cm-label">CM</span>
                             </div>
-                            <span data-i18n="glossary-item-cm-icon">CM Disponível</span>
+                            <span data-i18n="glossary-item-cm-icon">CM Disponé­vel</span>
                         </strong>
-                        <p data-i18n="glossary-item-cm-icon-desc">Badge "CM" indica que o conteúdo possui modo desafiador disponível.</p>
+                        <p data-i18n="glossary-item-cm-icon-desc">Badge "CM" indica que o conteéºdo possui modo desafiador disponé­vel.</p>
                     </div>
                     <div class="glossary-item">
                         <strong><span data-i18n="glossary-item-edit">Editar/Adicionar</span></strong>
-                        <p data-i18n="glossary-item-edit-desc">Você pode editar mecânicas existentes ou adicionar suas próprias anotações personalizadas.</p>
+                        <p data-i18n="glossary-item-edit-desc">Vocéª pode editar mecânicas existentes ou adicionar suas pré³prias anotaé§éµes personalizadas.</p>
                     </div>
                     <div class="glossary-item">
                         <strong><span data-i18n="glossary-item-copy">Copiar</span></strong>
-                        <p data-i18n="glossary-item-copy-desc">Copia o texto das mecânicas para a área de transferência.</p>
+                        <p data-i18n="glossary-item-copy-desc">Copia o texto das mecânicas para a é¡rea de transferéªncia.</p>
                     </div>
                 </div>
             </div>
 
             <div class="glossary-section">
-                <h3 data-i18n="glossary-section-tips">Dicas Úteis</h3>
+                <h3 data-i18n="glossary-section-tips">Dicas éšteis</h3>
                 <div class="glossary-grid">
                     <div class="glossary-item">
                         <strong><span data-i18n="glossary-item-export">Exportar/Importar</span></strong>
-                        <p data-i18n="glossary-item-export-desc">Use as configurações para exportar suas mecânicas customizadas e importá-las em outro dispositivo.</p>
+                        <p data-i18n="glossary-item-export-desc">Use as configurações para exportar suas mecânicas customizadas e importé¡-las em outro dispositivo.</p>
                     </div>
                     <div class="glossary-item">
-                        <strong><span data-i18n="glossary-item-language">Múltiplos Idiomas</span></strong>
-                        <p data-i18n="glossary-item-language-desc">O site está disponível em Português, English e Español. Altere no seletor de idioma.</p>
+                        <strong><span data-i18n="glossary-item-language">Méºltiplos Idiomas</span></strong>
+                        <p data-i18n="glossary-item-language-desc">O site esté¡ disponé­vel em Portuguéªs, English e Espaé±ol. Altere no seletor de idioma.</p>
                     </div>
                     <div class="glossary-item">
                         <strong><span data-i18n="glossary-item-mobile">Mobile Friendly</span></strong>
-                        <p data-i18n="glossary-item-mobile-desc">O site é otimizado para uso em dispositivos móveis durante as runs.</p>
+                        <p data-i18n="glossary-item-mobile-desc">O site é© otimizado para uso em dispositivos mé³veis durante as runs.</p>
                     </div>
                 </div>
             </div>
 
             <div class="glossary-note">
-                <p data-i18n="glossary-note">💡 Nota: Este glossário é um guia rápido. Para informações mais detalhadas, consulte a wiki oficial do Guild Wars 2 ou a comunidade.</p>
+                <p data-i18n="glossary-note">ðŸ’¡ Nota: Este glossé¡rio é© um guia ré¡pido. Para informaé§éµes mais detalhadas, consulte a wiki oficial do Guild Wars 2 ou a comunidade.</p>
             </div>
 
         </div>
     </div>
 </div>
 
-<!-- Links Úteis -->
+<!-- Links éšteis -->
 <div class="icon-legend-accordion">
     <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="accordion-title" data-i18n="useful-links-title">Links Úteis</span>
+        <span class="accordion-title" data-i18n="useful-links-title">Links éšteis</span>
         <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m6 9 6 6 6-6"></path>
         </svg>
@@ -389,7 +511,7 @@
                 <div class="links-grid">
                     <a href="https://hardstuck.gg/" target="_blank" class="link-item">
                         <strong>Hardstuck</strong>
-                        <p data-i18n="link-hardstuck-desc">Guias completos e ferramentas úteis</p>
+                        <p data-i18n="link-hardstuck-desc">Guias completos e ferramentas éºteis</p>
                     </a>
                     <a href="https://gw2guides.net/" target="_blank" class="link-item">
                         <strong>GW2 Guides</strong>
@@ -397,7 +519,7 @@
                     </a>
                     <a href="https://mukluk.gg/" target="_blank" class="link-item">
                         <strong>Mukluk</strong>
-                        <p data-i18n="link-mukluk-desc">Vídeo guias e conteúdo educativo</p>
+                        <p data-i18n="link-mukluk-desc">Vé­deo guias e conteéºdo educativo</p>
                     </a>
                 </div>
             </div>
@@ -407,7 +529,7 @@
                 <div class="links-grid">
                     <a href="https://gw2efficiency.com/" target="_blank" class="link-item">
                         <strong>GW2 Efficiency</strong>
-                        <p data-i18n="link-gw2efficiency-desc">Gerenciamento de conta e inventário</p>
+                        <p data-i18n="link-gw2efficiency-desc">Gerenciamento de conta e inventé¡rio</p>
                     </a>
                     <a href="https://gw2crafts.net/" target="_blank" class="link-item">
                         <strong>GW2 Crafts</strong>
@@ -415,11 +537,11 @@
                     </a>
                     <a href="https://gw2timer.com/" target="_blank" class="link-item">
                         <strong>GW2 Timer</strong>
-                        <p data-i18n="link-gw2timer-desc">Cronômetros de eventos do mundo</p>
+                        <p data-i18n="link-gw2timer-desc">Croné´metros de eventos do mundo</p>
                     </a>
                     <a href="https://killproof.me/" target="_blank" class="link-item">
                         <strong>Killproof.me</strong>
-                        <p data-i18n="link-killproof-desc">Verificador de experiência em raids/strikes</p>
+                        <p data-i18n="link-killproof-desc">Verificador de experiéªncia em raids/strikes</p>
                     </a>
                 </div>
             </div>
@@ -433,15 +555,15 @@
                     </a>
                     <a href="https://www.youtube.com/@MightyTeapot" target="_blank" class="link-item">
                         <strong>MightyTeapot</strong>
-                        <p data-i18n="link-teapot-desc">Conteúdo endgame e PvE</p>
+                        <p data-i18n="link-teapot-desc">Conteéºdo endgame e PvE</p>
                     </a>
                     <a href="https://www.youtube.com/@WoodenPotatoes" target="_blank" class="link-item">
                         <strong>WoodenPotatoes</strong>
-                        <p data-i18n="link-woodenpotatoes-desc">Lore, análises e guias</p>
+                        <p data-i18n="link-woodenpotatoes-desc">Lore, ané¡lises e guias</p>
                     </a>
                     <a href="https://www.youtube.com/@MukLuk" target="_blank" class="link-item">
                         <strong>MukLuk (YouTube)</strong>
-                        <p data-i18n="link-mukluk-yt-desc">Tutoriais e conteúdo para iniciantes</p>
+                        <p data-i18n="link-mukluk-yt-desc">Tutoriais e conteéºdo para iniciantes</p>
                     </a>
                     <a href="https://www.twitch.tv/maanigold" target="_blank" class="link-item">
                         <strong>MaaniGold</strong>
@@ -460,7 +582,7 @@
 
 <div class="icon-legend-accordion">
     <button type="button" class="accordion-trigger" onclick="toggleAccordion(this)">
-        <span class="accordion-title" data-i18n="feedback-title">Sugestões e Melhorias</span>
+        <span class="accordion-title" data-i18n="feedback-title">Sugestéµes e Melhorias</span>
         <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="m6 9 6 6 6-6"></path>
         </svg>
@@ -473,17 +595,17 @@
                 <div class="links-grid">
                     <a href="https://discord.gg/seulink" target="_blank" class="link-item">
                         <strong><span data-i18n="feedback-discord-title">Discord</span></strong>
-                        <p data-i18n="feedback-discord-desc">Participe da comunidade e envie sugestões no canal Suporte > Sugestões</p>
+                        <p data-i18n="feedback-discord-desc">Participe da comunidade e envie sugestéµes no canal Suporte > Sugestéµes</p>
                     </a>
                     <a href="https://forms.gle/pazp98ouoj8HJRNPA" target="_blank" class="link-item">
-                        <strong><span data-i18n="feedback-form-title">Formulário</span></strong>
-                        <p data-i18n="feedback-form-desc">Envie sua sugestão de forma rápida e direta</p>
+                        <strong><span data-i18n="feedback-form-title">Formulé¡rio</span></strong>
+                        <p data-i18n="feedback-form-desc">Envie sua sugesté£o de forma ré¡pida e direta</p>
                     </a>
                 </div>
             </div>
             
             <div class="glossary-note" style="margin-top: 15px;">
-                <p data-i18n="feedback-thanks">💡 <strong>Obrigado por ajudar a melhorar o projeto!</strong> Sua opinião é muito importante para nós.</p>
+                <p data-i18n="feedback-thanks">ðŸ’¡ <strong>Obrigado por ajudar a melhorar o projeto!</strong> Sua opinié£o é© muito importante para né³s.</p>
             </div>
         </div>
     </div>
@@ -510,3 +632,5 @@
     </script>
 </body>
 </html>
+
+

@@ -29,17 +29,23 @@
     </div>
     
     <div class="container menu-container">
-        <div class="detail-page-header">        <div class="header-top">            <div class="header-title">
-            <h1 data-translate="fractal-chaos">Chaos Isles</h1>
-            <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
-        </div>        <div class="header-actions">            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>        </div>    </div>
+        <div class="detail-page-header">
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 data-translate="fractal-chaos">Chaos Isles</h1>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                </div>
+                <div class="header-actions">
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                </div>
+            </div>
         
             <div class="header-buttons">
-            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
-            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
-            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
-        </div>
+                <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+            </div>
         
         <div class="flashcards-container" id="flashcardsContainer">
             <!-- Flashcards padrão -->
@@ -49,6 +55,14 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-jumping-puzzle">Jumping Puzzle</span>
+                    </span>
+                    <span class="mechanic-badge badge-coordination">
+                        <span data-i18n="badge-text-follow-path">Seguir Caminho</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="chaos-entrance-desc">Mate o grupo inicial e então corra para a direita - depois desça um caminho à sua esquerda. Siga os puzzles de pulo até o primeiro boss</p>
             </div>
@@ -60,6 +74,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-spread">
+                        <span data-i18n="badge-text-spread-bombs">Espalhar com Bombas</span>
+                    </span>
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-kill-golems">Matar Golems</span>
+                    </span>
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-anomalies">Anomalias</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="chaos-anomaly-desc">Mate golems e deixe bombas de fluxo longe de aliados</p>
             </div>
             
@@ -69,6 +94,17 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-coordination">
+                        <span data-i18n="badge-text-light-braziers">Acender Braseiros</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-tentacles">Evitar Tentáculos</span>
+                    </span>
+                    <span class="mechanic-badge badge-timer">
+                        <span data-i18n="badge-text-time-pressure">Pressão de Tempo</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="chaos-blizzard-desc">Acenda fogueiras com ação especial enquanto evita tentáculos</p>
             </div>
@@ -80,12 +116,24 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-lure-electric">Atrair para Elétrico</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-dodge-pulls">Esquivar Puxões</span>
+                    </span>
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-break-shield">Quebrar Escudo</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="chaos-boss-desc">Atraia para azulejos elétricos para quebrar escudo, esquive de puxões e giros</p>
             </div>
             
             <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
         </div>
         </div>
+    </div>
     
     <!-- Rodapé carregado dinamicamente via JavaScript -->
     
@@ -147,6 +195,7 @@
         <script src="../language.js"></script>
 </body>
 </html>
+
 
 
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -18,16 +18,16 @@
         </a>
     </div>
     
-    <button class="settings-button" onclick="openSettingsModal()" title="Configurações">
+    <button class="settings-button" onclick="openSettingsModal()" title="ConfiguraÃ§Ãµes">
         <img src="../icon/settings.png" alt="Settings" width="24" height="24">
     </button>
     
     <div class="language-selector">
         <label for="languageSelect" data-translate="language-label">Idioma:</label>
         <select id="languageSelect">
-            <option value="pt">Português</option>
+            <option value="pt">PortuguÃªs</option>
             <option value="en">English</option>
-            <option value="es">Español</option>
+            <option value="es">EspaÃ±ol</option>
         </select>
     </div>
     
@@ -36,37 +36,37 @@
             <div class="header-top">
                 <div class="header-title">
                     <h1 data-translate="meta-ley-line">Ley-Line Anomaly</h1>
-                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e MecÃ¢nicas</p>
                 </div>
                 <div class="header-actions">
-                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: MecÃ¢nicas Normais</span>
                 </div>
             </div>
             <div class="header-buttons">
                 <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova MecÃ¢nica</button>
             </div>
         </div>
         
         <div class="flashcards-container" id="flashcardsContainer">
             <div class="flashcard">
                 <div class="flashcard-header">
-                    <h3 class="flashcard-title" data-translate="ley-line-location">Localizações (Rotação)</h3>
+                    <h3 class="flashcard-title" data-translate="ley-line-location">LocalizaÃ§Ãµes (RotaÃ§Ã£o)</h3>
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="ley-line-location-desc">Spawna em 3 mapas alternando: Timberline Falls, Iron Marches, Gendarran Fields. Rotação de 20 minutos cada</p>
+                <p class="flashcard-description" data-translate="ley-line-location-desc">Spawna em 3 mapas alternando: Timberline Falls, Iron Marches, Gendarran Fields. RotaÃ§Ã£o de 20 minutos cada</p>
             </div>
             
             <div class="flashcard">
                 <div class="flashcard-header">
-                    <h3 class="flashcard-title" data-translate="ley-line-mechanics">Mecânicas Principais</h3>
+                    <h3 class="flashcard-title" data-translate="ley-line-mechanics">MecÃ¢nicas Principais</h3>
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="ley-line-mechanics-desc">Boss simples, apenas DPS. Evite AoEs laranja no chão e mantenha DPS constante</p>
+                <p class="flashcard-description" data-translate="ley-line-mechanics-desc">Boss simples, apenas DPS. Evite AoEs laranja no chÃ£o e mantenha DPS constante</p>
             </div>
             
             <div class="flashcard">
@@ -76,7 +76,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="ley-line-shield-desc">A Anomaly periodicamente fica invulnerável com escudo. Aguarde o escudo cair e continue atacando</p>
+                <p class="flashcard-description" data-translate="ley-line-shield-desc">A Anomaly periodicamente fica invulnerÃ¡vel com escudo. Aguarde o escudo cair e continue atacando</p>
             </div>
             
             <div class="flashcard">
@@ -86,7 +86,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="ley-line-teleport-desc">A Anomaly teleporta para diferentes locais do mapa durante a luta. Siga-a rapidamente para não perder DPS</p>
+                <p class="flashcard-description" data-translate="ley-line-teleport-desc">A Anomaly teleporta para diferentes locais do mapa durante a luta. Siga-a rapidamente para nÃ£o perder DPS</p>
             </div>
             
             <div class="flashcard">
@@ -96,7 +96,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="ley-line-reward-desc">Dá Unstable Cosmic Essence (para legendary trinkets). Evento rápido, ideal para farm diário</p>
+                <p class="flashcard-description" data-translate="ley-line-reward-desc">DÃ¡ Unstable Cosmic Essence (para legendary trinkets). Evento rÃ¡pido, ideal para farm diÃ¡rio</p>
             </div>
             
             <div class="flashcard">
@@ -106,7 +106,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="ley-line-timer-desc">Evento dura 20 minutos por mapa. Use o timer do site para saber qual mapa está ativo no momento</p>
+                <p class="flashcard-description" data-translate="ley-line-timer-desc">Evento dura 20 minutos por mapa. Use o timer do site para saber qual mapa estÃ¡ ativo no momento</p>
             </div>
         </div>
     </div>
@@ -114,7 +114,7 @@
     <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()">
         <div class="settings-modal-content">
             <div class="settings-modal-header">
-                <h2 data-translate="settings-title">Configurações</h2>
+                <h2 data-translate="settings-title">ConfiguraÃ§Ãµes</h2>
                 <button class="close-modal-btn" onclick="closeSettingsModal()">&times;</button>
             </div>
             <div class="settings-options">
@@ -125,10 +125,10 @@
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        <span data-translate="export-mechanics">Exportar Mecânicas</span>
+                        <span data-translate="export-mechanics">Exportar MecÃ¢nicas</span>
                     </h3>
-                    <p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta página em um arquivo JSON</p>
-                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mecânicas</button>
+                    <p data-translate="export-mechanics-desc">Salva suas mecÃ¢nicas customizadas desta pÃ¡gina em um arquivo JSON</p>
+                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar MecÃ¢nicas</button>
                 </div>
                 
                 <div class="settings-option">
@@ -138,14 +138,14 @@
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <span data-translate="import-mechanics">Importar Mecânicas</span>
+                        <span data-translate="import-mechanics">Importar MecÃ¢nicas</span>
                     </h3>
-                    <p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta página</p>
-                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button>
+                    <p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p>
+                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button>
                 </div>
                 
                 <div class="settings-action-buttons">
-                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configurações</button>
+                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar ConfiguraÃ§Ãµes</button>
                 </div>
             </div>
         </div>
@@ -154,7 +154,7 @@
     <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()">
         <div class="reset-confirm-content">
             <h3 data-translate="reset-confirm-title">Confirmar Reset</h3>
-            <p data-translate="reset-confirm-message">Isso irá apagar todas as suas configurações e mecânicas customizadas. Esta ação não pode ser desfeita.</p>
+            <p data-translate="reset-confirm-message">Isso irÃ¡ apagar todas as suas configuraÃ§Ãµes e mecÃ¢nicas customizadas. Esta aÃ§Ã£o nÃ£o pode ser desfeita.</p>
             <div class="reset-confirm-buttons">
                 <button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button>
                 <button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button>
@@ -166,3 +166,4 @@
     <script src="../meta-events-detail-timer.js"></script>
 </body>
 </html>
+

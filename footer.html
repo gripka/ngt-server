@@ -1,4 +1,4 @@
-<!-- Rodapé - Version: 0.8 - Nov 2025 Update -->
+﻿<!-- RodapÃ© - Version: 0.8 - Nov 2025 Update -->
 <footer class="site-footer">
     <div class="footer-content">
         <a href="https://discord.gg/PwvzkGx" target="_blank" class="discord-banner">
@@ -13,7 +13,7 @@
         
         <div class="footer-info">
             <p><strong>NGT Server</strong></p>
-            <p class="footer-text-clickable" id="changelogTrigger" data-translate="footer-text">© 2025 - Sistema de Gerenciamento de Mecânicas</p>
+            <p class="footer-text-clickable" id="changelogTrigger" data-translate="footer-text">Â© 2025 - Sistema de Gerenciamento de MecÃ¢nicas</p>
         </div>
     </div>
 </footer>
@@ -26,6 +26,18 @@
             <button class="close-modal-btn" id="closeChangelogBtn">&times;</button>
         </div>
         <div class="changelog-content">
+            <div class="changelog-section">
+                <h3>Version 1.0 - November 2025</h3>
+                <ul>
+                    <li><strong>Mechanic Badges Redesign:</strong> Complete visual overhaul of mechanic badges system</li>
+                    <li><strong>Modern Glassmorphism:</strong> New translucent design with colored borders instead of solid gradients</li>
+                    <li><strong>Cleaner Interface:</strong> Removed emoji icons for a more professional and minimalist look</li>
+                    <li><strong>Enhanced Critical Badge:</strong> Improved pulse animation for wipe mechanics - faster cycle (1.5s) with glow effect</li>
+                    <li><strong>Better Hover Effects:</strong> Smooth transitions with opacity and border color changes on hover</li>
+                    <li><strong>10 Badge Types:</strong> Stack, Spread, Coordination, CC, Critical, Focus, Dodge, Defensive, Position, and Timer</li>
+                    <li><strong>Site-wide Application:</strong> Updated across all 68 fractal pages, 14 strike pages, and 30 raid pages</li>
+                </ul>
+            </div>
             <div class="changelog-section">
                 <h3>Version 0.9 - November 2025</h3>
                 <ul>
@@ -87,7 +99,7 @@
             // Abrir modal ao clicar no texto do footer
             changelogTrigger.addEventListener('click', function(e) {
                 e.preventDefault();
-                // Garantir que o modal apareça no topo da viewport
+                // Garantir que o modal apareÃ§a no topo da viewport
                 window.scrollTo({top: 0, left: 0, behavior: 'instant'});
                 document.body.style.overflow = 'hidden';
                 changelogModal.style.display = 'flex';
@@ -102,7 +114,7 @@
                 });
             }
             
-            // Fechar modal ao clicar fora do conteúdo
+            // Fechar modal ao clicar fora do conteÃºdo
             changelogModal.addEventListener('click', function(event) {
                 if (event.target === changelogModal) {
                     changelogModal.style.display = 'none';
@@ -121,7 +133,7 @@
     }
 })();
 
-// FORÇA o footer a ser fixo (correção crítica)
+// FORÃ‡A o footer a ser fixo (correÃ§Ã£o crÃ­tica)
 (function() {
     function ensureFooterFixed() {
         const footer = document.querySelector('.site-footer') || document.querySelector('footer');
@@ -138,11 +150,12 @@
     // Executar imediatamente
     ensureFooterFixed();
     
-    // Executar após load
+    // Executar apÃ³s load
     window.addEventListener('load', ensureFooterFixed);
     
-    // Executar após um pequeno delay (caso seja carregado dinamicamente)
+    // Executar apÃ³s um pequeno delay (caso seja carregado dinamicamente)
     setTimeout(ensureFooterFixed, 100);
     setTimeout(ensureFooterFixed, 500);
 })();
 </script>
+

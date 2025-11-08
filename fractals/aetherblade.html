@@ -35,14 +35,17 @@
                 <div class="header-title">
                     <h1 data-translate="fractal-aetherblade">Aetherblade</h1>
                     <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
-                </div>                <div class="header-actions">                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>                </div>            </div>
+                </div>
+                <div class="header-actions">
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                </div>
+            </div>
             <div class="header-buttons">
-<button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
                 <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
                 <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
                 <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
             </div>
-        
         
         <div class="flashcards-container" id="flashcardsContainer">
             <!-- Flashcards padrão -->
@@ -52,6 +55,14 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-mines">Evitar Minas</span>
+                    </span>
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-swimming">Natação</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="aetherblade-mine-desc">Nade pelo canal e evite as minas flutuantes</p>
             </div>
@@ -63,6 +74,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-lightning">Evitar Raios</span>
+                    </span>
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-step-dark">Pisar no Escuro</span>
+                    </span>
+                    <span class="mechanic-badge badge-defensive">
+                        <span data-i18n="badge-text-cleanse">Limpar Condições</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="aetherblade-laser-desc">Atravesse o chão iluminado pisando apenas nos azulejos escuros e limpando condições</p>
             </div>
             
@@ -72,6 +94,17 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-coordination">
+                        <span data-i18n="badge-text-coordinate-terminals">Coordenar Terminais</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-patrols">Evitar Patrulhas</span>
+                    </span>
+                    <span class="mechanic-badge badge-timer">
+                        <span data-i18n="badge-text-time-pressure">Pressão de Tempo</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="aetherblade-security-desc">Coordene terminais para desativar campos de força enquanto desvia de patrulhas</p>
             </div>
@@ -83,6 +116,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-cannons">Evitar Canhões</span>
+                    </span>
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-kill-pirates">Matar Piratas</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-bombardment">Evitar Bombardeio</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="aetherblade-deck-desc">Limpe piratas e desvie de linhas de canhão e bombardeios</p>
             </div>
             
@@ -93,12 +137,24 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-kite-golems">Kite Golems</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-dodge-lasers">Esquivar Lasers</span>
+                    </span>
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-use-boxes">Usar Caixas (LoS)</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="aetherblade-boss-desc">Faça kite dos golems para os cantos, evite lasers rotatórios, use caixas para linha de visão se necessário</p>
             </div>
             
             <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
         </div>
         </div>
+    </div>
     
     <!-- Rodapé carregado dinamicamente via JavaScript -->
     
@@ -160,6 +216,7 @@
         <script src="../language.js"></script>
 </body>
 </html>
+
 
 
 

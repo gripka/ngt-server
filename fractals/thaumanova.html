@@ -30,17 +30,23 @@
     
     <div class="container menu-container">
         
-        <div class="detail-page-header">        <div class="header-top">            <div class="header-title">
-            <h1 data-translate="fractal-thaumanova">Thaumanova Reactor</h1>
-            <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
-        </div>        <div class="header-actions">            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>        </div>    </div>
+        <div class="detail-page-header">
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 data-translate="fractal-thaumanova">Thaumanova Reactor</h1>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                </div>
+                <div class="header-actions">
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                </div>
+            </div>
         
             <div class="header-buttons">
-            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
-            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
-            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
-        </div>
+                <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+            </div>
         
         <div class="flashcards-container" id="flashcardsContainer">
             <!-- Flashcards padrão -->
@@ -50,6 +56,14 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-spread">
+                        <span data-i18n="badge-text-split-four">Dividir em Quatro</span>
+                    </span>
+                    <span class="mechanic-badge badge-coordination">
+                        <span data-i18n="badge-text-collect-rods">Coletar Rods</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="thaumanova-hub-desc">Complete quatro alas - Subject 6, Dormitories, Maze e Heat - as primeiras 3 vão dropar Cooling Rods para ajudar com a última</p>
             </div>
@@ -61,6 +75,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-feed-ooze">Alimentar Ooze</span>
+                    </span>
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-stop-shield">Parar no Escudo</span>
+                    </span>
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-burst-dps">Burst DPS</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="thaumanova-subject6-desc">Burst DPS, mate oozes de cura e pare de bater quando tiver escudo</p>
             </div>
             
@@ -70,6 +95,17 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-coordination">
+                        <span data-i18n="badge-text-defend-npc">Defender NPC</span>
+                    </span>
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-close-portals">Fechar Portais</span>
+                    </span>
+                    <span class="mechanic-badge badge-timer">
+                        <span data-i18n="badge-text-time-pressure">Pressão de Tempo</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="thaumanova-dormitories-desc">Resgate cientistas e destrua portais rapidamente</p>
             </div>
@@ -81,6 +117,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-coordination">
+                        <span data-i18n="badge-text-beam-puzzle">Quebra-Cabeça de Feixes</span>
+                    </span>
+                    <span class="mechanic-badge badge-spread">
+                        <span data-i18n="badge-text-split-three">Dividir em Três</span>
+                    </span>
+                    <span class="mechanic-badge badge-timer">
+                        <span data-i18n="badge-text-sync-switches">Sincronizar Botões</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="thaumanova-maze-desc">Carregue escudos e coordene interruptores para abrir o caminho - dois nos primeiros interruptores e um terceiro no final (pressione no meio)</p>
             </div>
             
@@ -90,6 +137,17 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-coordination">
+                        <span data-i18n="badge-text-place-rods">Colocar Rods</span>
+                    </span>
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-safe-zones">Zonas Seguras</span>
+                    </span>
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-heat-damage">Dano de Calor</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="thaumanova-heat-desc">Use os cooling rods nas paredes desta sala para dar zonas seguras, segure Weapon Skill 1 para um boost, pressione o botão no final</p>
             </div>
@@ -101,12 +159,24 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-anomalies">Anomalias</span>
+                    </span>
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-stabilize-platform">Estabilizar Plataforma</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-falling">Evitar Queda</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="thaumanova-anomaly-desc">Retorne à plataforma central e ative o console, durante a luta contra o boss use sua tecla de ação especial Hex Shield para estabilizar plataformas e evitar cair</p>
             </div>
             
             <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
         </div>
         </div>
+    </div>
 
     <!-- Rodapé carregado dinamicamente via JavaScript -->
     
@@ -168,6 +238,7 @@
         <script src="../language.js"></script>
 </body>
 </html>
+
 
 
 

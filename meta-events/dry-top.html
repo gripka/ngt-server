@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -19,17 +19,17 @@
         </a>
     </div>
     
-    <!-- Botão de Configurações -->
-    <button class="settings-button" onclick="openSettingsModal()" title="Configurações">
+    <!-- BotÃ£o de ConfiguraÃ§Ãµes -->
+    <button class="settings-button" onclick="openSettingsModal()" title="ConfiguraÃ§Ãµes">
         <img src="../icon/settings.png" alt="Settings" width="24" height="24">
     </button>
     
     <div class="language-selector">
         <label for="languageSelect" data-translate="language-label">Idioma:</label>
         <select id="languageSelect">
-            <option value="pt">Português</option>
+            <option value="pt">PortuguÃªs</option>
             <option value="en">English</option>
-            <option value="es">Español</option>
+            <option value="es">EspaÃ±ol</option>
         </select>
     </div>
 
@@ -40,27 +40,27 @@
             <div class="header-top">
                 <div class="header-title">
                     <h1 data-translate="meta-drytop">Dry Top</h1>
-                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e MecÃ¢nicas</p>
                 </div>
                 <div class="header-actions">
-                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: MecÃ¢nicas Normais</span>
                 </div>
             </div>
             <div class="header-buttons">
                 <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova MecÃ¢nica</button>
             </div>
         </div>
         
         <div class="flashcards-container" id="flashcardsContainer">
             <div class="flashcard">
                 <div class="flashcard-header">
-                    <h3 class="flashcard-title" data-translate="drytop-location">Localização</h3>
+                    <h3 class="flashcard-title" data-translate="drytop-location">LocalizaÃ§Ã£o</h3>
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="drytop-location-desc">Dry Top - Mapa da Living World Season 2. Acessível de Brisban Wildlands</p>
+                <p class="flashcard-description" data-translate="drytop-location-desc">Dry Top - Mapa da Living World Season 2. AcessÃ­vel de Brisban Wildlands</p>
             </div>
             
             <div class="flashcard">
@@ -80,7 +80,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="drytop-tier-desc">Complete eventos para aumentar o Favor of the Zephyrites de Tier 1 a Tier 6. Tiers mais altos = melhores recompensas e acesso a mais áreas</p>
+                <p class="flashcard-description" data-translate="drytop-tier-desc">Complete eventos para aumentar o Favor of the Zephyrites de Tier 1 a Tier 6. Tiers mais altos = melhores recompensas e acesso a mais Ã¡reas</p>
             </div>
             
             <div class="flashcard">
@@ -90,7 +90,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="drytop-crash-desc">40 minutos de eventos variados: escoltas, mineração, defender áreas, matar campeões. Espalhe-se pelo mapa para ganho máximo de tier</p>
+                <p class="flashcard-description" data-translate="drytop-crash-desc">40 minutos de eventos variados: escoltas, mineraÃ§Ã£o, defender Ã¡reas, matar campeÃµes. Espalhe-se pelo mapa para ganho mÃ¡ximo de tier</p>
             </div>
             
             <div class="flashcard">
@@ -100,17 +100,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="drytop-sandstorm-desc">Tempestade de areia de 20 minutos abre novas áreas com portais de areia. Acesse cavernas escondidas e eventos especiais. Use geodes com sabedoria</p>
+                <p class="flashcard-description" data-translate="drytop-sandstorm-desc">Tempestade de areia de 20 minutos abre novas Ã¡reas com portais de areia. Acesse cavernas escondidas e eventos especiais. Use geodes com sabedoria</p>
             </div>
             
             <div class="flashcard">
                 <div class="flashcard-header">
-                    <h3 class="flashcard-title" data-translate="drytop-champions">Múltiplos Campeões</h3>
+                    <h3 class="flashcard-title" data-translate="drytop-champions">MÃºltiplos CampeÃµes</h3>
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="drytop-champions-desc">Vários campeões spawnam: Dust Mite Queen, Inquest Golem, Colocal e mais. Mate-os para progresso de tier e loot</p>
+                <p class="flashcard-description" data-translate="drytop-champions-desc">VÃ¡rios campeÃµes spawnam: Dust Mite Queen, Inquest Golem, Colocal e mais. Mate-os para progresso de tier e loot</p>
             </div>
             
             <div class="flashcard">
@@ -120,7 +120,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="drytop-geodes-desc">Geodes são a moeda do mapa. Use para abrir baús enterrados durante Sandstorm. Farme geodes durante eventos de Crash Site</p>
+                <p class="flashcard-description" data-translate="drytop-geodes-desc">Geodes sÃ£o a moeda do mapa. Use para abrir baÃºs enterrados durante Sandstorm. Farme geodes durante eventos de Crash Site</p>
             </div>
             
             <div class="flashcard">
@@ -130,17 +130,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="drytop-rewards-desc">Skins de armas Ambrite, armadura temática Zephyrite, recompensas compradas com geode. Baús T6 têm melhor loot incluindo materiais raros</p>
+                <p class="flashcard-description" data-translate="drytop-rewards-desc">Skins de armas Ambrite, armadura temÃ¡tica Zephyrite, recompensas compradas com geode. BaÃºs T6 tÃªm melhor loot incluindo materiais raros</p>
             </div>
         </div>
     </div>
     
-    <!-- Modal de Configurações -->
+    <!-- Modal de ConfiguraÃ§Ãµes -->
     <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()">
         <div class="settings-modal-content">
             <div class="settings-header">
-                <h2 data-translate="settings">Configurações</h2>
-                <button class="close-settings" onclick="closeSettingsModal()">✕</button>
+                <h2 data-translate="settings">ConfiguraÃ§Ãµes</h2>
+                <button class="close-settings" onclick="closeSettingsModal()">âœ•</button>
             </div>
             <div class="settings-options">
                 <div class="settings-option">
@@ -150,10 +150,10 @@
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        <span data-translate="export-mechanics">Exportar Mecânicas</span>
+                        <span data-translate="export-mechanics">Exportar MecÃ¢nicas</span>
                     </h3>
-                    <p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta página em um arquivo JSON</p>
-                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mecânicas</button>
+                    <p data-translate="export-mechanics-desc">Salva suas mecÃ¢nicas customizadas desta pÃ¡gina em um arquivo JSON</p>
+                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar MecÃ¢nicas</button>
                 </div>
                 
                 <div class="settings-option">
@@ -163,24 +163,24 @@
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <span data-translate="import-mechanics">Importar Mecânicas</span>
+                        <span data-translate="import-mechanics">Importar MecÃ¢nicas</span>
                     </h3>
-                    <p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta página</p>
-                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button>
+                    <p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p>
+                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button>
                 </div>
                 
                 <div class="settings-action-buttons">
-                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configurações</button>
+                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar ConfiguraÃ§Ãµes</button>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Modal de Confirmação de Reset -->
+    <!-- Modal de ConfirmaÃ§Ã£o de Reset -->
     <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()">
         <div class="reset-confirm-content">
             <h3 data-translate="reset-confirm-title">Confirmar Reset</h3>
-            <p data-translate="reset-confirm-message">Isso irá apagar todas as suas configurações e mecânicas customizadas. Esta ação não pode ser desfeita.</p>
+            <p data-translate="reset-confirm-message">Isso irÃ¡ apagar todas as suas configuraÃ§Ãµes e mecÃ¢nicas customizadas. Esta aÃ§Ã£o nÃ£o pode ser desfeita.</p>
             <div class="reset-confirm-buttons">
                 <button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button>
                 <button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button>
@@ -192,3 +192,4 @@
     <script src="../meta-events-detail-timer.js"></script>
 </body>
 </html>
+

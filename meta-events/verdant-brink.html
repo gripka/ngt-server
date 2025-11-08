@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -19,17 +19,17 @@
         </a>
     </div>
     
-    <!-- Botão de Configurações -->
-    <button class="settings-button" onclick="openSettingsModal()" title="Configurações">
+    <!-- BotÃ£o de ConfiguraÃ§Ãµes -->
+    <button class="settings-button" onclick="openSettingsModal()" title="ConfiguraÃ§Ãµes">
         <img src="../icon/settings.png" alt="Settings" width="24" height="24">
     </button>
     
     <div class="language-selector">
         <label for="languageSelect" data-translate="language-label">Idioma:</label>
         <select id="languageSelect">
-            <option value="pt">Português</option>
+            <option value="pt">PortuguÃªs</option>
             <option value="en">English</option>
-            <option value="es">Español</option>
+            <option value="es">EspaÃ±ol</option>
         </select>
     </div>
 
@@ -40,22 +40,22 @@
             <div class="header-top">
                 <div class="header-title">
                     <h1 data-translate="meta-verdant-brink">Verdant Brink</h1>
-                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e MecÃ¢nicas</p>
                 </div>
                 <div class="header-actions">
-                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: MecÃ¢nicas Normais</span>
                 </div>
             </div>
             <div class="header-buttons">
                 <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova MecÃ¢nica</button>
             </div>
         </div>
         
         <div class="flashcards-container" id="flashcardsContainer">
             <div class="flashcard">
                 <div class="flashcard-header">
-                    <h3 class="flashcard-title" data-translate="vb-location">Localização</h3>
+                    <h3 class="flashcard-title" data-translate="vb-location">LocalizaÃ§Ã£o</h3>
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
@@ -70,7 +70,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="vb-cycle-desc">Mapa alterna entre Dia (75 min) e Noite (45 min). Mecânicas diferentes em cada fase</p>
+                <p class="flashcard-description" data-translate="vb-cycle-desc">Mapa alterna entre Dia (75 min) e Noite (45 min). MecÃ¢nicas diferentes em cada fase</p>
             </div>
             
             <div class="flashcard">
@@ -80,7 +80,7 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="vb-day-desc">Construa outposts, complete eventos de rally. Acumula pontos de participação para recompensas de noite</p>
+                <p class="flashcard-description" data-translate="vb-day-desc">Construa outposts, complete eventos de rally. Acumula pontos de participaÃ§Ã£o para recompensas de noite</p>
             </div>
             
             <div class="flashcard">
@@ -100,27 +100,27 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="vb-bosses-desc">4 bosses simultâneos em diferentes lanes: Patriarch, Matriarch, Husks. Squad deve se dividir para cobrir todos</p>
+                <p class="flashcard-description" data-translate="vb-bosses-desc">4 bosses simultÃ¢neos em diferentes lanes: Patriarch, Matriarch, Husks. Squad deve se dividir para cobrir todos</p>
             </div>
             
             <div class="flashcard">
                 <div class="flashcard-header">
-                    <h3 class="flashcard-title" data-translate="vb-participation">Sistema de Participação</h3>
+                    <h3 class="flashcard-title" data-translate="vb-participation">Sistema de ParticipaÃ§Ã£o</h3>
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="vb-participation-desc">Participe durante o dia para ganhar níveis de participação (T1-T4). Mais participação = melhores recompensas nos baús noturnos</p>
+                <p class="flashcard-description" data-translate="vb-participation-desc">Participe durante o dia para ganhar nÃ­veis de participaÃ§Ã£o (T1-T4). Mais participaÃ§Ã£o = melhores recompensas nos baÃºs noturnos</p>
             </div>
             
             <div class="flashcard">
                 <div class="flashcard-header">
-                    <h3 class="flashcard-title" data-translate="vb-canopy">Navegação Vertical</h3>
+                    <h3 class="flashcard-title" data-translate="vb-canopy">NavegaÃ§Ã£o Vertical</h3>
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="vb-canopy-desc">Mapa tem 3 camadas verticais: Canopy (topo), Mid-level e Floor (chão). Use updrafts e gliding para navegar</p>
+                <p class="flashcard-description" data-translate="vb-canopy-desc">Mapa tem 3 camadas verticais: Canopy (topo), Mid-level e Floor (chÃ£o). Use updrafts e gliding para navegar</p>
             </div>
             
             <div class="flashcard">
@@ -130,17 +130,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
-                <p class="flashcard-description" data-translate="vb-rewards-desc">Airship Cargo com loot valioso, Bladed Armor boxes, Mordrem parts para coleções. Baús de noite dão melhores rewards</p>
+                <p class="flashcard-description" data-translate="vb-rewards-desc">Airship Cargo com loot valioso, Bladed Armor boxes, Mordrem parts para coleÃ§Ãµes. BaÃºs de noite dÃ£o melhores rewards</p>
             </div>
         </div>
     </div>
     
-    <!-- Modal de Configurações -->
+    <!-- Modal de ConfiguraÃ§Ãµes -->
     <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()">
         <div class="settings-modal-content">
             <div class="settings-header">
-                <h2 data-translate="settings">Configurações</h2>
-                <button class="close-settings" onclick="closeSettingsModal()">✕</button>
+                <h2 data-translate="settings">ConfiguraÃ§Ãµes</h2>
+                <button class="close-settings" onclick="closeSettingsModal()">âœ•</button>
             </div>
             <div class="settings-options">
                 <div class="settings-option">
@@ -150,10 +150,10 @@
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        <span data-translate="export-mechanics">Exportar Mecânicas</span>
+                        <span data-translate="export-mechanics">Exportar MecÃ¢nicas</span>
                     </h3>
-                    <p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta página em um arquivo JSON</p>
-                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mecânicas</button>
+                    <p data-translate="export-mechanics-desc">Salva suas mecÃ¢nicas customizadas desta pÃ¡gina em um arquivo JSON</p>
+                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar MecÃ¢nicas</button>
                 </div>
                 
                 <div class="settings-option">
@@ -163,24 +163,24 @@
                             <polyline points="17 8 12 3 7 8"></polyline>
                             <line x1="12" y1="3" x2="12" y2="15"></line>
                         </svg>
-                        <span data-translate="import-mechanics">Importar Mecânicas</span>
+                        <span data-translate="import-mechanics">Importar MecÃ¢nicas</span>
                     </h3>
-                    <p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta página</p>
-                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button>
+                    <p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p>
+                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button>
                 </div>
                 
                 <div class="settings-action-buttons">
-                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configurações</button>
+                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar ConfiguraÃ§Ãµes</button>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Modal de Confirmação de Reset -->
+    <!-- Modal de ConfirmaÃ§Ã£o de Reset -->
     <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()">
         <div class="reset-confirm-content">
             <h3 data-translate="reset-confirm-title">Confirmar Reset</h3>
-            <p data-translate="reset-confirm-message">Isso irá apagar todas as suas configurações e mecânicas customizadas. Esta ação não pode ser desfeita.</p>
+            <p data-translate="reset-confirm-message">Isso irÃ¡ apagar todas as suas configuraÃ§Ãµes e mecÃ¢nicas customizadas. Esta aÃ§Ã£o nÃ£o pode ser desfeita.</p>
             <div class="reset-confirm-buttons">
                 <button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button>
                 <button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button>
@@ -192,3 +192,4 @@
     <script src="../meta-events-detail-timer.js"></script>
 </body>
 </html>
+

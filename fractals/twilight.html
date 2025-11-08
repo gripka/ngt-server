@@ -30,17 +30,23 @@
     
     <div class="container menu-container">
         
-        <div class="detail-page-header">        <div class="header-top">            <div class="header-title">
-            <h1 data-translate="fractal-twilight">Twilight Oasis</h1>
-            <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
-        </div>        <div class="header-actions">            <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>        </div>    </div>
+        <div class="detail-page-header">
+            <div class="header-top">
+                <div class="header-title">
+                    <h1 data-translate="fractal-twilight">Twilight Oasis</h1>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                </div>
+                <div class="header-actions">
+                    <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
+                </div>
+            </div>
         
             <div class="header-buttons">
-            <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-            <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
-            <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
-            <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
-        </div>
+                <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
+                <button class="btn-toggle-cm" id="toggleCMBtn" onclick="toggleCMView()" data-translate="toggle-cm" style="display: none;">CM</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-secondary" onclick="addNewMechanic('cm')" data-translate="add-cm-mechanic">Adicionar CM Mecânica</button>
+            </div>
         
         <div class="flashcards-container" id="flashcardsContainer">
             <!-- Flashcards padrão -->
@@ -50,6 +56,14 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-rush-elite">Rush para Elite</span>
+                    </span>
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-sandbinder">Sandbinder</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="twilight-approach-desc">Corra diretamente para o Elite Sunspear Sandbinder</p>
             </div>
@@ -61,6 +75,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-wipe-75">Wipe Intencional 75%</span>
+                    </span>
+                    <span class="mechanic-badge badge-position">
+                        <span data-i18n="badge-text-jump-rooftops">Pular Telhados</span>
+                    </span>
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-kill-marked">Matar Marcados</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="twilight-rooftop-desc">Wipe em 75% é intencional, então use ação especial para pular telhados e matar adds marcados</p>
             </div>
             
@@ -70,6 +95,14 @@
                     <div class="flashcard-actions">
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
+                </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-cc">
+                        <span data-i18n="badge-text-cc-breakbar">CC Barra</span>
+                    </span>
+                    <span class="mechanic-badge badge-critical">
+                        <span data-i18n="badge-text-detonation-20">Detonação a cada 20%</span>
+                    </span>
                 </div>
                 <p class="flashcard-description" data-translate="twilight-boss-desc">Quebre barra durante Mystic Detonation a cada 20%</p>
             </div>
@@ -81,6 +114,17 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-clones">Evitar Clones</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-lightning">Evitar Raios</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-meteors">Evitar Meteoros</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="twilight-phases-desc">Evite ataques únicos - clones, slams, lightning, marks e meteoros</p>
             </div>
             
@@ -91,12 +135,24 @@
                         <button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button>
                     </div>
                 </div>
+                <div class="mechanic-badges">
+                    <span class="mechanic-badge badge-focus">
+                        <span data-i18n="badge-text-kill-priests">Matar Sacerdotes</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-portals">Evitar Portais</span>
+                    </span>
+                    <span class="mechanic-badge badge-dodge">
+                        <span data-i18n="badge-text-avoid-tornadoes">Evitar Tornados</span>
+                    </span>
+                </div>
                 <p class="flashcard-description" data-translate="twilight-intermissions-desc">Mate sacerdotes e evite portais e tornados</p>
             </div>
             
             <!-- Os flashcards editáveis serão adicionados aqui dinamicamente -->
         </div>
         </div>
+    </div>
 
     <!-- Rodapé carregado dinamicamente via JavaScript -->
     
@@ -158,6 +214,7 @@
         <script src="../language.js"></script>
 </body>
 </html>
+
 
 
 

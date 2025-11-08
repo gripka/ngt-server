@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -11,36 +11,36 @@
 </head>
 <body data-page-id="meta-dragonstorm">
     <div class="logo-container"><a href="../index.html"><img src="../logo.png" alt="NGT Logo" class="site-logo"></a></div>
-    <button class="settings-button" onclick="openSettingsModal()" title="Configurações"><img src="../icon/settings.png" alt="Settings" width="24" height="24"></button>
-    <div class="language-selector"><label for="languageSelect" data-translate="language-label">Idioma:</label><select id="languageSelect"><option value="pt">Português</option><option value="en">English</option><option value="es">Español</option></select></div>
+    <button class="settings-button" onclick="openSettingsModal()" title="ConfiguraÃ§Ãµes"><img src="../icon/settings.png" alt="Settings" width="24" height="24"></button>
+    <div class="language-selector"><label for="languageSelect" data-translate="language-label">Idioma:</label><select id="languageSelect"><option value="pt">PortuguÃªs</option><option value="en">English</option><option value="es">EspaÃ±ol</option></select></div>
     
     <div class="container menu-container">
         <div class="detail-page-header">
             <div class="header-top">
                 <div class="header-title">
                     <h1 data-translate="meta-dragonstorm">Dragonstorm</h1>
-                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas</p>
+                    <p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e MecÃ¢nicas</p>
                 </div>
-                <div class="header-actions"><span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span></div>
+                <div class="header-actions"><span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: MecÃ¢nicas Normais</span></div>
             </div>
             <div class="header-buttons">
                 <button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
-                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova Mecânica</button>
+                <button class="btn-primary" onclick="addNewMechanic('normal')" data-translate="add-new-mechanic">Adicionar Nova MecÃ¢nica</button>
             </div>
         </div>
         
         <div class="flashcards-container" id="flashcardsContainer">
-            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-location">Localização</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-location-desc">Eye of the North - The Icebrood Saga finale. 50 players. Boss final da saga</p></div>
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-location">LocalizaÃ§Ã£o</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-location-desc">Eye of the North - The Icebrood Saga finale. 50 players. Boss final da saga</p></div>
             
-            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-dragons">2 Elder Dragons</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-dragons-desc">Lute contra Primordus e Jormag simultaneamente. Dois Elder Dragons fusionados. Evento épico e cinematográfico</p></div>
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-dragons">2 Elder Dragons</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-dragons-desc">Lute contra Primordus e Jormag simultaneamente. Dois Elder Dragons fusionados. Evento Ã©pico e cinematogrÃ¡fico</p></div>
             
-            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-phases">3 Fases Principais</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-phases-desc">Fase 1: Primordus (fire). Fase 2: Jormag (ice). Fase 3: Ambos juntos. Cada fase tem mecânicas únicas e perigosas</p></div>
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-phases">3 Fases Principais</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-phases-desc">Fase 1: Primordus (fire). Fase 2: Jormag (ice). Fase 3: Ambos juntos. Cada fase tem mecÃ¢nicas Ãºnicas e perigosas</p></div>
             
             <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-primordus">Primordus - Fire Dragon</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-primordus-desc">Ataques fire massivos, lava pools, AoEs laranja. Use frost boons da Braham. Dodge fire meteors. Destroyers spawnam constantemente</p></div>
             
-            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-jormag">Jormag - Ice Dragon</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-jormag-desc">Ataques ice, freeze mechanics, ice storms. Use fire boons da Ryland. Icebrood adds. Evite ice shards que caem do céu</p></div>
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-jormag">Jormag - Ice Dragon</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-jormag-desc">Ataques ice, freeze mechanics, ice storms. Use fire boons da Ryland. Icebrood adds. Evite ice shards que caem do cÃ©u</p></div>
             
-            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-boons">Special Boons</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-boons-desc">Pegue boons especiais: Frost para lutar Primordus, Fire para lutar Jormag. Braham e Ryland dão buffs. Essencial para sobrevivência</p></div>
+            <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-boons">Special Boons</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-boons-desc">Pegue boons especiais: Frost para lutar Primordus, Fire para lutar Jormag. Braham e Ryland dÃ£o buffs. Essencial para sobrevivÃªncia</p></div>
             
             <div class="flashcard"><div class="flashcard-header"><h3 class="flashcard-title" data-translate="dragonstorm-adds">Champion Adds</h3><div class="flashcard-actions"><button class="btn-copy" onclick="copyCardText(this)" data-translate="copy-text">Copiar</button></div></div><p class="flashcard-description" data-translate="dragonstorm-adds-desc">Destroyers e Icebrood champions spawnam. Mate adds rapidamente ou dominam o mapa. Divida alguns jogadores para add control</p></div>
             
@@ -48,11 +48,12 @@
         </div>
     </div>
     
-    <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()"><div class="settings-modal-content"><div class="settings-header"><h2 data-translate="settings">Configurações</h2><button class="close-settings" onclick="closeSettingsModal()">✕</button></div><div class="settings-options"><div class="settings-option"><h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span data-translate="export-mechanics">Exportar Mecânicas</span></h3><p data-translate="export-mechanics-desc">Salva suas mecânicas customizadas desta página em um arquivo JSON</p><button onclick="exportMechanics()" data-translate="export-mechanics">Exportar Mecânicas</button></div><div class="settings-option"><h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg><span data-translate="import-mechanics">Importar Mecânicas</span></h3><p data-translate="import-mechanics-desc">Carrega mecânicas customizadas de um arquivo JSON para esta página</p><button onclick="importMechanics()" data-translate="import-mechanics">Importar Mecânicas</button></div><div class="settings-action-buttons"><button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configurações</button></div></div></div></div>
+    <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()"><div class="settings-modal-content"><div class="settings-header"><h2 data-translate="settings">ConfiguraÃ§Ãµes</h2><button class="close-settings" onclick="closeSettingsModal()">âœ•</button></div><div class="settings-options"><div class="settings-option"><h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg><span data-translate="export-mechanics">Exportar MecÃ¢nicas</span></h3><p data-translate="export-mechanics-desc">Salva suas mecÃ¢nicas customizadas desta pÃ¡gina em um arquivo JSON</p><button onclick="exportMechanics()" data-translate="export-mechanics">Exportar MecÃ¢nicas</button></div><div class="settings-option"><h3><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg><span data-translate="import-mechanics">Importar MecÃ¢nicas</span></h3><p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p><button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button></div><div class="settings-action-buttons"><button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar ConfiguraÃ§Ãµes</button></div></div></div></div>
     
-    <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()"><div class="reset-confirm-content"><h3 data-translate="reset-confirm-title">Confirmar Reset</h3><p data-translate="reset-confirm-message">Isso irá apagar todas as suas configurações e mecânicas customizadas. Esta ação não pode ser desfeita.</p><div class="reset-confirm-buttons"><button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button><button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button></div></div></div>
+    <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()"><div class="reset-confirm-content"><h3 data-translate="reset-confirm-title">Confirmar Reset</h3><p data-translate="reset-confirm-message">Isso irÃ¡ apagar todas as suas configuraÃ§Ãµes e mecÃ¢nicas customizadas. Esta aÃ§Ã£o nÃ£o pode ser desfeita.</p><div class="reset-confirm-buttons"><button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button><button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button></div></div></div>
 
     <script src="../language.js"></script>
     <script src="../meta-events-detail-timer.js"></script>
 </body>
 </html>
+
