@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -19,6 +19,13 @@
         <img src="../icon/settings.png" alt="Settings" width="24" height="24">
     </button>
     
+    <!-- Botão de Favoritos -->
+    <button class="favorites-button" id="favoriteBtn" onclick="openFavoritesModal()" title="Ver Favoritos">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+    </button>
+    
         <div class="language-selector">
         <label for="languageSelect" data-translate="language-label">Idioma:</label>
         <select id="languageSelect">
@@ -37,6 +44,12 @@
                     </h1><p class="header-subtitle" data-translate="detail-page-subtitle">Detalhes e Mecânicas
                 </p></div>
                             <div class="header-actions">
+            <button class="header-favorite-btn" id="headerFavoriteBtn" onclick="toggleFavorite()" title="Adicionar aos Favoritos">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </button>
+            
                     <span id="viewModeIndicator" class="view-mode-indicator normal-mode">Visualizando: Mecânicas Normais</span>
                 </div></div>
             <div class="header-buttons"><button class="copy-all-btn" onclick="copyAllText()" data-translate="copy-all">Copiar Todos</button>
@@ -120,61 +133,11 @@
     <!-- Rodapé carregado dinamicamente via JavaScript -->
     
 
-    <!-- Modal de ConfiguraÃ§Ãµes -->
-    <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettingsModal()">
-        <div class="settings-modal-content">
-            <div class="settings-modal-header">
-                <h2 data-translate="settings-title">ConfiguraÃ§Ãµes</h2>
-                <button class="close-modal-btn" onclick="closeSettingsModal()">&times;</button>
-            </div>
-            <div class="settings-options">
-                <div class="settings-option">
-                    <h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        <span data-translate="export-mechanics">Exportar MecÃ¢nicas</span>
-                    </h3>
-                    <p data-translate="export-mechanics-desc">Salva suas mecÃ¢nicas customizadas desta pÃ¡gina em um arquivo JSON</p>
-                    <button onclick="exportMechanics()" data-translate="export-mechanics">Exportar MecÃ¢nicas</button>
-                </div>
-                
-                <div class="settings-option">
-                    <h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                        <span data-translate="import-mechanics">Importar MecÃ¢nicas</span>
-                    </h3>
-                    <p data-translate="import-mechanics-desc">Carrega mecÃ¢nicas customizadas de um arquivo JSON para esta pÃ¡gina</p>
-                    <button onclick="importMechanics()" data-translate="import-mechanics">Importar MecÃ¢nicas</button>
-                </div>                
-                <div class="settings-action-buttons">
-                
-                    <button class="reset-settings-btn" onclick="openResetConfirmModal()" data-translate="reset-settings">Resetar Configuracoes</button>
-                
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal de Confirmacao de Reset -->
-    <div class="reset-confirm-modal" id="resetConfirmModal" onclick="if(event.target === this) closeResetConfirmModal()">
-        <div class="reset-confirm-content">
-            <h3 data-translate="reset-confirm-title">Confirmar Reset</h3>
-            <p data-translate="reset-confirm-message">Isso ira apagar todas as suas configuracoes e mecanicas customizadas. Esta acao nao pode ser desfeita.</p>
-            <div class="reset-confirm-buttons">
-                <button class="confirm-btn" onclick="resetAllSettings()" data-translate="confirm">Confirmar</button>
-                <button class="cancel-btn" onclick="closeResetConfirmModal()" data-translate="cancel">Cancelar</button>
-            </div>
-        </div>
-    </div>
+    <!-- Modal de Configurações será carregado dinamicamente via settings.js -->
 
-        <script src="../language.js"></script>
+    <script src="../settings.js"></script>
+    <script src="../favorites.js"></script>
+    <script src="../language.js"></script>
 </body>
 </html>
 

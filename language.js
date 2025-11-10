@@ -76,6 +76,14 @@ function changeLanguage(lang) {
     if (languageSelect) {
         languageSelect.value = lang;
     }
+    
+    // Atualizar botões de favoritos com novo idioma
+    if (typeof updateTopFavoriteButton === 'function') {
+        updateTopFavoriteButton();
+    }
+    if (typeof updateHeaderFavoriteButton === 'function') {
+        updateHeaderFavoriteButton();
+    }
 }
 
 // ============================================
@@ -1070,10 +1078,39 @@ function closeResetConfirmModal() {
 
 // Reseta todas as configurações do site
 function resetAllSettings() {
+    // Pega o idioma ANTES de limpar (para mostrar mensagem no idioma correto)
     const lang = localStorage.getItem('selectedLanguage') || 'pt';
     
-    // Limpa todo o localStorage
+    // Conta quantos itens serão deletados (para debug)
+    console.log('🗑️ Resetando configurações...');
+    console.log(`📊 Total de itens no localStorage: ${localStorage.length}`);
+    
+    // Lista todos os itens antes de deletar
+    const itemsToDelete = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key) {
+            itemsToDelete.push(key);
+            if (key.startsWith('flashcards-')) {
+                console.log(`  - Flashcard encontrado: ${key}`);
+            }
+        }
+    }
+    
+    // Mensagem de confirmação
+    const messages = {
+        pt: 'Todas as configurações foram resetadas. A página será recarregada.',
+        en: 'All settings have been reset. The page will be reloaded.',
+        es: 'Todas las configuraciones se han restablecido. La página se recargará.'
+    };
+    
+    // Limpa COMPLETAMENTE o localStorage (favoritos, mecânicas customizadas, configurações, etc)
     localStorage.clear();
+    console.log(`✅ localStorage limpo! ${itemsToDelete.length} itens removidos`);
+    
+    // Também limpa o sessionStorage (cache do footer, etc)
+    sessionStorage.clear();
+    console.log('✅ sessionStorage limpo!');
     
     // Fecha o modal de confirmação
     closeResetConfirmModal();
@@ -1081,15 +1118,617 @@ function resetAllSettings() {
     // Fecha o modal de configurações se estiver aberto
     closeSettingsModal();
     
-    // Mensagem de sucesso
-    const messages = {
-        pt: 'Todas as configurações foram resetadas. A página será recarregada.',
-        en: 'All settings have been reset. The page will be reloaded.',
-        es: 'Todas las configuraciones se han restablecido. La página se recargará.'
-    };
+    // Mostra mensagem
     alert(messages[lang]);
     
-    // Recarrega a página
-    location.reload();
+    // Força limpeza completa do cache e recarrega
+    if ('caches' in window) {
+        caches.keys().then(names => {
+            names.forEach(name => {
+                caches.delete(name);
+            });
+        });
+    }
+    
+    // Recarrega a página SEM usar cache
+    window.location.href = window.location.href.split('?')[0] + '?_=' + Date.now();
 }
 
+// ============================================
+// SISTEMA DE FAVORITOS
+// ============================================
+
+// Estrutura de dados dos favoritos por categoria
+const FAVORITES_CATEGORIES = {
+    fractals: {
+        key: 'fractals',
+        name: { pt: 'Fractals', en: 'Fractals', es: 'Fractales' },
+        path: 'fractals/'
+    },
+    raids: {
+        key: 'raids',
+        name: { pt: 'Raids', en: 'Raids', es: 'Raids' },
+        path: 'raids/'
+    },
+    strikes: {
+        key: 'strikes',
+        name: { pt: 'Strikes', en: 'Strikes', es: 'Strikes' },
+        path: 'strikes/'
+    },
+    metas: {
+        key: 'metas',
+        name: { pt: 'Meta Events', en: 'Meta Events', es: 'Meta Eventos' },
+        path: 'meta-events/'
+    }
+};
+
+// Obter todos os favoritos do localStorage
+function getFavorites() {
+    const favoritesData = localStorage.getItem('ngt-favorites');
+    if (!favoritesData) {
+        return { fractals: [], raids: [], strikes: [], metas: [] };
+    }
+    
+    try {
+        return JSON.parse(favoritesData);
+    } catch (e) {
+        console.error('Erro ao parsear favoritos:', e);
+        return { fractals: [], raids: [], strikes: [], metas: [] };
+    }
+}
+
+// Salvar favoritos no localStorage
+function saveFavorites(favorites) {
+    localStorage.setItem('ngt-favorites', JSON.stringify(favorites));
+}
+
+// Detectar categoria e ID da página atual
+function getCurrentPageInfo() {
+    const path = window.location.pathname;
+    const filename = path.split('/').pop().replace('.html', '');
+    
+    // Detectar categoria baseado no caminho
+    if (path.includes('/fractals/')) {
+        return { category: 'fractals', id: filename, path: path };
+    } else if (path.includes('/raids/')) {
+        return { category: 'raids', id: filename, path: path };
+    } else if (path.includes('/strikes/')) {
+        return { category: 'strikes', id: filename, path: path };
+    } else if (path.includes('/meta-events/')) {
+        return { category: 'metas', id: filename, path: path };
+    }
+    
+    return null;
+}
+
+// Verificar se a página atual está favoritada
+function isCurrentPageFavorited() {
+    const pageInfo = getCurrentPageInfo();
+    if (!pageInfo) return false;
+    
+    const favorites = getFavorites();
+    const categoryFavorites = favorites[pageInfo.category] || [];
+    
+    return categoryFavorites.some(fav => fav.id === pageInfo.id);
+}
+
+// Toggle favorito da página atual
+function toggleFavorite() {
+    const pageInfo = getCurrentPageInfo();
+    if (!pageInfo) {
+        console.error('Não foi possível detectar a página atual');
+        return;
+    }
+    
+    const favorites = getFavorites();
+    const categoryFavorites = favorites[pageInfo.category] || [];
+    
+    // Pegar o título da página
+    const titleElement = document.querySelector('.header-title h1');
+    const title = titleElement ? titleElement.textContent.trim() : pageInfo.id;
+    
+    const favoriteIndex = categoryFavorites.findIndex(fav => fav.id === pageInfo.id);
+    
+    let isNowFavorite;
+    if (favoriteIndex > -1) {
+        // Remover dos favoritos
+        categoryFavorites.splice(favoriteIndex, 1);
+        isNowFavorite = false;
+    } else {
+        // Adicionar aos favoritos
+        categoryFavorites.push({
+            id: pageInfo.id,
+            title: title,
+            path: pageInfo.path
+        });
+        isNowFavorite = true;
+        
+        // Adicionar animação APENAS no botão circular (header button)
+        const headerBtn = document.getElementById('headerFavoriteBtn');
+        if (headerBtn) {
+            headerBtn.classList.add('adding-favorite');
+            setTimeout(() => {
+                headerBtn.classList.remove('adding-favorite');
+            }, 600);
+        }
+        
+        // NÃO animar o botão do topo (que abre o modal)
+        // Ele deve permanecer sem animação
+    }
+    
+    favorites[pageInfo.category] = categoryFavorites;
+    saveFavorites(favorites);
+    
+    // Atualizar APENAS o botão circular (que adiciona/remove)
+    updateHeaderFavoriteButton();
+    
+    // NÃO tocar no botão do topo - ele é completamente independente
+    // e só deve ser atualizado ao carregar a página ou trocar idioma
+    
+    // Se a função do favorites.js existir, também chama ela para garantir
+    if (typeof window.updateFavoriteIcon === 'function') {
+        window.updateFavoriteIcon(isNowFavorite);
+    }
+}
+
+// Atualizar APENAS o botão do topo (que abre o modal)
+// Este botão NUNCA muda de título, sempre mostra "Ver Favoritos"
+// E NUNCA muda visualmente quando clicamos no botão circular
+function updateTopFavoriteButton() {
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    const modalText = {
+        pt: 'Ver Favoritos',
+        en: 'View Favorites',
+        es: 'Ver Favoritos'
+    };
+    
+    const topBtn = document.getElementById('favoriteBtn');
+    if (topBtn) {
+        topBtn.title = modalText[lang];
+        topBtn.setAttribute('aria-label', modalText[lang]);
+    }
+}
+
+// Atualizar APENAS o botão circular (que adiciona/remove)
+// Este botão tem título dinâmico
+function updateHeaderFavoriteButton() {
+    const isFavorited = isCurrentPageFavorited();
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    const addText = {
+        pt: 'Adicionar aos Favoritos',
+        en: 'Add to Favorites',
+        es: 'Agregar a Favoritos'
+    };
+    
+    const removeText = {
+        pt: 'Remover dos Favoritos',
+        en: 'Remove from Favorites',
+        es: 'Quitar de Favoritos'
+    };
+    
+    const headerBtn = document.getElementById('headerFavoriteBtn');
+    if (headerBtn) {
+        if (isFavorited) {
+            headerBtn.classList.add('active');
+            headerBtn.setAttribute('aria-pressed', 'true');
+            headerBtn.setAttribute('data-favorite', 'true');
+            headerBtn.title = removeText[lang];
+            headerBtn.setAttribute('aria-label', removeText[lang]);
+        } else {
+            headerBtn.classList.remove('active');
+            headerBtn.setAttribute('aria-pressed', 'false');
+            headerBtn.setAttribute('data-favorite', 'false');
+            headerBtn.title = addText[lang];
+            headerBtn.setAttribute('aria-label', addText[lang]);
+        }
+    }
+}
+
+// Função wrapper para manter compatibilidade (chama ambas)
+function updateFavoriteButton() {
+    updateTopFavoriteButton();
+    updateHeaderFavoriteButton();
+}
+
+// Remover um favorito específico
+function removeFavorite(category, id) {
+    const favorites = getFavorites();
+    const categoryFavorites = favorites[category] || [];
+    
+    const newCategoryFavorites = categoryFavorites.filter(fav => fav.id !== id);
+    favorites[category] = newCategoryFavorites;
+    
+    saveFavorites(favorites);
+    
+    // Recarregar modal
+    renderFavoritesModal();
+    
+    // Atualizar botão se estivermos na página removida
+    const pageInfo = getCurrentPageInfo();
+    if (pageInfo && pageInfo.category === category && pageInfo.id === id) {
+        updateFavoriteButton();
+    }
+}
+
+// Abrir modal de favoritos
+function openFavoritesModal() {
+    const modal = document.getElementById('favoritesModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        window.scrollTo(0, 0);
+        modal.scrollTop = 0;
+        
+        renderFavoritesModal();
+    }
+}
+
+// Fechar modal de favoritos
+function closeFavoritesModal() {
+    const modal = document.getElementById('favoritesModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Renderizar conteúdo do modal de favoritos
+function renderFavoritesModal() {
+    const container = document.getElementById('favoritesContent');
+    const emptyState = document.getElementById('favoritesEmpty');
+    if (!container) return;
+    
+    const favorites = getFavorites();
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    // Verificar se há favoritos
+    const totalFavorites = Object.values(favorites).reduce((sum, arr) => sum + arr.length, 0);
+    
+    if (totalFavorites === 0) {
+        // Mostrar estado vazio
+        if (emptyState) emptyState.style.display = 'block';
+        container.innerHTML = '';
+        container.appendChild(emptyState);
+        return;
+    }
+    
+    // Esconder estado vazio
+    if (emptyState) emptyState.style.display = 'none';
+    
+    // Renderizar categorias com favoritos
+    let html = '';
+    
+    for (const [categoryKey, categoryData] of Object.entries(FAVORITES_CATEGORIES)) {
+        const categoryFavorites = favorites[categoryKey] || [];
+        
+        // Só mostrar categorias que têm favoritos
+        if (categoryFavorites.length === 0) continue;
+        
+        const categoryName = categoryData.name[lang] || categoryData.name.pt;
+        
+        html += `
+            <div class="favorites-category">
+                <div class="favorites-category-title">
+                    ${categoryName}
+                    <span class="favorites-category-count">${categoryFavorites.length}</span>
+                </div>
+                <div class="favorites-list">
+        `;
+        
+        categoryFavorites.forEach(favorite => {
+            // Ajustar caminho relativo se necessário
+            let favPath = favorite.path;
+            if (!favPath.startsWith('/') && !favPath.startsWith('http')) {
+                favPath = categoryData.path + favorite.id + '.html';
+            }
+            
+            html += `
+                <div class="favorite-item">
+                    <a href="${favPath}" class="favorite-item-info">
+                        <span class="favorite-item-name">${favorite.title}</span>
+                    </a>
+                    <div class="favorite-item-actions">
+                        <button class="btn-remove-favorite" onclick="removeFavorite('${categoryKey}', '${favorite.id}')">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        
+        html += `
+                </div>
+            </div>
+        `;
+    }
+    
+    container.innerHTML = html;
+}
+
+// Inicializar favoritos quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+    // O botão do topo NUNCA muda visualmente - não precisa de classes
+    // Ele apenas abre o modal, sem indicar se a página está favoritada
+    
+    // Atualizar títulos dos botões
+    updateTopFavoriteButton();
+    updateHeaderFavoriteButton();
+});
+
+// Exportar favoritos para arquivo JSON
+function exportFavorites() {
+    const favorites = getFavorites();
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    // Conta total de favoritos
+    const totalFavorites = Object.values(favorites).reduce((sum, arr) => sum + arr.length, 0);
+    
+    if (totalFavorites === 0) {
+        const messages = {
+            pt: 'Não há favoritos para exportar.',
+            en: 'No favorites to export.',
+            es: 'No hay favoritos para exportar.'
+        };
+        alert(messages[lang]);
+        return;
+    }
+    
+    const exportData = {
+        version: '1.0',
+        exportDate: new Date().toISOString(),
+        totalFavorites: totalFavorites,
+        favorites: favorites
+    };
+    
+    // Criar arquivo JSON
+    const dataStr = JSON.stringify(exportData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    
+    // Criar link de download
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `ngt-favorites-${Date.now()}.json`;
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    const messages = {
+        pt: `${totalFavorites} favoritos exportados com sucesso!`,
+        en: `${totalFavorites} favorites exported successfully!`,
+        es: `¡${totalFavorites} favoritos exportados con éxito!`
+    };
+    alert(messages[lang]);
+}
+
+// Importar favoritos de arquivo JSON
+function importFavorites() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    
+    input.onchange = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        try {
+            const text = await file.text();
+            const importData = JSON.parse(text);
+            const lang = localStorage.getItem('selectedLanguage') || 'pt';
+            
+            // Validar formato
+            if (!importData.favorites || typeof importData.favorites !== 'object') {
+                throw new Error('Formato de arquivo inválido');
+            }
+            
+            const totalFavorites = importData.totalFavorites || 
+                Object.values(importData.favorites).reduce((sum, arr) => sum + (arr?.length || 0), 0);
+            
+            // Mensagem de confirmação
+            const confirmMessages = {
+                pt: `Isso importará ${totalFavorites} favoritos e substituirá seus favoritos atuais. Deseja continuar?`,
+                en: `This will import ${totalFavorites} favorites and replace your current favorites. Do you want to continue?`,
+                es: `Esto importará ${totalFavorites} favoritos y reemplazará tus favoritos actuales. ¿Deseas continuar?`
+            };
+            
+            if (!confirm(confirmMessages[lang])) {
+                return;
+            }
+            
+            // Importar favoritos
+            saveFavorites(importData.favorites);
+            
+            // Mensagem de sucesso
+            const successMessages = {
+                pt: `${totalFavorites} favoritos importados com sucesso!`,
+                en: `${totalFavorites} favorites imported successfully!`,
+                es: `¡${totalFavorites} favoritos importados con éxito!`
+            };
+            alert(successMessages[lang]);
+            
+            // Atualizar UI se modal estiver aberto
+            const modal = document.getElementById('favoritesModal');
+            if (modal && modal.style.display === 'flex') {
+                renderFavoritesModal();
+            }
+            
+            // Atualizar botão se estivermos em uma página de detalhes
+            updateFavoriteButton();
+            
+        } catch (error) {
+            console.error('Erro ao importar:', error);
+            const lang = localStorage.getItem('selectedLanguage') || 'pt';
+            const errorMessages = {
+                pt: 'Erro ao importar arquivo. Verifique se o formato está correto.',
+                en: 'Error importing file. Check if the format is correct.',
+                es: 'Error al importar el archivo. Verifica si el formato es correcto.'
+            };
+            alert(errorMessages[lang]);
+        }
+    };
+    
+    input.click();
+}
+
+
+// Exportar tudo (mecÃ¢nicas + favoritos + configuraÃ§Ãµes)
+function exportAll() {
+    const lang = localStorage.getItem('selectedLanguage') || 'pt';
+    
+    // Coletar todos os dados
+    const allData = {
+        version: '2.0',
+        exportDate: new Date().toISOString(),
+        type: 'complete-backup',
+        data: {
+            // Favoritos
+            favorites: getFavorites(),
+            
+            // MecÃ¢nicas (todas as pÃ¡ginas que tiverem)
+            mechanics: {},
+            
+            // ConfiguraÃ§Ãµes gerais
+            settings: {
+                language: localStorage.getItem('selectedLanguage') || 'pt',
+                theme: localStorage.getItem('theme') || 'light'
+            }
+        }
+    };
+    
+    // Coletar mecânicas de todas as páginas possíveis
+    const mechanicsKeys = Object.keys(localStorage).filter(key => 
+        key.startsWith('flashcards-') || key.startsWith('mechanics-') || key.startsWith('custom-mechanics-')
+    );
+    
+    mechanicsKeys.forEach(key => {
+        try {
+            const value = localStorage.getItem(key);
+            if (value) {
+                allData.data.mechanics[key] = JSON.parse(value);
+            }
+        } catch (e) {
+            console.warn(`Não foi possível incluir ${key} no backup`);
+        }
+    });
+    
+    // Contar total de itens
+    const totalFavorites = Object.values(allData.data.favorites).reduce((sum, arr) => sum + arr.length, 0);
+    const totalMechanics = Object.keys(allData.data.mechanics).length;
+    
+    // Criar arquivo JSON
+    const dataStr = JSON.stringify(allData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    
+    // Criar link de download
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `ngt-backup-completo-${Date.now()}.json`;
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+    
+    const messages = {
+        pt: `Backup completo exportado!\n${totalFavorites} favoritos + ${totalMechanics} páginas com mecânicas customizadas.`,
+        en: `Complete backup exported!\n${totalFavorites} favorites + ${totalMechanics} pages with custom mechanics.`,
+        es: `¡Backup completo exportado!\n${totalFavorites} favoritos + ${totalMechanics} páginas con mecánicas personalizadas.`
+    };
+    alert(messages[lang]);
+}
+
+// Importar tudo (mecÃ¢nicas + favoritos + configuraÃ§Ãµes)
+function importAll() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    
+    input.onchange = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        try {
+            const text = await file.text();
+            const importData = JSON.parse(text);
+            const lang = localStorage.getItem('selectedLanguage') || 'pt';
+            
+            // Validar formato
+            if (!importData.data || typeof importData.data !== 'object') {
+                throw new Error('Formato de arquivo invÃ¡lido');
+            }
+            
+            // Contar itens
+            const totalFavorites = importData.data.favorites ? 
+                Object.values(importData.data.favorites).reduce((sum, arr) => sum + (arr?.length || 0), 0) : 0;
+            const totalMechanics = importData.data.mechanics ? 
+                Object.keys(importData.data.mechanics).length : 0;
+            
+            // Mensagem de confirmaÃ§Ã£o
+            const confirmMessages = {
+                pt: `Isso importarÃ¡ um backup completo:\nâ€¢ ${totalFavorites} favoritos\nâ€¢ ${totalMechanics} pÃ¡ginas com mecÃ¢nicas customizadas\n\nIsso substituirÃ¡ TODOS os seus dados atuais. Deseja continuar?`,
+                en: `This will import a complete backup:\nâ€¢ ${totalFavorites} favorites\nâ€¢ ${totalMechanics} pages with custom mechanics\n\nThis will replace ALL your current data. Do you want to continue?`,
+                es: `Esto importarÃ¡ un backup completo:\nâ€¢ ${totalFavorites} favoritos\nâ€¢ ${totalMechanics} pÃ¡ginas con mecÃ¡nicas personalizadas\n\nEsto reemplazarÃ¡ TODOS tus datos actuales. Â¿Deseas continuar?`
+            };
+            
+            if (!confirm(confirmMessages[lang])) {
+                return;
+            }
+            
+            // Importar favoritos
+            if (importData.data.favorites) {
+                saveFavorites(importData.data.favorites);
+            }
+            
+            // Importar mecÃ¢nicas
+            if (importData.data.mechanics) {
+                Object.entries(importData.data.mechanics).forEach(([key, value]) => {
+                    localStorage.setItem(key, JSON.stringify(value));
+                });
+            }
+            
+            // Importar configuraÃ§Ãµes
+            if (importData.data.settings) {
+                if (importData.data.settings.language) {
+                    localStorage.setItem('selectedLanguage', importData.data.settings.language);
+                }
+                if (importData.data.settings.theme) {
+                    localStorage.setItem('theme', importData.data.settings.theme);
+                }
+            }
+            
+            // Mensagem de sucesso
+            const successMessages = {
+                pt: `Backup importado com sucesso!\n${totalFavorites} favoritos + ${totalMechanics} pÃ¡ginas restauradas.`,
+                en: `Backup imported successfully!\n${totalFavorites} favorites + ${totalMechanics} pages restored.`,
+                es: `Â¡Backup importado con Ã©xito!\n${totalFavoritos} favoritos + ${totalMechanics} pÃ¡ginas restauradas.`
+            };
+            alert(successMessages[lang]);
+            
+            // Recarregar a pÃ¡gina para aplicar todas as mudanÃ§as
+            const reloadMessages = {
+                pt: 'A pÃ¡gina serÃ¡ recarregada para aplicar as alteraÃ§Ãµes.',
+                en: 'The page will be reloaded to apply the changes.',
+                es: 'La pÃ¡gina se recargarÃ¡ para aplicar los cambios.'
+            };
+            alert(reloadMessages[lang]);
+            location.reload();
+            
+        } catch (error) {
+            console.error('Erro ao importar backup completo:', error);
+            const lang = localStorage.getItem('selectedLanguage') || 'pt';
+            const errorMessages = {
+                pt: 'Erro ao importar arquivo. Verifique se o formato estÃ¡ correto.',
+                en: 'Error importing file. Check if the format is correct.',
+                es: 'Error al importar el archivo. Verifica si el formato es correcto.'
+            };
+            alert(errorMessages[lang]);
+        }
+    };
+    
+    input.click();
+}

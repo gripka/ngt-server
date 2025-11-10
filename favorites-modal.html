@@ -1,0 +1,23 @@
+<!-- Modal de Favoritos -->
+<div class="favorites-modal" id="favoritesModal" onclick="if(event.target === this) closeFavoritesModal()">
+    <div class="favorites-modal-content">
+        <div class="favorites-modal-header">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span data-translate="favorites-title">Favoritos</span>
+            </h2>
+            <button class="close-modal-btn" onclick="closeFavoritesModal()">&times;</button>
+        </div>
+        <div class="favorites-content" id="favoritesContent">
+            <!-- Conteúdo dinâmico será inserido aqui -->
+            <div class="favorites-empty" id="favoritesEmpty">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <p data-translate="favorites-empty">Nenhum favorito ainda. Adicione páginas aos favoritos clicando no coração nas páginas de detalhes.</p>
+            </div>
+        </div>
+    </div>
+</div>
