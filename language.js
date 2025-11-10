@@ -1230,10 +1230,20 @@ function toggleFavorite() {
     const favoriteIndex = categoryFavorites.findIndex(fav => fav.id === pageInfo.id);
     
     let isNowFavorite;
+    const headerBtn = document.getElementById('headerFavoriteBtn');
+    
     if (favoriteIndex > -1) {
         // Remover dos favoritos
         categoryFavorites.splice(favoriteIndex, 1);
         isNowFavorite = false;
+        
+        // Adicionar animação de REMOÇÃO no botão circular
+        if (headerBtn) {
+            headerBtn.classList.add('removing-favorite');
+            setTimeout(() => {
+                headerBtn.classList.remove('removing-favorite');
+            }, 600);
+        }
     } else {
         // Adicionar aos favoritos
         categoryFavorites.push({
@@ -1243,13 +1253,12 @@ function toggleFavorite() {
         });
         isNowFavorite = true;
         
-        // Adicionar animação APENAS no botão circular (header button)
-        const headerBtn = document.getElementById('headerFavoriteBtn');
+        // Adicionar animação de ADIÇÃO APENAS no botão circular (header button)
         if (headerBtn) {
             headerBtn.classList.add('adding-favorite');
             setTimeout(() => {
                 headerBtn.classList.remove('adding-favorite');
-            }, 600);
+            }, 800);
         }
         
         // NÃO animar o botão do topo (que abre o modal)
