@@ -3582,7 +3582,7 @@ body.cm-mode-active .btn-secondary {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-height: 200px;
+    min-height: 300px;
 }
 
 .favorites-category {
@@ -3676,18 +3676,27 @@ body.cm-mode-active .btn-secondary {
 }
 
 .favorites-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     padding: 60px 20px;
-    color: #999;
+    color: #666;
+    flex: 1;
+    min-height: 300px;
 }
 
 .favorites-empty svg {
     margin-bottom: 20px;
+    opacity: 0.5;
+    color: #666;
 }
 
 .favorites-empty p {
     font-size: 1.1rem;
     line-height: 1.6;
+    color: #666;
 }
 
 /* Botão de favoritar nas páginas de detalhes */

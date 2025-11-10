@@ -64,12 +64,27 @@ function migrateFavoritesFormat() {
         .then(html => {
             // Inserir o modal no final do body
             document.body.insertAdjacentHTML('beforeend', html);
+            console.log('✅ Modal de favoritos carregado e pronto!');
             
-            // Carregar favoritos após modal estar carregado
-            loadFavorites();
+            // Adicionar listener ao botão de favoritos
+            const favoriteBtn = document.getElementById('favoriteBtn');
+            if (favoriteBtn) {
+                console.log('🔘 Botão de favoritos encontrado, adicionando listener...');
+                favoriteBtn.addEventListener('click', function(e) {
+                    console.log('👆 Clique detectado no botão!');
+                    try {
+                        openFavoritesModal();
+                        console.log('✅ openFavoritesModal() executado sem erros');
+                    } catch (error) {
+                        console.error('❌ ERRO ao executar openFavoritesModal():', error);
+                    }
+                });
+            } else {
+                console.log('❌ Botão favoriteBtn não encontrado');
+            }
         })
         .catch(error => {
-            console.error('Erro ao carregar modal de favoritos:', error);
+            console.error('❌ Erro ao carregar modal de favoritos:', error);
         });
 })();
 
@@ -78,11 +93,24 @@ function migrateFavoritesFormat() {
 // ========================================
 
 function openFavoritesModal() {
+    console.log('======================');
+    console.log('🚪 INICIO DA FUNÇÃO openFavoritesModal');
+    console.log('======================');
     const modal = document.getElementById('favoritesModal');
+    console.log('Modal element:', modal);
     if (modal) {
+        console.log('✅ Modal encontrado!');
         modal.style.display = 'flex';
+        console.log('📂 Modal.style.display definido como flex');
+        console.log('📂 Chamando loadFavorites...');
         loadFavorites();
+        console.log('📂 loadFavorites chamado!');
+    } else {
+        console.log('❌ Modal não encontrado!');
     }
+    console.log('======================');
+    console.log('🚪 FIM DA FUNÇÃO openFavoritesModal');
+    console.log('======================');
 }
 
 function closeFavoritesModal() {
@@ -93,17 +121,32 @@ function closeFavoritesModal() {
 }
 
 function loadFavorites() {
+    console.log('📋 loadFavorites EXECUTADO!');
     const favoritesContent = document.getElementById('favoritesContent');
     const favoritesEmpty = document.getElementById('favoritesEmpty');
     
-    if (!favoritesContent) return;
+    console.log('favoritesContent:', favoritesContent);
+    console.log('favoritesEmpty:', favoritesEmpty);
+    
+    if (!favoritesContent) {
+        console.log('❌ favoritesContent NÃO encontrado');
+        return;
+    }
     
     // Migrar formato se necessário
     const favorites = migrateFavoritesFormat();
     
+    console.log('Total de favoritos:', favorites.length);
+    
     if (favorites.length === 0) {
+        console.log('📭 SEM favoritos - mostrando empty state');
         if (favoritesEmpty) {
             favoritesEmpty.style.display = 'flex';
+            console.log('✅ favoritesEmpty display definido como flex');
+            console.log('offsetHeight:', favoritesEmpty.offsetHeight);
+            console.log('offsetWidth:', favoritesEmpty.offsetWidth);
+        } else {
+            console.log('❌ favoritesEmpty NÃO encontrado');
         }
         // Limpar outros elementos
         const items = favoritesContent.querySelectorAll('.favorite-item');
@@ -113,6 +156,7 @@ function loadFavorites() {
     
     if (favoritesEmpty) {
         favoritesEmpty.style.display = 'none';
+        console.log('🙈 Escondendo favoritesEmpty');
     }
     
     // Limpar favoritos antigos

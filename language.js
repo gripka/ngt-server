@@ -1385,22 +1385,66 @@ function closeFavoritesModal() {
 
 // Renderizar conteúdo do modal de favoritos
 function renderFavoritesModal() {
+    console.log('🎨 renderFavoritesModal EXECUTADO');
     const container = document.getElementById('favoritesContent');
     const tabsContainer = document.getElementById('favoritesTabs');
     const emptyState = document.getElementById('favoritesEmpty');
-    if (!container) return;
+    console.log('container:', container);
+    console.log('tabsContainer:', tabsContainer);
+    console.log('emptyState:', emptyState);
+    
+    if (!container) {
+        console.log('❌ Container não encontrado!');
+        return;
+    }
     
     const favorites = getFavorites();
     const lang = localStorage.getItem('selectedLanguage') || 'pt';
     
+    console.log('Favoritos:', favorites);
+    
     // Verificar se há favoritos
     const totalFavorites = Object.values(favorites).reduce((sum, arr) => sum + arr.length, 0);
     
+    console.log('Total de favoritos:', totalFavorites);
+    
     if (totalFavorites === 0) {
+        console.log('📭 ZERO favoritos - mostrando empty state');
+        
+        // Se o emptyState não existir, recriar
+        let emptyStateElement = emptyState;
+        if (!emptyStateElement) {
+            console.log('🔧 Recriando emptyState...');
+            emptyStateElement = document.createElement('div');
+            emptyStateElement.className = 'favorites-empty';
+            emptyStateElement.id = 'favoritesEmpty';
+            emptyStateElement.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity="0.3">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <p data-translate="favorites-empty">Nenhum favorito ainda. Adicione páginas aos favoritos.</p>
+            `;
+            container.appendChild(emptyStateElement);
+            
+            // Aplicar tradução ao texto recém-criado
+            const p = emptyStateElement.querySelector('p[data-translate]');
+            if (p && translations[lang] && translations[lang]['favorites-empty']) {
+                p.textContent = translations[lang]['favorites-empty'];
+            }
+            
+            console.log('✅ emptyState recriado!');
+        }
+        
         // Mostrar estado vazio
-        if (emptyState) emptyState.style.display = 'flex';
+        emptyStateElement.style.display = 'flex';
+        console.log('✅ emptyState.style.display = flex');
+        console.log('offsetHeight:', emptyStateElement.offsetHeight);
+        console.log('offsetWidth:', emptyStateElement.offsetWidth);
+        
         if (tabsContainer) tabsContainer.style.display = 'none';
-        container.innerHTML = '';
+        // Remover itens de favoritos se existirem
+        const favoriteItems = container.querySelectorAll('.favorite-item, .favorites-category');
+        favoriteItems.forEach(item => item.remove());
         return;
     }
     
