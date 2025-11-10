@@ -1386,6 +1386,7 @@ function closeFavoritesModal() {
 // Renderizar conteúdo do modal de favoritos
 function renderFavoritesModal() {
     const container = document.getElementById('favoritesContent');
+    const tabsContainer = document.getElementById('favoritesTabs');
     const emptyState = document.getElementById('favoritesEmpty');
     if (!container) return;
     
@@ -1397,17 +1398,46 @@ function renderFavoritesModal() {
     
     if (totalFavorites === 0) {
         // Mostrar estado vazio
-        if (emptyState) emptyState.style.display = 'block';
+        if (emptyState) emptyState.style.display = 'flex';
+        if (tabsContainer) tabsContainer.style.display = 'none';
         container.innerHTML = '';
-        container.appendChild(emptyState);
         return;
     }
     
     // Esconder estado vazio
     if (emptyState) emptyState.style.display = 'none';
+    if (tabsContainer) tabsContainer.style.display = 'flex';
     
-    // Renderizar categorias com favoritos
-    let html = '';
+    // Criar abas
+    let tabsHtml = '';
+    let firstCategory = null;
+    
+    for (const [categoryKey, categoryData] of Object.entries(FAVORITES_CATEGORIES)) {
+        const categoryFavorites = favorites[categoryKey] || [];
+        
+        // Só criar aba para categorias que têm favoritos
+        if (categoryFavorites.length === 0) continue;
+        
+        if (!firstCategory) firstCategory = categoryKey;
+        
+        const categoryName = categoryData.name[lang] || categoryData.name.pt;
+        
+        tabsHtml += `
+            <button class="favorites-tab ${categoryKey === firstCategory ? 'active' : ''}" 
+                    data-category="${categoryKey}"
+                    onclick="switchFavoriteTab('${categoryKey}')">
+                ${categoryName}
+                <span class="favorites-tab-count">${categoryFavorites.length}</span>
+            </button>
+        `;
+    }
+    
+    if (tabsContainer) {
+        tabsContainer.innerHTML = tabsHtml;
+    }
+    
+    // Renderizar conteúdo das categorias
+    let contentHtml = '';
     
     for (const [categoryKey, categoryData] of Object.entries(FAVORITES_CATEGORIES)) {
         const categoryFavorites = favorites[categoryKey] || [];
@@ -1415,14 +1445,8 @@ function renderFavoritesModal() {
         // Só mostrar categorias que têm favoritos
         if (categoryFavorites.length === 0) continue;
         
-        const categoryName = categoryData.name[lang] || categoryData.name.pt;
-        
-        html += `
-            <div class="favorites-category">
-                <div class="favorites-category-title">
-                    ${categoryName}
-                    <span class="favorites-category-count">${categoryFavorites.length}</span>
-                </div>
+        contentHtml += `
+            <div class="favorites-category ${categoryKey === firstCategory ? 'active' : ''}" data-category="${categoryKey}">
                 <div class="favorites-list">
         `;
         
@@ -1433,7 +1457,7 @@ function renderFavoritesModal() {
                 favPath = categoryData.path + favorite.id + '.html';
             }
             
-            html += `
+            contentHtml += `
                 <div class="favorite-item">
                     <a href="${favPath}" class="favorite-item-info">
                         <span class="favorite-item-name">${favorite.title}</span>
@@ -1447,14 +1471,40 @@ function renderFavoritesModal() {
             `;
         });
         
-        html += `
+        contentHtml += `
                 </div>
             </div>
         `;
     }
     
-    container.innerHTML = html;
+    container.innerHTML = contentHtml;
 }
+
+// Trocar de aba no modal de favoritos
+function switchFavoriteTab(categoryKey) {
+    // Atualizar abas ativas
+    const tabs = document.querySelectorAll('.favorites-tab');
+    tabs.forEach(tab => {
+        if (tab.dataset.category === categoryKey) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+    
+    // Atualizar conteúdo ativo
+    const categories = document.querySelectorAll('.favorites-category');
+    categories.forEach(category => {
+        if (category.dataset.category === categoryKey) {
+            category.classList.add('active');
+        } else {
+            category.classList.remove('active');
+        }
+    });
+}
+
+// Tornar função global
+window.switchFavoriteTab = switchFavoriteTab;
 
 // Inicializar favoritos quando a página carregar
 document.addEventListener('DOMContentLoaded', function() {
