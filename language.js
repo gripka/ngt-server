@@ -1240,9 +1240,12 @@ function toggleFavorite() {
         // Adicionar animação de REMOÇÃO no botão circular
         if (headerBtn) {
             headerBtn.classList.add('removing-favorite');
+            const isMobile = window.innerWidth <= 768;
+            const animationDuration = isMobile ? 500 : 600;
+            
             setTimeout(() => {
                 headerBtn.classList.remove('removing-favorite');
-            }, 600);
+            }, animationDuration);
         }
     } else {
         // Adicionar aos favoritos
@@ -1256,28 +1259,37 @@ function toggleFavorite() {
         // Adicionar animação de ADIÇÃO APENAS no botão circular (header button)
         if (headerBtn) {
             headerBtn.classList.add('adding-favorite');
+            const isMobile = window.innerWidth <= 768;
+            const animationDuration = isMobile ? 500 : 800;
+            
             setTimeout(() => {
                 headerBtn.classList.remove('adding-favorite');
-            }, 800);
+            }, animationDuration);
         }
         
         // NÃO animar o botão do topo (que abre o modal)
         // Ele deve permanecer sem animação
     }
     
-    favorites[pageInfo.category] = categoryFavorites;
-    saveFavorites(favorites);
-    
-    // Atualizar APENAS o botão circular (que adiciona/remove)
+    // Atualizar APENAS o botão circular (que adiciona/remove) IMEDIATAMENTE
     updateHeaderFavoriteButton();
     
-    // NÃO tocar no botão do topo - ele é completamente independente
-    // e só deve ser atualizado ao carregar a página ou trocar idioma
+    // Adiar operações pesadas para melhor performance no mobile
+    const isMobile = window.innerWidth <= 768;
+    const delay = isMobile ? 100 : 0;
     
-    // Se a função do favorites.js existir, também chama ela para garantir
-    if (typeof window.updateFavoriteIcon === 'function') {
-        window.updateFavoriteIcon(isNowFavorite);
-    }
+    setTimeout(() => {
+        favorites[pageInfo.category] = categoryFavorites;
+        saveFavorites(favorites);
+        
+        // NÃO tocar no botão do topo - ele é completamente independente
+        // e só deve ser atualizado ao carregar a página ou trocar idioma
+        
+        // Se a função do favorites.js existir, também chama ela para garantir
+        if (typeof window.updateFavoriteIcon === 'function') {
+            window.updateFavoriteIcon(isNowFavorite);
+        }
+    }, delay);
 }
 
 // Atualizar APENAS o botão do topo (que abre o modal)

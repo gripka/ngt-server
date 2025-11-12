@@ -272,6 +272,7 @@ function toggleFavorite() {
     
     let isNowFavorite;
     if (existingIndex > -1) {
+        if (existingIndex !== -1) {
         // Remover dos favoritos
         categoryFavorites.splice(existingIndex, 1);
         isNowFavorite = false;
@@ -291,32 +292,48 @@ function toggleFavorite() {
         if (headerBtn) {
             console.log('💓 Aplicando animação heartbeat...');
             headerBtn.classList.add('adding-favorite');
+            
+            // Detectar se está no mobile para ajustar duração
+            const isMobile = window.innerWidth <= 768;
+            const animationDuration = isMobile ? 500 : 800;
+            
             setTimeout(() => {
                 headerBtn.classList.remove('adding-favorite');
                 console.log('💓 Animação heartbeat concluída');
-            }, 600);
+            }, animationDuration);
         }
         
         // Também animar o botão do topo se existir
         const topBtn = document.getElementById('favoriteBtn');
         if (topBtn) {
             topBtn.classList.add('adding-favorite');
+            const isMobile = window.innerWidth <= 768;
+            const animationDuration = isMobile ? 500 : 800;
+            
             setTimeout(() => {
                 topBtn.classList.remove('adding-favorite');
-            }, 600);
+            }, animationDuration);
         }
     }
     
-    favorites[categoryKey] = categoryFavorites;
-    localStorage.setItem('ngt-favorites', JSON.stringify(favorites));
-    console.log('💾 Favoritos salvos no localStorage (ngt-favorites):', favorites);
-    
-    const modal = document.getElementById('favoritesModal');
-    if (modal && modal.style.display === 'flex') {
-        loadFavorites();
-    }
-
+    // Atualizar ícone IMEDIATAMENTE para feedback visual rápido
     updateFavoriteIcon(isNowFavorite);
+    
+    // Adiar operações pesadas para depois da animação (melhor performance no mobile)
+    const isMobile = window.innerWidth <= 768;
+    const delay = isMobile ? 100 : 0; // Pequeno delay no mobile para suavizar
+    
+    setTimeout(() => {
+        favorites[categoryKey] = categoryFavorites;
+        localStorage.setItem('ngt-favorites', JSON.stringify(favorites));
+        console.log('💾 Favoritos salvos no localStorage (ngt-favorites):', favorites);
+        
+        const modal = document.getElementById('favoritesModal');
+        if (modal && modal.style.display === 'flex') {
+            loadFavorites();
+        }
+    }, delay);
+}
 }
 
 function updateFavoriteIcon(forceState) {
