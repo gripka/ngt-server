@@ -707,9 +707,47 @@ function loadFooter() {
 // INICIALIZAÇÃO
 // ============================================
 
+// ============================================
+// DETECÇÃO AUTOMÁTICA DE IDIOMA
+// ============================================
+
+// Função para detectar o idioma do navegador
+function detectBrowserLanguage() {
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    
+    // Se já existe um idioma salvo, usa ele (respeita escolha do usuário)
+    if (savedLanguage) {
+        console.log(`🌍 Idioma salvo encontrado: ${savedLanguage}`);
+        return savedLanguage;
+    }
+    
+    // Primeira visita - detecta automaticamente do navegador
+    const browserLang = navigator.language || navigator.userLanguage;
+    console.log(`🌍 Primeira visita detectada. Idioma do navegador: ${browserLang}`);
+    
+    // Extrai apenas o código do idioma (ex: "pt-BR" -> "pt")
+    const langCode = browserLang.split('-')[0].toLowerCase();
+    
+    // Idiomas suportados pelo site
+    const supportedLanguages = ['pt', 'en', 'es'];
+    
+    // Se o idioma do navegador é suportado, usa ele
+    if (supportedLanguages.includes(langCode)) {
+        localStorage.setItem('selectedLanguage', langCode);
+        console.log(`✅ Idioma "${langCode}" detectado e salvo automaticamente`);
+        return langCode;
+    }
+    
+    // Se o idioma não é suportado, usa inglês como padrão
+    localStorage.setItem('selectedLanguage', 'en');
+    console.log(`⚠️ Idioma "${browserLang}" não suportado. Usando "en" como padrão`);
+    return 'en';
+}
+
 // Aplica configurações ANTES do DOMContentLoaded
 (function() {
-    const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
+    // Detecta o idioma automaticamente na primeira visita
+    const savedLanguage = detectBrowserLanguage();
     const currentMode = localStorage.getItem('viewMode') || 'normal';
     
     // Aplica a classe do modo CM imediatamente
@@ -723,8 +761,8 @@ function loadFooter() {
 
 document.addEventListener('DOMContentLoaded', async function() {
     try {
-        // Pega o idioma salvo ou usa português como padrão
-        const savedLanguage = localStorage.getItem('selectedLanguage') || 'pt';
+        // Detecta o idioma automaticamente (já retorna o idioma salvo se existir)
+        const savedLanguage = detectBrowserLanguage();
         
         // Carrega traduções em paralelo (rápido)
         await initTranslations();
