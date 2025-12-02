@@ -2699,12 +2699,14 @@
 				]
 			}
 		},
-		"castora": {
+		"voe-dn": {
 			"category": "Visions of Eternity",
 			"name": "Castora: Day and night",
+			"link": "Day and night",
 			"segments": {
 				"1": {
 					"name": "Day",
+					"link": "Day and night",
 					"bg": [
 						255,
 						255,
@@ -2713,6 +2715,7 @@
 				},
 				"2": {
 					"name": "Dusk",
+					"link": "Day and night",
 					"bg": [
 						[
 							255,
@@ -2728,6 +2731,7 @@
 				},
 				"3": {
 					"name": "Night",
+					"link": "Day and night",
 					"bg": [
 						122,
 						134,
@@ -2736,6 +2740,7 @@
 				},
 				"4": {
 					"name": "Dawn",
+					"link": "Day and night",
 					"bg": [
 						[
 							122,
@@ -2754,7 +2759,7 @@
 				"partial": [
 					{
 						"r": 3,
-						"d": 25
+						"d": 35
 					},
 					{
 						"r": 4,
@@ -2764,7 +2769,7 @@
 				"pattern": [
 					{
 						"r": 1,
-						"d": 70
+						"d": 55
 					},
 					{
 						"r": 2,
@@ -2772,7 +2777,7 @@
 					},
 					{
 						"r": 3,
-						"d": 25
+						"d": 55
 					},
 					{
 						"r": 4,
@@ -2781,43 +2786,25 @@
 				]
 			}
 		},
-		"shs": {
+		"voe-ss": {
 			"category": "Visions of Eternity",
 			"name": "Shipwreck Strand",
 			"segments": {
 				"0": {
 					"name": "",
 					"bg": [
-						168,
-						194,
-						168
+						250,
+						160,
+						125
 					]
 				},
 				"1": {
-					"name": "Cuttlefish Cove",
-					"chatlink": "[\u0026BEEPAAA=]",
+					"name": "Hammerhart Rumble!",
+					"chatlink": "[\u0026BJEPAAA=]",
 					"bg": [
-						106,
-						141,
-						106
-					]
-				},
-				"2": {
-					"name": "The Unkindness of Ravens",
-					"chatlink": "[\u0026BCkPAAA=]",
-					"bg": [
-						106,
-						141,
-						106
-					]
-				},
-				"3": {
-					"name": "The Lost Pirate King",
-					"chatlink": "[\u0026BA4PAAA=]",
-					"bg": [
-						106,
-						141,
-						106
+						242,
+						126,
+						84
 					]
 				}
 			},
@@ -2825,7 +2812,7 @@
 				"partial": [
 					{
 						"r": 0,
-						"d": 55
+						"d": 40
 					}
 				],
 				"pattern": [
@@ -2835,98 +2822,52 @@
 					},
 					{
 						"r": 0,
-						"d": 40
-					},
-					{
-						"r": 2,
-						"d": 20
-					},
-					{
-						"r": 0,
-						"d": 40
-					},
-					{
-						"r": 3,
-						"d": 20
-					},
-					{
-						"r": 0,
-						"d": 40
+						"d": 100
 					}
 				]
 			}
 		},
-		"stw": {
+		"voe-sw": {
 			"category": "Visions of Eternity",
 			"name": "Starlit Weald",
 			"segments": {
 				"0": {
 					"name": "",
 					"bg": [
-						168,
-						194,
-						168
+						250,
+						160,
+						125
 					]
 				},
 				"1": {
-					"name": "Starlight Bloom",
-					"chatlink": "[\u0026BJoPAAA=]",
+					"name": "Secrets of the Weald",
+					"chatlink": "[\u0026BJ4PAAA=]",
 					"bg": [
-						106,
-						141,
-						106
-					]
-				},
-				"2": {
-					"name": "Constellations in the Caves",
-					"chatlink": "[\u0026BEAPAAA=]",
-					"bg": [
-						106,
-						141,
-						106
-					]
-				},
-				"3": {
-					"name": "The Ever-Flowering Grove",
-					"chatlink": "[\u0026BN8OAAA=]",
-					"bg": [
-						106,
-						141,
-						106
+						242,
+						126,
+						84
 					]
 				}
 			},
 			"sequences": {
 				"partial": [
 					{
+						"r": 1,
+						"d": 15
+					},
+					{
 						"r": 0,
-						"d": 55
+						"d": 85
 					}
 				],
 				"pattern": [
 					{
 						"r": 1,
-						"d": 20
+						"d": 35
 					},
 					{
 						"r": 0,
-						"d": 40
-					},
-					{
-						"r": 2,
-						"d": 20
-					},
-					{
-						"r": 0,
-						"d": 40
-					},
-					{
-						"r": 3,
-						"d": 20
-					},
-					{
-						"r": 0,
-						"d": 40
+						"d": 85
 					}
 				]
 			}

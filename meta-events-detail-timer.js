@@ -44,7 +44,9 @@ function getEventKeyFromPage() {
         'meta-skywatch': 'sa',
         'meta-inner-nayos': 'con',
         'meta-janthir-syntri': 'js',
-        'meta-lowland-shore': 'bn'
+        'meta-lowland-shore': 'bn',
+        'meta-hammerhart-rumble': 'voe-ss',
+        'meta-secrets-weald': 'voe-sw'
     };
     
     return pageToEventKey[pageId] || null;
@@ -62,7 +64,9 @@ function getEventNameFromPage() {
         'meta-karka-queen': 'Karka Queen',
         'meta-marionette': 'Twisted Marionette (Public)',
         'meta-tower': 'Tower of Nightmares (Public)',
-        'meta-battle-la': 'Battle For Lion\'s Arch (Public)'
+        'meta-battle-la': 'Battle For Lion\'s Arch (Public)',
+        'meta-hammerhart-rumble': 'Hammerhart Rumble!',
+        'meta-secrets-weald': 'Secrets of the Weald'
     };
     
     return specificEventNames[pageId] || null;

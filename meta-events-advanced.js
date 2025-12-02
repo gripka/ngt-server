@@ -111,7 +111,10 @@ const EVENT_DETAIL_PAGES = {
     'The Stoic Rampart': 'meta-events/janthir-syntri.html',
     'Lowland Shore': 'meta-events/lowland-shore.html',
     'Titan\'s Threshold': 'meta-events/lowland-shore.html',
-    'Greer': 'meta-events/lowland-shore.html'
+    'Greer': 'meta-events/lowland-shore.html',
+    // Visions of Eternity
+    'Hammerhart Rumble!': 'meta-events/hammerhart-rumble.html',
+    'Secrets of the Weald': 'meta-events/secrets-weald.html'
 };
 
 // Event key to detail page mapping (fallback for segments without specific links)
@@ -142,7 +145,9 @@ const EVENT_KEY_TO_PAGE = {
     'con': 'meta-events/inner-nayos.html',
     'am': 'meta-events/amnytas.html',
     'js': 'meta-events/janthir-syntri.html',
-    'bn': 'meta-events/lowland-shore.html'
+    'bn': 'meta-events/lowland-shore.html',
+    'voe-ss': 'meta-events/hammerhart-rumble.html',
+    'voe-sw': 'meta-events/secrets-weald.html'
 };
 
 // Categories to display (filter out PvP tournaments and some others)
